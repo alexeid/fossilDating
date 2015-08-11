@@ -23,23 +23,22 @@
 % http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0066245 A Simple Method for Estimating Informative Node Age Priors for the Fossil Calibration of Molecular Divergence Time Analyses
 % http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3108556/  Bayesian Phylogenetic Method to Estimate Unknown Sequence Ages
 
-Although there has been much controversy surrounding apparent discrepancies between palaeontological data and molecular phylogenetic inferences it is clear that fossil and molecular data both produce broadly concordant views of evolutionary history\footnote{For example see \url{http://www.actionbioscience.org/evolution/benton.html}}. Nevertheless there have been only few attempts to apply phylogenetic reasoning to palaeontological questions. In particular, although models of molecular evolution have continually been refined over many decades there has been little change in the modelling of fossil data until very recently. One of the first examples of endeavouring to apply an evolutionary model to perform inference on the fossil record in fact demonstrated concordance between inferences from  molecular data and paleontological data \autocite{tavare2002using}. 
+Although there has been much controversy surrounding apparent discrepancies between palaeontological data and molecular phylogenetic inferences it is clear that fossil and molecular data both produce broadly concordant views of evolutionary history\footnote{For example see \url{http://www.actionbioscience.org/evolution/benton.html}}. Nevertheless there have been only few attempts to apply phylogenetic reasoning to palaeontological questions. In particular, although models of molecular evolution have been refined over many decades \autocite{Felsenstein2004,Yang:2006yu} there has been little change in the modelling of fossil data until very recently. One of the first examples of endeavouring to apply an evolutionary model to perform inference on the fossil record in fact demonstrated concordance between inferences from  molecular data and paleontological data \autocite{tavare2002using}. 
 
 Traditionally the practice has been to use fossils from radiometrically-dated strata as ``node calibrations'' by associated their geologically-derived age to a particular divergence in a molecular phylogeny. This node calibration then confers age estimates to the remaining divergences on a phylogenetic tree by the assumption of a strict or relaxed molecular clock \autocite{Thorne1998,thorne2005,yang2006,Drummond2006}. 
 Here we instead focus on what phylogenetic inference techniques can tell us about the ``phylogenetic age'' of a fossil, based solely on its morphological characteristics.
 
 \subsection*{Phylogenetic tip-dating}
 
-The phylogenetic estimation of the age of a taxon based on its molecular sequence has been previously described \autocite{drummond2002computational,shapiro2011bayesian} and applied to both ancient subfossil remains and rapidly evolving viral taxa. For example, this technique has been successfully employed to estimate the age of human subfossil remains based on an ancient mitochondrial genome sequence \autocite{meyer2014mitochondrial}. The same technique has also been used to estimate the age of viral samples based on molecular sequence data \autocite{gray2013evolutionary}.
-
+The phylogenetic estimation of the age of a taxon based on its molecular sequence has been previously described \autocite{drummond2002computational,shapiro2011bayesian} and applied to both ancient subfossil remains and rapidly evolving viral taxa. For example, this technique has been successfully employed to estimate the age of human subfossil remains based on an ancient mitochondrial genome sequence \autocite{meyer2014mitochondrial}. The same technique has also been used to estimate the age of viral samples based on molecular sequence data \autocite[e.g.][]{gray2013evolutionary}.
 
 We extend this work into the realm of morphological evolution by presenting a statistical model of evolution that generates an expectation on the distribution of fossils and their morphological characters. This model has been previously presented in the context of divergence time dating \autocite{gavr2014,gavryushkina2015bayesian}. It is distinct from alternative divergence time dating approaches in that is provides an explicit treatment of the temporal information contained in fossil remains, whether or not related molecular sequence data is available. This leads to an estimate of the age of the most recent common ancestor of a group of fossils. We exploit this framework to attempt the estimation of the phylogenetic age of individual fossils based solely on morphological data and their phylogenetic affinities to other fossils of known age. The method is applied to a rich and well-characterized morphological data set of extant penguins and their fossil ancestors.
 
 \section*{Methods}
 
-\textcite{gavryushkina2015bayesian} described a ``total-evidence'' approach to the phylogenetic estimation of time-trees that employed both fossil and molecular sequence data as equal partners under the rule of probability. We extend their work further by investigating the consistency between the estimated phylogenetic age of a fossil and the corresponding palaeontological age ranges based on radiometrically-dated geological strata. The model of time-tree phylogeny employed is the so-called fossilized birth-death process \autocite{Heath2014}, which forms a prior probability distribution on the space of sampled-ancestor trees \autocite{Gavr2013}.
+\textcite{gavryushkina2015bayesian} described a ``total-evidence'' approach to the phylogenetic estimation of time-trees that employed both fossil and molecular sequence data as equal partners under the rule of probability. We extend their work further by investigating the consistency between the estimated phylogenetic age of a fossil and the corresponding palaeontological age range based on radiometrically-dated geological strata. The model of time-tree phylogeny employed is the so-called fossilized birth-death process \autocite{Heath2014}, which forms a prior probability distribution on the space of sampled-ancestor trees \autocite{Gavr2013}.
 
-A previous study described how a set of fossils with discrete morphological characters could be used to estimate a phylogeny. Here we additionally allow for one or more of the fossils to have broad uninformative priors on their age. This allows for their ages to be estimated solely based on their morphological characters and the phylogenetic affinities of those characters to other fossils with known ages in the phylogeny. We refer to this estimate of a fossil's age as its {\em phylogenetic age}. In estimating each of the fossils' phylogenetic ages in turn, three questions can be answered: (i) How much information about an individual fossil's age is available from phylogenetic analysis of morphological data alone, (ii) What is the level of phylogenetic evidence in support of the palaeontological age range for a fossil, and (iii) how does the amount of morphological data available for a new fossil and the number of related reference fossils of known age effect the accuracy of the phylogenetic estimate of a fossil's age. These three questions are investigated in the context of a morphological data set of of 36 fossil penguins and their extant relatives \autocite{gavryushkina2015bayesian} (see Table \ref{fossilTable}).
+A previous study described how a set of fossils with discrete morphological characters could be used to estimate a time-tree or chrono-phylogeny. Here we additionally allow for one or more of the fossils to have broad uninformative priors on their age. This allows for the age of some of the fossils to be estimated solely based on their morphological characters and the phylogenetic affinities of their morphology to other fossils with known ages in the time-tree. We refer to this estimate of a fossil's age as its {\em phylogenetic age}. In estimating each of the fossils' phylogenetic ages in turn, three questions can be answered: (i) How much information about an individual fossil's age is available from phylogenetic analysis of morphological data alone, (ii) What is the level of phylogenetic evidence in support of the palaeontological age range for a fossil, and (iii) How does the amount of morphological data available for a new fossil and the number of related reference fossils of known age effect the accuracy of the phylogenetic estimate of a fossil's age. These three questions are investigated in the context of a morphological data set of of 36 fossil penguins and their extant relatives \autocite{gavryushkina2015bayesian} (see Table \ref{fossilTable}).
 
 \subsection*{Estimating the phylogenetic age of penguin fossils}
 
@@ -70,18 +69,18 @@ As judged by Bayes factors, none of the fossils showed evidence that the phyloge
 \Mrelaxed{} was the best-fitting model according to the analysis of \textcite{gavryushkina2015bayesian}. As with \Mstrict{} this model produced phylogenetic age estimates that were very concordant with the geological age ranges of the fossils. The median error was 2.1 Myr across all 36 fossils. All Bayes factors supported the geological age range above the hypothesis of outside the geological age range.
 
 \begin{figure}
-\includegraphics[width=5in]{run8_3/8_phyloAgeVsGeoAge.pdf}
+\includegraphics[width=5in]{run8_5/8_phyloAgeVsGeoAge.pdf}
 \caption{\label{fig:phyloAgeVsGeoAge}
 The Bayesian phylogenetic age estimate (median of marginal posterior) for each of the 36 penguin fossils plotted against their palaeontological age estimates. The palaeontological age estimates are represented by the mid-point of the range and the upper and lower limits. The Bayesian estimates are represented by the median of the marginal posterior distribution and the upper and lower limits of the 95\% HPD interval. Blue line shows the $x=y$. If the vertical line doesn't cross $x=y$, then the midpoint of the geological range is not in the phylogenetic 95\% HPD. If the horizontal line doesn't cross $x=y$, then the median phylogenetic estimate is not contained in the palaeontological age range. The three labelled fossils show significant inconsistency.}
 \end{figure}
 
 \begin{figure}
-%\includegraphics[width=5in]{run8_3/8_precisionVsKnownCharacters.pdf}
+\includegraphics[width=5in]{run8_5/8_precisionVsKnownCharacters.pdf}
 \caption{A plot of the number of non-ambiguous morphological sites for the taxon against the precision of its phylogenetic age (i.e. the precisions is 1/variance in the marginal posterior distribution of the age).}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=6in]{run8_3/fossilDatingDensities_younger.pdf}
+\includegraphics[width=6in]{run8_5/fossilDatingDensities_younger.pdf}
 \caption{Marginal posterior density plots for the phylogenetic age estimate of each of the 18 penguin fossils younger than 30 Myr. Red boxes are the superimposed age ranges derived from geological data.}
 \end{figure}
 
@@ -90,54 +89,7 @@ The Bayesian phylogenetic age estimate (median of marginal posterior) for each o
 \caption{Marginal posterior density plots for the phylogenetic age estimate of each of the 18 penguin fossils older than 30 Myr. Red boxes are the superimposed age ranges derived from geological data.}
 \end{figure}
 
-% latex table generated in R 3.0.3 by xtable 1.7-4 package
-% Tue Jul 28 17:38:04 2015
-\begin{table}[ht]
-\centering
-\begin{tabular}{rlrrrrrr}
-  \hline
- & Name & post & Error & Rel Err & Age & Lower & Upper \\ 
-  \hline
-1 & Anthropornis grandis & 0.932 & 5.05 & 0.12 & 38.22 & 33.17 & 43.42 \\ 
-  2 & Anthropornis nordenskjoeldi & 0.903 & 5.01 & 0.12 & 38.30 & 32.04 & 44.33 \\ 
-  3 & Archaeospheniscus lopdelli & 0.427 & 1.95 & 0.07 & 26.03 & 21.74 & 31.42 \\ 
-  4 & Archaeospheniscus lowei & 0.527 & 0.44 & 0.02 & 27.67 & 21.76 & 34.22 \\ 
-  5 & Burnside Palaeudyptes & 0.476 & 1.21 & 0.03 & 36.03 & 33.16 & 39.30 \\ 
-  6 & Delphinornis arctowskii & 0.477 & 2.01 & 0.05 & 35.87 & 21.34 & 49.43 \\ 
-  7 & Delphinornis gracilis & 0.213 & 6.60 & 0.18 & 44.14 & 35.84 & 51.98 \\ 
-  8 & Delphinornis larseni & 0.955 & 1.67 & 0.04 & 40.72 & 33.48 & 51.07 \\ 
-  9 & Delphinornis wimani & 0.193 & 15.68 & 0.36 & 26.43 & 17.51 & 41.30 \\ 
-  10 & Duntroonornis parvus & 0.771 & 0.12 & 0.00 & 26.00 & 16.07 & 32.26 \\ 
-  11 & Eretiscus tonnii & 0.476 & 2.78 & 0.15 & 15.89 & 10.36 & 20.30 \\ 
-  12 & Icadyptes salasi & 0.198 & 1.77 & 0.05 & 34.70 & 31.48 & 37.38 \\ 
-  13 & Inkayacu paracasensis & 0.387 & 0.79 & 0.02 & 35.84 & 32.49 & 38.48 \\ 
-  14 & Kairuku grebneffi & 0.614 & 1.39 & 0.05 & 29.36 & 26.11 & 32.74 \\ 
-  15 & Kairuku waitaki & 0.609 & 1.49 & 0.05 & 29.21 & 25.11 & 33.98 \\ 
-  16 & Madrynornis mirandus & 0.017 & 3.65 & 0.36 & 6.58 & 2.00 & 9.58 \\ 
-  17 & Marambiornis exilis & 0.643 & 1.87 & 0.05 & 39.48 & 33.03 & 46.07 \\ 
-  18 & Marplesornis novaezealandiae & 0.377 & 5.55 & 0.52 & 16.54 & 12.41 & 19.85 \\ 
-  19 & Mesetaornis polaris & 0.716 & 1.12 & 0.03 & 38.71 & 30.61 & 44.81 \\ 
-  20 & Pachydyptes ponderosus & 0.364 & 0.46 & 0.01 & 35.88 & 32.35 & 38.79 \\ 
-  21 & Palaeeudyptes antarcticus & 0.148 & 4.49 & 0.14 & 37.36 & 30.67 & 42.56 \\ 
-  22 & Palaeeudyptes gunnari & 0.873 & 7.10 & 0.16 & 37.20 & 32.44 & 41.79 \\ 
-  23 & Palaeeudyptes klekowskii & 0.857 & 6.22 & 0.14 & 37.42 & 32.46 & 41.78 \\ 
-  24 & Palaeospheniscus bergi & 0.932 & 2.47 & 0.16 & 17.77 & 14.11 & 21.95 \\ 
-  25 & Palaeospheniscus biloculata & 0.784 & 0.95 & 0.05 & 17.58 & 12.20 & 21.61 \\ 
-  26 & Palaeospheniscus patagonicus & 0.931 & 0.18 & 0.01 & 18.53 & 15.61 & 20.66 \\ 
-  27 & Paraptenodytes antarcticus & 0.003 & 7.63 & 0.35 & 29.72 & 26.34 & 33.67 \\ 
-  28 & Perudyptes devriesi & 0.126 & 5.69 & 0.14 & 45.63 & 39.72 & 53.69 \\ 
-  29 & Platydyptes marplesi & 0.768 & 2.17 & 0.08 & 24.43 & 20.72 & 27.79 \\ 
-  30 & Platydyptes novaezealandiae & 0.515 & 0.83 & 0.03 & 23.92 & 19.11 & 28.55 \\ 
-  31 & Pygoscelis grandis & 0.756 & 0.43 & 0.08 & 5.61 & 1.38 & 10.72 \\ 
-  32 & Spheniscus megaramphus & 0.535 & 1.60 & 0.20 & 6.54 & 3.28 & 9.11 \\ 
-  33 & Spheniscus muizoni & 0.003 & 4.09 & 0.45 & 4.97 & 2.48 & 7.81 \\ 
-  34 & Spheniscus urbinai & 0.882 & 0.01 & 0.00 & 7.82 & 4.99 & 9.95 \\ 
-  35 & Waimanu manneringi & 0.068 & 3.31 & 0.05 & 57.91 & 53.32 & 62.91 \\ 
-  36 & Waimanu tuatahi & 0.408 & 2.27 & 0.04 & 60.67 & 55.09 & 66.38 \\ 
-   \hline
-\end{tabular}
-\caption{\label{fossilTable}Table of 36 fossil penguins. $post$ is the posterior probability that the phylogenetic age is within the paleaontological age range. Error is the difference in millions of years between the phylogenetic point estimate of the fossil's age and the mean of it's paleaontological age range. {\em Age} is the phylogenetic estimate of the age, along with the upper and lower of the corresponding 95\% HPD credible interval.}
-\end{table}
+\input{run8_5/8_summaryTable.tex}
 
 \section*{Discussion}
 
