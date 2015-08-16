@@ -86,7 +86,11 @@ createSummaryTable <- function(names, height, fossilTable, sequences) {
 
 writeSummaryTable <- function(filename, caption, label, df) {
   require(xtable)
-  xtab <- xtable(df8[,c("post", "bf", "err", "est", "hpd_lower", "hpd_upper","ess")], 
+  
+  dfshort <- df[,c("post", "bf", "est", "hpd_lower", "hpd_upper","err", "ess")]
+  colnames(dfshort) <- c("post", "BF", "phylo age", "lower", "upper", "error", "ESS")
+  
+  xtab <- xtable(dfshort, 
     caption=caption, label=label, digits=c(2,2,1,1,1,1,1,0))
   print(file=filename, xtab)
 }
