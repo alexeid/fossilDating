@@ -34,5 +34,5 @@ abline(lm, col="red")
 r2 <- format(summary(lm)$r.squared,digits=3)
 eq <- bquote(bold(R^2 == .(r2)))
     
-text(1,10, labels=eq,pos=4)
+text(0.5,15.5, labels=eq,pos=4)
 dev.off()

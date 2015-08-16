@@ -12,7 +12,7 @@ height8 <- result8$heights
 df8 <- createSummaryTable(result8$names, height8, fossilTable8, seq)
 
 caption <- "Summary of results for 36 fossil penguins under Model 8. {\\em post} is the posterior probability that the phylogenetic age is within the paleaontological age range. {\\em BF} is the bayes factor in support of the palaeontogical age. {\\em phylo age} is the phylogenetic estimate of the age, along with the upper and lower of the corresponding 95\\% HPD credible interval. {\\em error} is the difference in millions of years between the phylogenetic point estimate of the fossil's age and the mean of it's paleaontological age range. {\\em ESS} is the estimated effective sample size for the phylogenetic age estimate."
-label <- "fossilTable"
+label <- "fossilTable8"
 
 writeSummaryTable("8_summaryTable.tex",caption, label, df8)
 

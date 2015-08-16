@@ -232,6 +232,70 @@ createDensityPlotFigures <- function (filePrefix, names, height, fossilTable, co
 }
 
 ####################################################################
+# produce the hist plots and write to pdf files
+####################################################################
+createHistPlotFigures <- function (filePrefix, names, height, fossilTable, combinedPlots) {
+  xmax <- 66
+
+  if (combinedPlots) {
+  
+    pdf(file=paste(filePrefix, "_younger.pdf", sep=""), width=8, height=11)
+    par(mfrow = c(6,3),
+        oma = c(4,4,0,0) + 0.1,
+        mar = c(1,1,2,1) + 0.1,
+        mgp=c(2.5,0.65, 0),lwd=0.5)
+        plot1 <- dev.cur()
+    pdf(file=paste(filePrefix, "_older.pdf", sep=""), width=8, height=11)
+    par(mfrow = c(6,3),
+        oma = c(4,4,0,0) + 0.1,
+        mar = c(1,1,2,1) + 0.1,
+        mgp=c(2.5,0.65, 0),lwd=0.5)
+        plot2 <- dev.cur()
+  }
+
+  for (i in 1:length(height)) {
+
+    if (!combinedPlots) {
+    pdf(file=paste(fossilTable$File.name[i],".pdf",sep=""))
+    }
+ 
+    lower <- fossilTable$Lower[i] 
+    upper <- fossilTable$Upper[i]
+    density <- 1.0/(upper-lower)
+
+    x <- c(lower, lower, upper, upper)
+    y <- c(0.0, density, density, 0.0)
+
+    if (combinedPlots) {
+    if (upper < 32) {
+      dev.set(plot1)
+      xmin <- 0
+      xmax <- 45
+    } else {
+      dev.set(plot2)
+      xmin <- 10
+      xmax <- 70
+    }
+    }
+    hist(height[[i]], xlim=c(xmin,xmax),breaks=c(0:66,160),freq=FALSE, xlab="",main="",col="dark gray", border="white")
+    title(main = list(names[i], cex = 1.0))
+    #rect(lower, 0.0, upper, density, col=rgb(1.0,0.0,0.0,0.5))
+    lines(x,y, col="red",lwd=1)
+
+    if (!combinedPlots) {
+    dev.off()
+    }
+  }            
+   
+  if (combinedPlots) {
+    dev.set(plot1)
+    dev.off()
+    dev.set(plot2)
+    dev.off()
+  }
+}
+
+####################################################################
 # produce the precision versus number of known characters plot
 ####################################################################
 createPrecisionVsKnownCharactersFigure <- function(filename, df, labelled, labelPos) {
