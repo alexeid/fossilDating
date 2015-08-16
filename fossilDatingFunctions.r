@@ -132,7 +132,9 @@ createPhyloAgeVsPhyloAgePDF <- function(filename, df1, df2, name1, name2, labell
 
   require(plotrix)
 
-  pdf(file=filename, width=5, height=5, pointsize=10)
+  if (!is.null(filename)) {
+    pdf(file=filename, width=5, height=5, pointsize=10)
+  }
 
   par(mar = c(4,4,1,1) + 0.1)
   plot(c(0,60),c(0,60), type="n", xlab=paste(name1, "age estimate (Myr)"), ylab=paste(name2,"age estimate (Myr)"), ylim=c(0,65), xlim=c(0,65))
@@ -142,7 +144,7 @@ createPhyloAgeVsPhyloAgePDF <- function(filename, df1, df2, name1, name2, labell
   draw.ellipse(df1$est, df2$est, df1$est-df1$hpd_lower, df2$est-df2$hpd_lower, angle = 0, segment = c(180,270), border =rgb(0.5,0.5,0.5,0.0), col=rgb(0.5,0.5,0.5,0.1), arc.only=FALSE)
   draw.ellipse(df1$est, df2$est, df1$hpd_upper-df1$est, df2$est-df2$hpd_lower, angle = 0, segment = c(270,360), border =rgb(0.5,0.5,0.5,0.0), col=rgb(0.5,0.5,0.5,0.1), arc.only=FALSE)
 
-  for (i in 1: nrow(df)) {
+  for (i in 1: nrow(df1)) {
     lines(c(df1$est[i],df1$est[i]), c(df2$hpd_lower[i],df2$hpd_upper[i]), col="black")
     lines(c(df1$hpd_lower[i],df1$hpd_upper[i]), c(df2$est[i],df2$est[i]), col="black")
   }
@@ -151,10 +153,20 @@ createPhyloAgeVsPhyloAgePDF <- function(filename, df1, df2, name1, name2, labell
 
   points(df1$est, df2$est,pch=21, col="white", bg="black")
 
-  text(df1$est[labelled], df2$est[labelled], labels=df1$names[labelled],pos=labelPos, offset=0.4, cex=0.7)
+  if (length(labelled) > 0) {
+    text(df1$est[labelled], df2$est[labelled], labels=df1$names[labelled],pos=labelPos, offset=0.4, cex=0.7)
+  }
 
-  lm <- lm(df1$est~df2$est)
-  dev.off()
+  lm <- lm(df2$est~df1$est)
+    
+  r2 <- format(summary(lm)$r.squared,digits=3)
+  eq <- bquote(bold(R^2 == .(r2)))
+    
+  text(3,60, labels=eq,pos=4)
+  
+  if (!is.null(filename)) {
+    dev.off()
+  }
 }
 
 

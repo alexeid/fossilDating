@@ -11,10 +11,15 @@
 
 \begin{document}
 
-\title{Estimating the phylogenetic age of a fossil}
+\title{Bayesian phylogenetic estimation of fossil ages reveals remarkable consistency of rocks and clocks}
 \author{Alexei Drummond, Tanja Stadler}
 \date{\today{}}
 \maketitle
+
+\abstract{
+Recent advances have allowed for both morphological fossil evidence and molecular sequence data to be integrated into a single combined divergence date estimation analysis under the rule of Bayesian probability. In particular the fossilized birth-death tree prior and the Lewis-MK model of evolution of discrete morphological change allow for the estimation of both divergence times and the phylogenetic location of fossil and extant taxa. We exploit this statistical framework to investigate the internal consistency of these models by estimating the phylogenetic age of each fossil in turn, within a rich and well-characterized data set of fossil and extant penguins.
+We find that we can accurately estimate the age of individual penguin fossils based only on phylogenetic evidence. In fact in the data set we analyze the {\em phylogenetic age} of a fossil is on average only 2 My from the midpoint of the radiometrically-derived age of the geological strata from which the fossil was excavated. The high level of internal consistency found in our analyses provides strong evidence that the Bayesian statistical model employed is a good fit for both the palaeontological and molecular data, and provides striking evidence from a real data set that the framework used can accurately model the evolution of discrete morphological traits coded from fossil and extant taxa. 
+}
 
 \section*{Introduction}
 
@@ -68,6 +73,10 @@ As judged by Bayes factors, none of the fossils showed evidence that the phyloge
 
 \Mrelaxed{} was the best-fitting model for this data set according to the analysis of \textcite{gavryushkina2015bayesian}. As with \Mstrict{} this model produced phylogenetic age estimates that were very concordant with the geological age ranges of the fossils (Figure \ref{fig:phyloAgeVsGeoAge}b). The median error was 2.1 Myr across all 36 fossils. All Bayes factors supported the geological age range above the hypothesis of outside the geological age range.
 
+\subsection*{Comparison of M1 and M8 results}
+
+Overall the results from the M1 and M8 models were strikingly concordant. Figure \ref{fig:compareM1M8} shows three regressions between the two models: (a) Regression of estimated phylogenetic age of Model 1 against Model 8, (b) Regression of posterior probability of palaeontological range of Model 1 against Model 8, (c) Regression of Bayes factor (BF) for palaeontological range of Model 1 against Model 8.
+
 \begin{figure}
 \includegraphics{Figure1.pdf}
 \caption{\label{fig:phyloAgeVsGeoAge}
@@ -88,6 +97,13 @@ The Bayesian phylogenetic age estimate (median of marginal posterior) for each o
 \includegraphics[width=6in]{run8_3/fossilDatingDensities_older.pdf}
 \caption{Marginal posterior density plots for the phylogenetic age estimate of each of the 18 penguin fossils older than 30 Myr. Red boxes are the superimposed age ranges derived from geological data.}
 \end{figure}
+
+\begin{figure}
+\includegraphics{Figure_comparison.pdf}
+\caption{\label{fig:compareM1M8}
+Comparison of Model 1 against Model 8. (a) Regression of estimated phylogenetic age of Model 1 against Model 8, (b) Regression of error in estimated phylogenetic age of Model 1 against Model 8, (c) Regression of posterior probability of palaeontological range of Model 1 against Model 8, (c) Regression of Bayes factor (BF) for palaeontological range of Model 1 against Model 8.}
+\end{figure}
+
 
 \input{run8_5/8_summaryTable.tex}
 
