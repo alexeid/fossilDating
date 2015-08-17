@@ -16,10 +16,10 @@ label <- "fossilTable1"
 
 writeSummaryTable("1_summaryTable.tex",caption, label, df1)
 
-ind <- 1:nrow(df8)
-ind <- ind[df8$post < 0.05]
+ind <- 1:nrow(df1)
+ind <- ind[df1$post < 0.05]
 orient <- rep(4,length(ind))
-orient <- c(4,2,4,4,2)
+orient <- c(4,2,4)
 
 createPhyloAgeVsGeoAgePDF("1_phyloAgeVsGeoAge.pdf", df1, fossilTable1, ind, orient)
 createPrecisionVsKnownCharactersFigure("1_precisionVsKnownCharacters.pdf", df1, ind, orient);
