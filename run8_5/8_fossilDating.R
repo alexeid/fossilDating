@@ -24,4 +24,4 @@ orient <- c(4,2,4,4,2)
 createPhyloAgeVsGeoAgePDF("8_phyloAgeVsGeoAge.pdf", df8, fossilTable8, ind, orient)
 createPrecisionVsKnownCharactersFigure("8_precisionVsKnownCharacters.pdf", df8, ind, orient);
 
-createDensityPlotFigures("fossilDatingDensities", result8$names, height8, fossilTable8, combinedPlots=TRUE)
+createHistPlotFigures("fossilDatingHist", result8$names, height8, fossilTable8, combinedPlots=TRUE)
