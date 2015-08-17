@@ -24,4 +24,8 @@ orient <- c(4,2,4,4,2)
 createPhyloAgeVsGeoAgePDF("8_phyloAgeVsGeoAge.pdf", df8, fossilTable8, ind, orient)
 createPrecisionVsKnownCharactersFigure("8_precisionVsKnownCharacters.pdf", df8, ind, orient);
 
-createHistPlotFigures("fossilDatingHist", result8$names, height8, fossilTable8, combinedPlots=TRUE)
+# Need to split younger and older ones
+
+createHistPlotFigures("8_fossilDatingHist_younger", result8$names[df8$geo < 32], height8[df8$geo < 32], fossilTable8[df8$geo < 32,], combinedPlots=TRUE, xmin=0, xmax=45)
+
+createHistPlotFigures("8_fossilDatingHist_older", result8$names[df8$geo > 32], height8[df8$geo > 32], fossilTable8[df8$geo > 32,], combinedPlots=TRUE, xmin=10, xmax=70)
