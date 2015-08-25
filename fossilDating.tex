@@ -65,18 +65,7 @@ A previous study described how a set of fossils with discrete morphological char
 
 For each of the 36 penguin fossils in turn we performed a separate Bayesian phylogenetic analysis in which the focal fossil's palaeontological age constraints were replaced by a broad uniform prior of $(0,160)$ Mya. We chose 160 as the upper limit as we expect no serious argument that any bird fossil would be older than 160Mya and it also corresponds to the upper limit on the origin of the whole phylogeny. For the choices of morphological substitution model and tree prior we followed \textcite{gavryushkina2015bayesian} and considered two of her modelling combinations. The first was \Mstrict{} in which a strict clock and the simplest model of morphological substitution was assumed \autocite{Lewis2001}. We also employed \Mrelaxed{} from \textcite{gavryushkina2015bayesian} which involved a more complex model assuming a relaxed clock model \autocite{Drummond2006}, partitioning of the sites into groups of equal state count and an additional parameter for gamma-distributed rate variation across sites \autocite{yang:1994ma}.
 
-\subsection*{Bayes factors}
-
-The Bayes factor ($BF$) computes the evidence for one hypothesis ($H_1$) over another ($H_2$) as the ratio of the marginal probability of the data under each of the two hypotheses:
-
-\begin{equation}
-BF = \frac{\Pr\{D|H_1\}}{\Pr\{D|H_2\}} = \frac{p(H_1|D)}{p(H_2|D)}\frac{p(H_2)}{p(H_1)}
-\end{equation}
-
-We are interested in computing the Bayes factor that quantifies the amount of phylogenetic evidence in support of the geological age range for each fossil. In this case $H_1$ is the hypothesis that the true fossil age is within the given paleontological age range, and $H_2$ is the alternative hypothesis that the true fossil age is outside the geological range, but within the broader interval of $(0,160)$ Mya. So for each fossil the prior probability of $H_1$, $p(H_1)$, is easily computed as the width of the geological range divided by 160 and the prior probability of the alternative is simply $p(H_2) = 1 - p(H_1)$. We assume a prior probability of zero that the fossil age is older than 160Mya. Likewise $p(H_1 | D)$ is the posterior probability that the age falls in the geological range and $p(H_2 | D) = 1 - p(H_1 | D)$. Thus computing the Bayes factor in this instance is easy to do for each fossil once a posterior distribution of the phylogenetic age of the fossil is obtained under a Uniform prior from $(0,160)$ Mya.
-
-
-\subsection*{Bayes factor - update Tanja}
+\subsection*{Bayes factor}
 
 The Bayes factor ($BF$) computes the evidence for one hypothesis ($H_1$) over another ($H_2$) as the ratio of the marginal probability of the data under each of the two hypotheses and a model $M$:
 
