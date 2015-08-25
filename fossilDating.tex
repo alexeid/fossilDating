@@ -1,3 +1,4 @@
+% !BIB TS-program = biber
 \documentclass[11pt]{article}
 
 \usepackage{graphicx}
@@ -17,9 +18,15 @@
 \date{\today{}}
 \maketitle
 
+% 250 words
 \abstract{
-Recent advances have allowed for both morphological fossil evidence and molecular sequence data to be integrated into a single combined divergence date estimation analysis under the rule of Bayesian probability. In particular the fossilized birth-death tree prior and the Lewis-MK model of evolution of discrete morphological change allow for the estimation of both divergence times and the phylogenetic location of fossil and extant taxa. We exploit this statistical framework to investigate the internal consistency of these models by estimating the phylogenetic age of each fossil in turn, within a rich and well-characterized data set of fossil and extant penguins.
-We find that we can accurately estimate the age of individual penguin fossils based only on phylogenetic evidence. In fact in the data set we analyze the {\em phylogenetic age} of a fossil is on average only 2 My from the midpoint of the radiometrically-derived age of the geological strata from which the fossil was excavated. The high level of internal consistency found in our analyses provides strong evidence that the Bayesian statistical model employed is a good fit for both the palaeontological and molecular data, and provides striking evidence from a real data set that the framework used can accurately model the evolution of discrete morphological traits coded from fossil and extant taxa. 
+Recent advances have allowed for both morphological fossil evidence and molecular sequence data to be integrated into a single combined inference of divergence dates under the rule of Bayesian probability. 
+In particular the fossilized birth-death tree prior and the Lewis-MK model of evolution of discrete morphological change allow for the estimation of both divergence times and the phylogenetic relationships between fossil and extant taxa. 
+We exploit this statistical framework to investigate the internal consistency of these models by estimating the phylogenetic age of each fossil in turn, within a rich and well-characterized data set of fossil and extant penguins.
+We find that we can accurately estimate the age of individual penguin fossils based only on phylogenetic evidence. 
+In fact in the data set we analyze the {\em phylogenetic age} of a fossil species is on average only 2 My from the midpoint age of the geological strata from which the fossil species was excavated. 
+The high level of internal consistency found in our analyses provides strong evidence that the Bayesian statistical model employed is a good fit for both the palaeontological and molecular data, and provides striking evidence from a real data set that the framework used can accurately model the evolution of discrete morphological traits coded from fossil and extant taxa. 
+We anticipate that this approach will have diverse applications including estimating dates for fossils that are temporally unconstrained, testing the ``morphological clock'', and as part of evaluating model assumptions when controversial phylogenetic hypotheses are obtained based on morphological data.
 }
 
 \section*{Introduction}
@@ -29,11 +36,18 @@ We find that we can accurately estimate the age of individual penguin fossils ba
 % http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0066245 A Simple Method for Estimating Informative Node Age Priors for the Fossil Calibration of Molecular Divergence Time Analyses
 % http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3108556/  Bayesian Phylogenetic Method to Estimate Unknown Sequence Ages
 
-Although there has been much controversy surrounding apparent discrepancies between palaeontological data and molecular phylogenetic inferences it is clear that fossil and molecular data both produce broadly concordant views of evolutionary history\footnote{For example see \url{http://www.actionbioscience.org/evolution/benton.html}}. Nevertheless there have been only few attempts to apply phylogenetic reasoning to palaeontological questions. In particular, although models of molecular evolution have been refined over many decades \autocite{Felsenstein2004,Yang:2006yu} there has been little change in the modelling of fossil data until very recently. One of the first examples of endeavouring to apply an evolutionary model to perform inference on the fossil record in fact demonstrated concordance between inferences from  molecular data and paleontological data in primates \autocite{tavare2002using}. 
+Although there has been much controversy surrounding apparent discrepancies between palaeontological data and molecular phylogenetic inferences it is clear that fossil and molecular data both produce broadly concordant views of evolutionary history\footnote{For example see \url{http://www.actionbioscience.org/evolution/benton.html}}. 
+Indeed one of the first examples of endeavouring to apply a macroevolutionary phylogenetic model to perform inference directly on fossil occurrence data in fact demonstrated concordance between inferences from  molecular data and paleontological data in primates \autocite{tavare2002using}. 
+% AJD: The following two sentences are inflammatory to palaeontologists
+%Nevertheless there have been only few attempts to apply phylogenetic reasoning to palaeontological questions. 
+%Models of molecular evolution have been refined over many decades \autocite{Felsenstein2004,Yang:2006yu}. 
+The continual improvement of models and methods for statistical phylogenetic inference of molecular sequence data is well documented \autocite[e.g.][]{Felsenstein2004,Yang:2006yu}. 
+However, it may be less widely appreciated by molecular evolutionary biologists that phylogenetic reasoning has also been heavily applied to palaeontological questions including to questions of biogeography, character evolution, and the completeness of the fossil record.
+In particular probabilistic model based approaches to biogeography, ancestral state reconstruction, and rates of morphological character change have been common in recent years. But the application of phylogenetic approaches to palaeontological questions extends back for decades. Nevertheless there has been a call by some palaeontologists for 
+%The earlier literature is awash with research papers that include fossils in phylogenies, utilize a phylogenetic bracket to constrain inferences of soft tissue or physiology, or use trees to reconstruct biogeography.
 
-Traditionally the practice has been to use fossils from radiometrically-dated strata as ``node calibrations'' by associated their geologically-derived age to a particular divergence in a molecular phylogeny. This node calibration then confers age estimates to the remaining divergences on a phylogenetic tree by the assumption of a strict or relaxed molecular clock \autocite{Thorne1998,thorne2005,yang2006,Drummond2006}. 
+Traditionally the practice has been to use a fossil as a ``node calibration'' by associated its geologically-derived age to a particular divergence in a molecular phylogeny. The age can be derived by radiometric aging of strata above and/or below the strata, or by biostratigraphy wish employs This node calibration then confers age estimates to the remaining divergences on a phylogenetic tree by the assumption of a strict or relaxed molecular clock \autocite{Thorne1998,thorne2005,yang2006,Drummond2006}. 
 Here we instead focus on what phylogenetic inference techniques can tell us about the ``phylogenetic age'' of a fossil, based solely on its morphological characteristics.
-
 \subsection*{Phylogenetic tip-dating}
 
 The phylogenetic estimation of the age of a taxon based on its molecular sequence has been previously described \autocite{drummond2002computational,shapiro2011bayesian} and applied to both ancient subfossil remains and rapidly evolving viral taxa. For example, this technique has been successfully employed to estimate the age of human subfossil remains based on an ancient mitochondrial genome sequence \autocite{meyer2014mitochondrial}. The same technique has also been used to estimate the age of viral samples based on molecular sequence data \autocite[e.g.][]{gray2013evolutionary}.
@@ -110,7 +124,11 @@ Comparison of \Mstrict{} against \Mrelaxed{}. (a) Estimated phylogenetic age of 
 
 \section*{Discussion}
 
-In this paper we have demonstrated that even a small number of morphological characters (some of the fossils had as few as 7 morphological traits coded) can be used in the context of a rich fossil reference data set, to provide an accurate and precise age of the fossil based on a phylogenetic model. The median error in age estimates for the penguin data set we analysed here was 2 My, using either a very simple or a more complex model of discrete morphological change. In both cases we used the new fossilized birth-death tree prior, which is a crucial ingredient in allowing for the estimating of fossil ages under a birth-death tree prior.
+In this paper we have demonstrated that even a small number of morphological characters (some of the fossils had as few as 7 morphological traits coded) can be used in the context of a rich fossil reference data set, to provide an accurate and precise age of the fossil based on a phylogenetic model. 
+There are a diverse array of potential applications for this methodology. 
+The most obvious is the estimation of dates for fossils that are temporally unconstrained, either due to poor knowledge of the age of the sediments in which it was found or a complete lack of provenance data (e.g. four-legged snake). 
+It can also be used a way of testing the ``morphological clock'' and to discover potential problems in the data by identifying outlier fossils with respect to model fit. 
+The median error in age estimates for the penguin data set we analysed here was 2 My, using either a very simple or a more complex model of discrete morphological change. In both cases we used the new fossilized birth-death tree prior, which is a crucial ingredient in allowing for the estimating of fossil ages under a birth-death tree prior.
 
 \printbibliography
 

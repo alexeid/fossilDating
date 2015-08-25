@@ -79,7 +79,7 @@ createSummaryTable <- function(names, height, fossilTable, sequences, priorRange
     		probInHPD[i] = 0.0;
     	}
     } else {
-      probInHPD[i] <- (min(hpd_upper[i], fossilTable$Upper[i]) - max(hpd_lower[i], fossilTable$Lower[i])) / (fossilTable$Upper[i] - fossilTable$Lower[i])
+      probInHPD[i] <- max(0,(min(hpd_upper[i], fossilTable$Upper[i]) - max(hpd_lower[i], fossilTable$Lower[i])) / (fossilTable$Upper[i] - fossilTable$Lower[i]))
     }
   }
   
@@ -271,7 +271,7 @@ createHistPlotFigures <- function (filePrefix, names, height, fossilTable, combi
       pdf(file=paste(fossilTable$File.name[i],".pdf",sep=""))
     }
     
-    hist <- hist(height[[i]], xlim=c(xmin,xmax),breaks=c((0:(xmax*binsPerMY))/binsPerMY,2*xmax),freq=FALSE, xlab="",main="",col="dark gray", border="white")
+    hist <- hist(height[[i]], xlim=c(xmin,xmax),breaks=c((0:(xmax*binsPerMY)/binsPerMY),10*xmax),freq=FALSE, xlab="",main="",col="dark gray", border="white")
     title(main = list(names[i], cex = 1.0))
     #rect(lower, 0.0, upper, density, col=rgb(1.0,0.0,0.0,0.5))
     
