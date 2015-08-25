@@ -75,6 +75,33 @@ BF = \frac{\Pr\{D|H_1\}}{\Pr\{D|H_2\}} = \frac{p(H_1|D)}{p(H_2|D)}\frac{p(H_2)}{
 
 We are interested in computing the Bayes factor that quantifies the amount of phylogenetic evidence in support of the geological age range for each fossil. In this case $H_1$ is the hypothesis that the true fossil age is within the given paleontological age range, and $H_2$ is the alternative hypothesis that the true fossil age is outside the geological range, but within the broader interval of $(0,160)$ Mya. So for each fossil the prior probability of $H_1$, $p(H_1)$, is easily computed as the width of the geological range divided by 160 and the prior probability of the alternative is simply $p(H_2) = 1 - p(H_1)$. We assume a prior probability of zero that the fossil age is older than 160Mya. Likewise $p(H_1 | D)$ is the posterior probability that the age falls in the geological range and $p(H_2 | D) = 1 - p(H_1 | D)$. Thus computing the Bayes factor in this instance is easy to do for each fossil once a posterior distribution of the phylogenetic age of the fossil is obtained under a Uniform prior from $(0,160)$ Mya.
 
+
+\subsection*{Bayes factor - update Tanja}
+
+The Bayes factor ($BF$) computes the evidence for one hypothesis ($H_1$) over another ($H_2$) as the ratio of the marginal probability of the data under each of the two hypotheses and a model $M$:
+
+\begin{equation}
+BF = \frac{\Pr\{D|H_1,M\}}{\Pr\{D|H_2,M\}} = \frac{p(H_1|D,M)}{p(H_2|D,M)}\frac{p(H_2|M)}{p(H_1|M)}
+\end{equation}
+
+We are interested in computing the Bayes factor that quantifies the amount of phylogenetic evidence in support of the geological age range for each fossil. In this case $H_1$ is the hypothesis that the true fossil age is within the given paleontological age range, and $H_2$ is the alternative hypothesis that the true fossil age is outside the geological range, but within the broader interval of $(0,160)$ Mya. The model $M$ is the fossilized birth-death process with the specified priors on its parameters (in our analyses the time of origin $T$ of the process has a uniform prior on $(0,160)$, the net diversification rate $d$ has a lognormal prior with mean -3.5 and standard deviation 1, and the turnover $r$ and sampling probabiltiy $s$ have uniform priors on $[0,1]$)
+
+The probabilities $p(H_1|D,M)$ and $p(H_2|D,M)$ are obtained directly from the MCMC output.
+It remains to calculate the probabilities $p(H_1|M)$ and $p(H_2|M)$.
+In order to do so, we derive the probability density of sampling a fossil at time $t$ in the past, given the model $M$. 
+For a given $T$, $d$, $r$ and $s$, the probability density of sampling a fossil at time $t$, given the process does not go extinct for time $T$, is,
+$$p(t|T,d,r,s) = \frac{1}{1-p_0(T;d,r)} \sum_{k=1}^\infty k \psi p_k(T-t;d,r) (1-p_0(t;d,r)^k)$$
+with $\psi=\frac{s}{1-s} \frac{rd}{1-r}$ being the sampling rate, and $p_i(t;d,r)$ being the probabiltiy of a single lineage producing $i$ surviving lineages at time $t$.
+We simplify,
+\begin{eqnarray*}
+p(t|T,d,r,s) &=& \frac{1}{1-p_0(T;d,r)}  \psi p_1(T-t|d,r) \\ & & \times \left[  \frac{1}{(1-p_0(T-t|d,r)/r)^2} - \frac{p_0(t|d,r)}{(1-p_0(t|d,r) p_0(T-t|d,r)/r)^2}  \right]\\
+&=&  \psi  \left[ \frac{e^{d(T-t)}}{1-p_0(T;d,r)} - \frac{p_0(T|d,r)-p_0(T-t|d,r)}{(1-p_0(T-t|d,r))(1-p_0(t|d,r))} \right]
+\end{eqnarray*}
+Now, in order to visualize the results, we sample $T,d,r,s$ from their priors and evaluate for  $t \in (0,160)$ on a grid.
+Figuring out now how things change in case we assume uniform prior on $N$, and then evaluate $T=\log(N)/d$.
+
+
+
 \section*{Results}
 
 
