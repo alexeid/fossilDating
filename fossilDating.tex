@@ -123,19 +123,8 @@ As judged by Bayes factors, none of the fossils exhibited strong evidence (i.e. 
 
 \subsection*{Relaxing the clock, site partitions, rate variation among sites}
 
-\Mrelaxed{} was the best-fitting model for this data set according to the analysis of \textcite{gavryushkina2015bayesian}. As with \Mstrict{} this model produced phylogenetic age estimates that were very concordant with the geological age ranges of the fossils (Figure \ref{fig:phyloAgeVsGeoAge}b). The median error was 2.1 Myr across all 36 fossils. Again, as with \Mstrict{}, none of the fossils exhibited strong evidence (i.e. $|\text{log BF}| > 3.0$) that the phylogenetic age was inconsistent with the geological age range assuming a uniform prior from $(0,160)$ Mya. However if we consider the posterior probability that the fossil is in the geological age range then five of the 36 fossils had a posterior probability $< 0.05$ for \Mrelaxed{}, suggesting low posterior support for the phylogenetic age being within the palaeontological age range. These five fossils were {\em Madrynornis mirandus}, {\em Paraptenodytes antarcticus}, {\em Perudyptes devriesi}, {\em Sphenicus muizoni} and {\em Waimanu manneringi} with posterior probabilities that the phylogenetic age is in the palaeontological range of 0.024, 0.016, 0.048, 0.007, 0.037 respectively. All other fossils has posterior probabilities of $> 0.05$ of their age being in the palaeontological range. Again the absolute discrepancy in the ages are quite moderate for the five fossils with low posterior probabilities, with {\em M. mirandus}: 6.5Myr vs 10Myr (phylogenetic age versus palaeontological age), {\em P. antarcticus}: 28.1 vs 22, {\em P. devriesi}: 49.0 vs 40, {\em S. muizoni}: 5.1 vs 9.1 and {\em W. manneringi}: 56.8 vs 61.05. A summary of all the individual estimates are tabulated in Table \ref{fossilTable8}. The individual marginal posterior distributions of phylogenetic age under \Mrelaxed{} and corresponding geological range are shown in Figures \ref{hist8_younger} and \ref{hist8_older}.
+\Mrelaxed{} was the best-fitting model for this data set according to the analysis of \textcite{gavryushkina2015bayesian}. As with \Mstrict{} this model produced phylogenetic age estimates that were very concordant with the geological age ranges of the fossils (Figure \ref{fig:phyloAgeVsGeoAge}b). The median error was 2.1 Myr across all 36 fossils. Again, as with \Mstrict{}, none of the fossils exhibited strong evidence (i.e. $|\text{log BF}| > 3.0$) that the phylogenetic age was inconsistent with the geological age range assuming a uniform prior from $(0,160)$ Mya. However if we consider the posterior probability that the fossil is in the geological age range then five of the 36 fossils had a posterior probability $< 0.05$ for \Mrelaxed{}, suggesting low posterior support for the phylogenetic age being within the palaeontological age range. These five fossils were {\em Madrynornis mirandus}, {\em Paraptenodytes antarcticus}, {\em Perudyptes devriesi}, {\em Sphenicus muizoni} and {\em Waimanu manneringi} with posterior probabilities that the phylogenetic age is in the palaeontological range of 0.024, 0.016, 0.048, 0.007, 0.037 respectively. All other fossils has posterior probabilities of $> 0.05$ of their age being in the palaeontological range. Again the absolute discrepancy in the ages are quite moderate for the five fossils with low posterior probabilities, with {\em M. mirandus}: 6.5Myr vs 10Myr (phylogenetic age versus palaeontological age), {\em P. antarcticus}: 28.1 vs 22, {\em P. devriesi}: 49.0 vs 40, {\em S. muizoni}: 5.1 vs 9.1 and {\em W. manneringi}: 56.8 vs 61.05. A summary of all the individual estimates are tabulated in Table \ref{fossilTable8}. The individual marginal posterior distributions of phylogenetic age under \Mrelaxed{} and the corresponding geological range are shown in Figures \ref{hist8_younger} and \ref{hist8_older}.
 
-\subsection*{Comparison of simple and complex model results}
-
-Overall the results of analyzing the penguin data set with the M1 and M8 models were strikingly concordant. Figure \ref{fig:compareM1M8} shows four regressions between the two models: (a) Regression of estimated phylogenetic age of \Mstrict{} against \Mrelaxed{}, (b) Regression of the error in the phylogenetic age estimate of \Mstrict{} against \Mrelaxed{} (c) Regression of posterior probability of palaeontological range of \Mstrict{} against \Mrelaxed{}, (d) Regression of Bayes factor (BF) for palaeontological range of \Mstrict{} against \Mrelaxed{}.
-
-\subsection*{Canids conform well to a morphological clock}
-
-The canid data set shows remarkably good consistency between palaeontological ages and phylogenetic ages, even with the simple strict morphological clock model (\Mstrict{}).
-The $R^2 = 0.901$ between the phylogenetic and palaeontological ages (see Figure \ref{fig:canidMorphVsGeo}). 
-Only 16 out of 123 fossils (13\%) don’t have the paleontological age in the credible interval of the phylogenetic age and there are no extreme outliers. 
-The median error is $1.66$My, which is even more accurate than the penguin data set.
-There are less characters than the penguins (122 versus $\sim 250$) so the uncertainty in the individual age estimates is greater (median 99\% HPD range = 6.5 My), but overall it seems to work very nicely.
 
 \begin{figure}
 \includegraphics{Figure1.pdf}
@@ -158,16 +147,36 @@ The Bayesian phylogenetic age estimate (median of marginal posterior) for each o
 \caption{\label{hist8_older}Marginal posterior density plots for the phylogenetic age estimate of each of the 18 penguin fossils older than 30 Myr using \Mrelaxed{}. Red boxes are the superimposed age ranges derived from geological data.}
 \end{figure}
 
+
+
+\subsection*{Comparison of simple and complex model results}
+
+Overall the results of analyzing the penguin data set with the M1 and M8 models were strikingly concordant. Figure \ref{fig:compareM1M8} shows four regressions between the two models: (a) Regression of estimated phylogenetic age of \Mstrict{} against \Mrelaxed{}, (b) Regression of the error in the phylogenetic age estimate of \Mstrict{} against \Mrelaxed{} (c) Regression of posterior probability of palaeontological range of \Mstrict{} against \Mrelaxed{}, (d) Regression of Bayes factor (BF) for palaeontological range of \Mstrict{} against \Mrelaxed{}.
+
 \begin{figure}
 \includegraphics{Figure_comparison.pdf}
 \caption{\label{fig:compareM1M8}
 Comparison of \Mstrict{} against \Mrelaxed{}. (a) Estimated phylogenetic age of \Mstrict{} against \Mrelaxed{} with $x=y$ line (blue) to guide eye (b) Regression of error in estimated phylogenetic age of \Mstrict{} against \Mrelaxed{}, (c) Regression of posterior probability of palaeontological range of \Mstrict{} against \Mrelaxed{}, (c) Regression of Bayes factor (BF) for palaeontological range of \Mstrict{} against \Mrelaxed{}.}
 \end{figure}
 
-
 \input{run1_2/1_summaryTable.tex}
 
 \input{run8_5/8_summaryTable.tex}
+
+\subsection*{Canids conform well to a morphological clock}
+
+The canid data set shows remarkably good consistency between palaeontological ages and phylogenetic ages, even with the simple strict morphological clock model (\Mstrict{}).
+The $R^2 = 0.901$ between the phylogenetic and palaeontological ages (see Figure \ref{fig:canidMorphVsGeo}). 
+Only 16 out of 123 fossils (13\%) don’t have the paleontological age in the credible interval of the phylogenetic age and there are no extreme outliers. 
+The median error is $1.66$My, which is even more accurate than the penguin data set.
+There are less characters than the penguins (122 versus $\sim 250$) so the uncertainty in the individual age estimates is greater (median 99\% HPD range = 6.5 My), but overall it seems to work very nicely.
+
+\begin{figure}
+\includegraphics{canids/1c_phyloAgeVsGeoAge.pdf}
+\caption{\label{fig:canidMorphVsGeo}
+The Bayesian phylogenetic age estimate (median and credible interval of marginal posterior) for each of the 123 canid fossils plotted against their palaeontological age point estimates, under a strict morphological clock model \Mstrict{}. The Bayesian estimates are represented by the median of the marginal posterior distribution and the upper and lower limits of the 99\% HPD interval. Blue line shows the $x=y$. If the vertical line doesn't cross $x=y$, then the geological age is not in the credible interval of the phylogenetic age. The 16 fossils for which this is the case are labelled.}
+\end{figure}
+
 
 \section*{Discussion}
 
