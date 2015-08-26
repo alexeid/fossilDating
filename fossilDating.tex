@@ -4,12 +4,16 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{amsmath}
+\usepackage{xcolor}
 \usepackage[style=authoryear,backend=biber,mincitenames=1,maxcitenames=2, uniquelist=false]{biblatex}
 \bibliography{fossilDating.bib}
 
 
 \newcommand{\Mstrict}{{M1}}
 \newcommand{\Mrelaxed}{{M8}}
+
+\newcommand{\todo}[1]{\textcolor{blue}{{TODO: #1}}}
+
 
 \begin{document}
 
@@ -43,7 +47,7 @@ Although there has indeed been much controversy surrounding apparent discrepanci
 % AJD: The following two sentences are inflammatory to palaeontologists
 %Nevertheless there have been only few attempts to apply phylogenetic reasoning to palaeontological questions. 
 %Models of molecular evolution have been refined over many decades \autocite{Felsenstein2004,Yang:2006yu}. 
-The continual improvement of models and methods for statistical phylogenetic inference from molecular sequence data is well documented \autocite[e.g.][]{Felsenstein2004,Yang:2006yu}, and in recent years it is arguably the case that molecular phylogenetics has taken primacy over the fossil record in providing a timescale for evolutionary history \autocite{Donoghue2007}. Nevertheless molecular phylogenetic inference of evolutionary timescales relies critically on calibration by the fossil record \autocite{Donoghue2007}.
+The continual improvement of models and methods for statistical phylogenetic inference from molecular sequence data is well documented \autocite[e.g.][]{Felsenstein2004,Yang2014}, and in recent years it is arguably the case that molecular phylogenetics has taken primacy over the fossil record in providing a timescale for evolutionary history \autocite{Donoghue2007}. Nevertheless molecular phylogenetic inference of evolutionary timescales relies critically on calibration by the fossil record \autocite{Donoghue2007}.
 
 %In particular probabilistic model based approaches to biogeography, ancestral state reconstruction, and rates of morphological character change have been common in recent years. Nevertheless there has been a call by some palaeontologists for 
 %The earlier literature is awash with research papers that include fossils in phylogenies, utilize a phylogenetic bracket to constrain inferences of soft tissue or physiology, or use trees to reconstruct biogeography.
@@ -63,17 +67,17 @@ This model has been previously presented in the context of divergence time datin
 It is distinct from alternative divergence time dating approaches in that it provides an explicit treatment of the temporal information contained in fossil remains, whether or not related molecular sequence data is available. 
 This leads to an estimate of the age of the most recent common ancestor of a group of fossils. 
 We exploit this framework to attempt the estimation of the phylogenetic age of individual fossils based solely on morphological data and their phylogenetic affinities to related fossils of known age. 
-The method is applied to a rich and well-characterized morphological data set of extant penguins and their fossil ancestors \autocite{ksepka2010,ksepka2012}.
+The method is applied to two rich and well-characterized morphological data sets: (i) extant penguins and 36 fossil relatives \autocite{ksepka2010,ksepka2012}, (ii) a sample of nine extant canids and 123 fossil relatives \autocite{Slater2015}.
 
 \section*{Methods}
 
 \textcite{gavryushkina2015bayesian} described a ``total-evidence'' approach to the phylogenetic estimation of time-trees that employed both fossil and molecular sequence data as equal partners under the rule of probability. We extend their work further by investigating the consistency between the estimated phylogenetic age of a fossil and the corresponding palaeontological age range based on radiometrically-dated geological strata. The model of time-tree phylogeny employed is the so-called fossilized birth-death process \autocite{Heath2014}, which forms a prior probability distribution on the space of sampled-ancestor trees \autocite{Gavr2013}.
 
-A previous study described how a set of fossils with discrete morphological characters could be used to estimate a time-tree or chrono-phylogeny. Here we additionally allow for one or more of the fossils to have broad uninformative priors on their age. This allows for the age of some of the fossils to be estimated solely based on their morphological characters and the phylogenetic affinities of their morphology to other fossils with known ages in the time-tree. We refer to this estimate of a fossil's age as its {\em phylogenetic age}. In estimating each of the fossils' phylogenetic ages in turn, three questions can be answered: (i) How much information about an individual fossil's age is available from phylogenetic analysis of morphological data alone, (ii) What is the level of phylogenetic evidence in support of the palaeontological age range for a fossil, and (iii) How does the amount of morphological data available for a new fossil and the number of related reference fossils of known age affect the accuracy of the phylogenetic estimate of a fossil's age. These three questions are investigated in the context of a morphological data set of 36 fossil penguins and their extant relatives \autocite{ksepka2010,ksepka2012,gavryushkina2015bayesian}.
+A previous study described how a set of fossils with discrete morphological characters could be used to estimate a time-tree or chrono-phylogeny. Here we additionally allow for one or more of the fossils to have broad uninformative priors on their age. This allows for the age of some of the fossils to be estimated solely based on their morphological characters and the phylogenetic affinities of their morphology to other fossils with known ages in the time-tree. We refer to this estimate of a fossil's age as its {\em phylogenetic age}. In estimating each of the fossils' phylogenetic ages in turn, three questions can be answered: (i) How much information about an individual fossil's age is available from phylogenetic analysis of morphological data alone, (ii) What is the level of phylogenetic evidence in support of the palaeontological age range for a fossil, and (iii) How does the amount of morphological data available for a new fossil and the number of related reference fossils of known age affect the accuracy of the phylogenetic estimate of a fossil's age. These three questions are investigated using two morphological data sets, one of 36 fossil penguins and their extant relatives \autocite{ksepka2010,ksepka2012,gavryushkina2015bayesian}, and one of canids \autocite{Slater2015}.
 
 \subsection*{Estimating the phylogenetic age of penguin fossils}
 
-For each of the 36 penguin fossils in turn we performed a separate Bayesian phylogenetic analysis in which the focal fossil's palaeontological age constraints were replaced by a broad uniform prior of $(0,160)$ Mya. We chose 160 as the upper limit as we expect no serious argument that any bird fossil would be older than 160Mya and it also corresponds to the upper limit on the origin of the whole phylogeny. For the choices of morphological substitution model and tree prior we followed \textcite{gavryushkina2015bayesian} and considered two of her modelling combinations. The first was \Mstrict{} in which a strict clock and the simplest model of morphological substitution was assumed \autocite{Lewis2001}. We also employed \Mrelaxed{} from \textcite{gavryushkina2015bayesian} which involved a more complex model assuming a relaxed clock model \autocite{Drummond2006}, partitioning of the sites into groups of equal state count and an additional parameter for gamma-distributed rate variation across sites \autocite{yang:1994ma}.
+For each of the 36 penguin fossils in turn we performed a separate Bayesian phylogenetic analysis in which the focal fossil's palaeontological age constraints were replaced by a broad uniform prior of $(0,T_\text{max})$ Mya. For the penguins we chose $T_\text{max}=160$ as the upper limit as we expect no serious argument that any crown bird fossil would be older than 160Mya and it also corresponds to the upper limit on the origin of the whole phylogeny. For the choices of morphological substitution model and tree prior we followed \textcite{gavryushkina2015bayesian} and considered two of her modelling combinations. The first was \Mstrict{} in which a strict clock and the simplest model of morphological substitution was assumed \autocite{Lewis2001}. We also employed \Mrelaxed{} from \textcite{gavryushkina2015bayesian} which involved a more complex model assuming a relaxed clock model \autocite{Drummond2006}, partitioning of the sites into groups of equal state count and an additional parameter for gamma-distributed rate variation across sites \autocite{yang:1994ma}.
 
 \subsection*{Bayes factor}
 
@@ -83,7 +87,7 @@ The Bayes factor ($BF$) computes the evidence for one hypothesis ($H_1$) over an
 BF = \frac{\Pr\{D|H_1,M\}}{\Pr\{D|H_2,M\}} = \frac{p(H_1|D,M)}{p(H_2|D,M)}\frac{p(H_2|M)}{p(H_1|M)}
 \end{equation}
 
-We are interested in computing the Bayes factor that quantifies the amount of phylogenetic evidence in support of the geological age range for each fossil. In this case $H_1$ is the hypothesis that the true fossil age is within the given paleontological age range, and $H_2$ is the alternative hypothesis that the true fossil age is outside the geological range, but within the broader interval of $(0,160)$ Mya. The model $M$ is the fossilized birth-death process with the specified priors on its parameters (in our analyses the time of origin $T$ of the process has a uniform prior on $(0,160)$, the net diversification rate $d$ has a lognormal prior with mean -3.5 and standard deviation 1, and the turnover $r$ and sampling probabiltiy $s$ have uniform priors on $[0,1]$)
+We are interested in computing the Bayes factor that quantifies the amount of phylogenetic evidence in support of the geological age range for each fossil. In this case $H_1$ is the hypothesis that the true fossil age is within the given paleontological age range, and $H_2$ is the alternative hypothesis that the true fossil age is outside the geological range, but within the broader interval of $(0,T_\text{max})$ Mya. The model $M$ is the fossilized birth-death process with the specified priors on its parameters (in our analyses the time of origin $T$ of the process has a uniform prior on $(0,T_\text{max})$, the net diversification rate $d$ has a lognormal prior with mean -3.5 and standard deviation 1.5, and the turnover $r$ and sampling probability $s$ have uniform priors on $[0,1]$)
 
 The probabilities $p(H_1|D,M)$ and $p(H_2|D,M)$ are obtained directly from the MCMC output.
 It remains to calculate the probabilities $p(H_1|M)$ and $p(H_2|M)$.
@@ -96,26 +100,42 @@ We simplify,
 p(t|T,d,r,s) &=& \frac{1}{1-p_0(T;d,r)}  \psi p_1(T-t|d,r) \\ & & \times \left[  \frac{1}{(1-p_0(T-t|d,r)/r)^2} - \frac{p_0(t|d,r)}{(1-p_0(t|d,r) p_0(T-t|d,r)/r)^2}  \right]\\
 &=&  \psi  \left[ \frac{e^{d(T-t)}}{1-p_0(T;d,r)} - \frac{p_0(T|d,r)-p_0(T-t|d,r)}{(1-p_0(T-t|d,r))(1-p_0(t|d,r))} \right]
 \end{eqnarray*}
-Now, in order to visualize the results, we sample $T,d,r,s$ from their priors and evaluate for  $t \in (0,160)$ on a grid.
+Now, in order to visualize the results, we sample $T,d,r,s$ from their priors and evaluate for  $t \in (0,T_\text{max})$ on a grid.
 Figuring out now how things change in case we assume uniform prior on $N$, and then evaluate $T=\log(N)/d$.
 
+\subsection*{Applying a morphological clock to Canid evolution}
 
+The second data set that we investigated was a morphological data matrix of 132 canid species \autocite[9 extant and 123 fossil;][]{Slater2015}. 
+The 9 extant species represent about 25\% of the extant canid species and include representatives of four genera (6 {\em Canis}, 1 {\em Cuon}, 1 {\em Lycaon}, 1 {\em Urocyon}) and both tribes (8 Canini, 1 Vulpini). 
+For this data set we did not have a geological age range for each fossil, but instead the author of the study provided a point estimate for each fossil species' geological age.
+
+We applied the M1 model to this data set assuming a fixed geological age for each taxon. Unlike the original study \autocite{Slater2015} we did not apply any other constraints or priors on ancestral divergence times beyond the ages of the included fossils. 
+As with the penguin data set we also performed an analysis for each of the 123 canid fossils in turn in which we relaxed the focal fossil's palaeontological age constraints to a broad uniform prior of $(0,T_\text{max})$ Mya.
 
 \section*{Results}
 
-
-\subsection*{\Mstrict{}: Strict clock model, no rate variation among sites}
-Although \Mstrict{} is a very simple model, the phylogenetic age estimates for the penguin fossils were remarkably consistent with their palaeontological age ranges. Figure \ref{fig:phyloAgeVsGeoAge}a plots the geological age and range against the phylogenetic age estimates. The points in this plot have $R^2 = 0.9$. The median error (difference between the phylogenetic median and the geological median) is 2.0 Myr. A summary of the individual estimates are tabulated in Table \ref{fossilTable1}.
+\subsection*{Penguins conform well to a strict morphological clock}
+Although \Mstrict{} is a very simple model, the phylogenetic age estimates for the penguin fossils were remarkably consistent with their palaeontological age ranges. 
+Figure \ref{fig:phyloAgeVsGeoAge}a plots the geological age and range against the phylogenetic age estimates. The points in this plot have $R^2 = 0.9$. 
+The median error (difference between the phylogenetic median and the geological median) is 2.0 Myr. A summary of the individual estimates are tabulated in Table \ref{fossilTable1}.
 
 As judged by Bayes factors, none of the fossils exhibited strong evidence (i.e. $|\text{log BF}| > 3.0$) that the phylogenetic age was inconsistent with the geological age range assuming a uniform prior from $(0,160)$ Mya. However if we consider only the posterior probability that the fossil is in the geological age range then three of the 36 fossils has a posterior probability $< 0.05$, suggesting low posterior support for the phylogenetic age being within the palaeontological age range. These three fossils were {\em Madrynornis mirandus}, {\em Paraptenodytes antarcticus} and {\em Sphenicus muizoni} with posterior probabilities that the phylogenetic age is in the palaeontological range of 0.01, 0.0011 and 0.0007 respectively. All other fossils has posterior probabilities of $> 0.05$ of their age being in the palaeontological range. It is worth noting that the absolute discrepancy in the ages are still quite moderate for the three fossils with low posterior probabilities, with {\em M. mirandus}: 6.3Myr vs 10Myr (phylogenetic age versus palaeontological age), {\em P. antarcticus}: 29.9 vs 22, {\em S. muizoni}: 5.1 vs 9.1. The small posterior probabilities are partially caused in these cases because the corresponding palaeontological age range is narrow, suggesting very precise geological knowledge of the ages of these three fossils.
 
-\subsection*{\Mrelaxed{}: Relaxed clock, site partitions, rate variation among sites}
+\subsection*{Relaxing the clock, site partitions, rate variation among sites}
 
 \Mrelaxed{} was the best-fitting model for this data set according to the analysis of \textcite{gavryushkina2015bayesian}. As with \Mstrict{} this model produced phylogenetic age estimates that were very concordant with the geological age ranges of the fossils (Figure \ref{fig:phyloAgeVsGeoAge}b). The median error was 2.1 Myr across all 36 fossils. Again, as with \Mstrict{}, none of the fossils exhibited strong evidence (i.e. $|\text{log BF}| > 3.0$) that the phylogenetic age was inconsistent with the geological age range assuming a uniform prior from $(0,160)$ Mya. However if we consider the posterior probability that the fossil is in the geological age range then five of the 36 fossils had a posterior probability $< 0.05$ for \Mrelaxed{}, suggesting low posterior support for the phylogenetic age being within the palaeontological age range. These five fossils were {\em Madrynornis mirandus}, {\em Paraptenodytes antarcticus}, {\em Perudyptes devriesi}, {\em Sphenicus muizoni} and {\em Waimanu manneringi} with posterior probabilities that the phylogenetic age is in the palaeontological range of 0.024, 0.016, 0.048, 0.007, 0.037 respectively. All other fossils has posterior probabilities of $> 0.05$ of their age being in the palaeontological range. Again the absolute discrepancy in the ages are quite moderate for the five fossils with low posterior probabilities, with {\em M. mirandus}: 6.5Myr vs 10Myr (phylogenetic age versus palaeontological age), {\em P. antarcticus}: 28.1 vs 22, {\em P. devriesi}: 49.0 vs 40, {\em S. muizoni}: 5.1 vs 9.1 and {\em W. manneringi}: 56.8 vs 61.05. A summary of all the individual estimates are tabulated in Table \ref{fossilTable8}. The individual marginal posterior distributions of phylogenetic age under \Mrelaxed{} and corresponding geological range are shown in Figures \ref{hist8_younger} and \ref{hist8_older}.
 
-\subsection*{Comparison of M1 and M8 results}
+\subsection*{Comparison of simple and complex model results}
 
-Overall the results from the M1 and M8 models were strikingly concordant. Figure \ref{fig:compareM1M8} shows three regressions between the two models: (a) Regression of estimated phylogenetic age of \Mstrict{} against \Mrelaxed{}, (b) Regression of posterior probability of palaeontological range of \Mstrict{} against \Mrelaxed{}, (c) Regression of Bayes factor (BF) for palaeontological range of \Mstrict{} against \Mrelaxed{}.
+Overall the results of analyzing the penguin data set with the M1 and M8 models were strikingly concordant. Figure \ref{fig:compareM1M8} shows four regressions between the two models: (a) Regression of estimated phylogenetic age of \Mstrict{} against \Mrelaxed{}, (b) Regression of the error in the phylogenetic age estimate of \Mstrict{} against \Mrelaxed{} (c) Regression of posterior probability of palaeontological range of \Mstrict{} against \Mrelaxed{}, (d) Regression of Bayes factor (BF) for palaeontological range of \Mstrict{} against \Mrelaxed{}.
+
+\subsection*{Canids conform well to a morphological clock}
+
+The canid data set shows remarkably good consistency between palaeontological ages and phylogenetic ages, even with the simple strict morphological clock model (\Mstrict{}).
+The $R^2 = 0.901$ between the phylogenetic and palaeontological ages (see Figure \ref{fig:canidMorphVsGeo}). 
+Only 16 out of 123 fossils (13\%) don’t have the paleontological age in the credible interval of the phylogenetic age and there are no extreme outliers. 
+The median error is $1.66$My, which is even more accurate than the penguin data set.
+There are less characters than the penguins (122 versus $\sim 250$) so the uncertainty in the individual age estimates is greater (median 99\% HPD range = 6.5 My), but overall it seems to work very nicely.
 
 \begin{figure}
 \includegraphics{Figure1.pdf}
@@ -155,7 +175,9 @@ In this paper we have demonstrated that even a small number of morphological cha
 There are a diverse array of potential applications for this methodology. 
 The most obvious is the estimation of dates for fossils that are temporally unconstrained, either due to poor knowledge of the age of the sediments in which it was found or a complete lack of provenance data (e.g. a recent fossil described as a `four-legged snake' has excited controversy for a lack of provenance\footnote{See \url{http://news.sciencemag.org/paleontology/2015/07/four-legged-snake-fossil-stuns-scientists-and-ignites-controversy}}). 
 It can also be used a way of testing the ``morphological clock'' and to discover potential problems in the data by identifying outlier fossils with respect to model fit. 
-The median error in age estimates for the penguin data set we analysed here was 2 My, using either a very simple or a more complex model of discrete morphological change. In both cases we used the new fossilized birth-death tree prior, which is a crucial ingredient in allowing for the estimating of fossil ages under a birth-death tree prior.
+The median error in age estimates for the two data sets investigated were 2 My and 1.6 My respectively, using either a very simple or more complex models of discrete morphological change. In all cases we used the new fossilized birth-death tree prior, which is a crucial ingredient in allowing for the estimating of fossil ages under a birth-death tree prior. 
+
+\todo{How does the number of fossils in the reference affect the precision and accuracy of the fossil age estimates ?}
 
 \printbibliography
 
