@@ -81,17 +81,22 @@ For each of the 36 penguin fossils in turn we performed a separate Bayesian phyl
 
 \subsection*{Bayes factor}
 
-The Bayes factor ($BF$) computes the evidence for one hypothesis ($H_1$) over another ($H_2$) as the ratio of the marginal probability of the data under each of the two hypotheses and a model $M$:
+The Bayes factor ($BF$) computes the evidence for one hypothesis ($H_1$) over another ($H_2$) as the ratio of the marginal probability of the data under each of the two hypotheses and a model $M$. 
+
 
 \begin{equation}
 BF = \frac{\Pr\{D|H_1,M\}}{\Pr\{D|H_2,M\}} = \frac{p(H_1|D,M)}{p(H_2|D,M)}\frac{p(H_2|M)}{p(H_1|M)}
 \end{equation}
 
-We are interested in computing the Bayes factor that quantifies the amount of phylogenetic evidence in support of the geological age range for each fossil. In this case $H_1$ is the hypothesis that the true fossil age is within the given paleontological age range, and $H_2$ is the alternative hypothesis that the true fossil age is outside the geological range, but within the broader interval of $(0,T_\text{max})$ Mya. The model $M$ is the fossilized birth-death process with the specified priors on its parameters (in our analyses the time of origin $T$ of the process has a uniform prior on $(0,T_\text{max})$, the net diversification rate $d$ has a lognormal prior with mean -3.5 and standard deviation 1.5, and the turnover $r$ and sampling probability $s$ have uniform priors on $[0,1]$)
+We are interested in computing the Bayes factor that quantifies the amount of phylogenetic evidence in support of the geological age range for each fossil. In this case $H_1$ is the hypothesis that the true fossil age is within the given paleontological age range, and $H_2$ is the alternative hypothesis that the true fossil age is outside the geological range, but within the broader interval of $(0,T_\text{max})$ Mya. The model $M$ specifies the tree generation process (called $M_\mathcal{T}$) - giving rise to the number of observed samples and sampling times - together with the morphological evolution (called $M_m$) - giving rise to the morphological characters for the samples. The data $D$ is the number of samples together with the sampling times ($D_\mathcal{T}$) together with the morphological characters for each sample ($D_m$). Now, we have,
+We have $\frac{p(H_2|M)}{p(H_1|M)}=\frac{p(H_2|M_\mathcal{T})}{p(H_1|M_\mathcal{T})}$
+since $H_1$ and $H_2$ are independent of $M_m$.
+
 
 The probabilities $p(H_1|D,M)$ and $p(H_2|D,M)$ are obtained directly from the MCMC output.
-It remains to calculate the probabilities $p(H_1|M)$ and $p(H_2|M)$.
-In order to do so, we derive the probability density of sampling a fossil at time $t$ in the past, given the model $M$. 
+It remains to calculate the probabilities $p(H_1|M_\mathcal{T})$ and $p(H_2|M_\mathcal{T})$.
+In our case, the model $M_\mathcal{T}$ is the fossilized birth-death process with the specified priors on its parameters, in our chosen parameteriztion the time of the start of the process $T$, the net diversification rate $d$ (= speciation rate - extinction rate), the turnover $r$ (= extinction rate / speciation rate) and the sampling probability $s$ (=sampling rate / (extinction rate + sampling rate)).
+We derive the probability density of sampling a fossil at time $t$ in the past, given the model $M_\mathcal{T}$. 
 For a given $T$, $d$, $r$ and $s$, the probability density of sampling a fossil at time $t$, given the process does not go extinct for time $T$, is,
 $$p(t|T,d,r,s) = \frac{1}{1-p_0(T;d,r)} \sum_{k=1}^\infty k \psi p_k(T-t;d,r) (1-p_0(t;d,r)^k)$$
 with $\psi=\frac{s}{1-s} \frac{rd}{1-r}$ being the sampling rate, and $p_i(t;d,r)$ being the probabiltiy of a single lineage producing $i$ surviving lineages at time $t$.
@@ -100,8 +105,18 @@ We simplify,
 p(t|T,d,r,s) &=& \frac{1}{1-p_0(T;d,r)}  \psi p_1(T-t|d,r) \\ & & \times \left[  \frac{1}{(1-p_0(T-t|d,r)/r)^2} - \frac{p_0(t|d,r)}{(1-p_0(t|d,r) p_0(T-t|d,r)/r)^2}  \right]\\
 &=&  \psi  \left[ \frac{e^{d(T-t)}}{1-p_0(T;d,r)} - \frac{p_0(T|d,r)-p_0(T-t|d,r)}{(1-p_0(T-t|d,r))(1-p_0(t|d,r))} \right]
 \end{eqnarray*}
-Now, in order to visualize the results, we sample $T,d,r,s$ from their priors and evaluate for  $t \in (0,T_\text{max})$ on a grid.
-Figuring out now how things change in case we assume uniform prior on $N$, and then evaluate $T=\log(N)/d$.
+
+In order to determine $p(H_1|D,M)$ and $p(H_2|D,M)$, we need to evaluate $p(t|M_\mathcal{T}) = \int_{T,d,r,s} p(t|T,d,r,s) p(T) p(d) p(r) p(s)$ with $p(T) p(d) p(r) p(s)$ being the prior distributions for the parameters. This is done by sampling parameters from the prior distributions and then evaluating $p(t|T,d,r,s)$. Note that instead of deriving $p(t|T,d,r,s)$ we could have simulated sampling times for the chosen $T,d,r,s$ however some parameter combinations yield huge trees making a full simulation  approach very slow.
+
+First we determined $p(t|M_\mathcal{T})$ for the prior distributions as in \cite{Gavryushkina2014} ($T: Unif(0,160), d: lognorm(-3.5,1.5), r: Unif(0,1), s: Unif(0,1)$). This prior specification leads to a distribution of sampling time with almost all mass close to the present (xxx give precise values, Figure xxx, black line). 
+Second we  determined $p(t|M_\mathcal{T})$ for the prior distributions ($T: Unif(0,160), d: lognorm(-3.5,0.5), r: Unif(0,1), s: Unif(0,1)$). This produces a prior where larger sampling times have a non-negligable weight (Figure xxx, red line).
+
+blabla on only d affecting the prior  shape $p(t|M_\mathcal{T})$ really.
+
+This simple exercise highlights that whenever using Bayes factor to test a hypothesis, we have to first investigate what our prior on the hypothesis is. In our example, the first prior seemed reasonable for the parameters specified, however by allowing very large diversification rates, the resulting huge trees dominate the shape of our prior for our hypothesis  $p(t|M_\mathcal{T})$, namely most samples are very very recent.  Thus this prior  puts a negligible weight on hypothesis $H_1$ for older fossils.
+CHECK IF THIS IS TRUE: Changing to our new prior has immense impact on the Bayes factor analysis, but in our case has a minor effect on the posterior distribution of trees / parameters.
+
+Discuss stepping stone approach - disadvantage in general that we do not see our prior assumption for the tested hypothesis. Here not possible at all, as in stepping stone the $D_\mathcal{T}$ is treated as part of the model, not the data. This probably originated as  classic tree model is the coalescent, where sampling is not modelled but conditioned upon.
 
 \subsection*{Applying a morphological clock to Canid evolution}
 
