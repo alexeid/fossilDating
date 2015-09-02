@@ -120,12 +120,13 @@ createPhyloAgeVsGeoAgePDF <- function(filename, df, fossilTable, labelled, label
   par(mar = c(4,4,1,1) + 0.1)
   plot(c(min,max*0.925),c(min,max*0.925), type="n", xlab="paleontological age (Myr)", ylab="Bayesian phylogenetic age estimate (Myr)", ylim=c(min,max), xlim=c(min,max))
 
-  draw.ellipse(df$geo, df$est, df$geo-fossilTable$Lower, df$est-df$hpd_lower, angle = 0, segment = c(180,360), border ="gray", col=rgb(0.5,0.5,0.5,0.1), arc.only=FALSE)
+  draw.ellipse(df$geo, df$est, df$geo-fossilTable$Lower, df$est-df$hpd_lower, angle = 0, segment = c(180,360), border =rgb(0.5,0.5,0.5,0.0), col=rgb(0.5,0.5,0.5,0.1), arc.only=FALSE)
 
-  draw.ellipse(df$geo, df$est, df$geo-fossilTable$Lower, df$hpd_upper-df$est, angle = 0, segment = c(0,180), border ="gray", col=rgb(0.5,0.5,0.5,0.1), arc.only=FALSE)
+  draw.ellipse(df$geo, df$est, df$geo-fossilTable$Lower, df$hpd_upper-df$est, angle = 0, segment = c(0,180), border =rgb(0.5,0.5,0.5,0.0), col=rgb(0.5,0.5,0.5,0.1), arc.only=FALSE)
 
   for (i in 1: nrow(df)) {
     lines(c(df$geo[i],df$geo[i]), c(df$hpd_lower[i],df$hpd_upper[i]), col="black")
+    lines(c(fossilTable$Lower[i],fossilTable$Upper[i]), c(df$est[i],df$est[i]), col="black")
   }
 
   lines(c(min,max),c(min,max),col="blue")
