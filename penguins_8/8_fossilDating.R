@@ -1,7 +1,7 @@
 require(coda)
 source("~/Subversion/compevol/research/fossilDating/fossilDatingFunctions.r")
 
-setwd("~/Subversion/compevol/research/fossilDating/run8_5")
+setwd("~/Subversion/compevol/research/fossilDating/penguins_8")
 fossilTable8 <- read.table("~/Subversion/compevol/research/fossilDating/run8_2/fossilTable.txt", sep="\t", header=T)
 regexp = "\\-[0-9]+\\.log"
 seq <- read.table("~/Subversion/compevol/research/fossilDating/sorted_sequences.txt", header=T, sep="\t")

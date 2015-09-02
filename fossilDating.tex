@@ -17,7 +17,7 @@
 
 \begin{document}
 
-\title{Bayesian phylogenetic estimation of fossil ages reveals remarkable consistency of rocks and clocks}
+\title{Bayesian phylogenetic estimation of fossil ages } %reveals remarkable consistency of rocks and clocks}
 \author{Alexei Drummond, Tanja Stadler}
 \date{\today{}}
 \maketitle
@@ -29,8 +29,8 @@ In particular the fossilized birth-death tree prior and the Lewis-MK model of ev
 We exploit this statistical framework to investigate the internal consistency of these models by estimating the phylogenetic age of each fossil in turn, within two rich and well-characterized data sets of fossil and extant species.
 We find that we can accurately estimate the age of individual fossils based only on phylogenetic evidence. 
 In fact in the two data sets we analyze the {\em phylogenetic age} of a fossil species is on average only $\sim 2$ My from the midpoint age of the geological strata from which the fossil species was excavated. 
-The high level of internal consistency found in our analyses provides strong evidence that the Bayesian statistical model employed is a good fit for both the palaeontological and molecular data, and provides striking evidence from real data that the framework used can accurately model the evolution of discrete morphological traits coded from fossil and extant taxa. 
-We anticipate that this approach will have diverse applications including estimating dates for fossils that are temporally unconstrained, testing the ``morphological clock'', and as part of evaluating model assumptions when controversial phylogenetic hypotheses are obtained based on morphological data.
+The high level of internal consistency found in our analyses provides strong evidence that the Bayesian statistical model employed is a good fit for both the geological and morphological data, and provides striking evidence from real data that the framework used can accurately model the evolution of discrete morphological traits coded from fossil and extant taxa. 
+We anticipate that this approach will have diverse applications including estimating dates for fossils that are temporally unconstrained, testing the ``morphological clock'', and as part of evaluating model assumptions when controversial phylogenetic hypotheses are obtained based on combined divergence dating analyses.
 }
 
 \section*{Introduction}
@@ -148,17 +148,17 @@ The Bayesian phylogenetic age estimate (median of marginal posterior) for each o
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=5in]{run8_5/8_precisionVsKnownCharacters.pdf}
+\includegraphics[width=5in]{penguins_8/8_precisionVsKnownCharacters.pdf}
 \caption{A plot of the number of non-ambiguous morphological sites for the taxon against the precision of the phylogenetic age under \Mrelaxed{} (i.e. the precisions is 1/variance in the marginal posterior distribution of the age).}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=6in]{run8_5/8_fossilDatingHist_younger.pdf}
+\includegraphics[width=6in]{penguins_8/8_fossilDatingHist_younger.pdf}
 \caption{\label{hist8_younger}Marginal posterior density plots for the phylogenetic age estimate of each of the 18 penguin fossils younger than 30 Myr using \Mrelaxed{}. Red boxes are the superimposed age ranges derived from geological data.}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=6in]{run8_5/8_fossilDatingHist_older.pdf}
+\includegraphics[width=6in]{penguins_8/8_fossilDatingHist_older.pdf}
 \caption{\label{hist8_older}Marginal posterior density plots for the phylogenetic age estimate of each of the 18 penguin fossils older than 30 Myr using \Mrelaxed{}. Red boxes are the superimposed age ranges derived from geological data.}
 \end{figure}
 
@@ -176,7 +176,7 @@ Comparison of \Mstrict{} against \Mrelaxed{}. (a) Estimated phylogenetic age of 
 
 \input{run1_2/1_summaryTable.tex}
 
-\input{run8_5/8_summaryTable.tex}
+\input{penguins_8/8_summaryTable.tex}
 
 \subsection*{Canids conform well to a morphological clock}
 

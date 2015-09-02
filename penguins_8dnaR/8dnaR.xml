@@ -389,7 +389,7 @@
 
 <run chainLength="100000000" id="mcmc" spec="MCMC">
     <state id="state" storeEvery="5000">
-        <tree id="Tree.t:tree" spec='TreeParser' name="stateNode" IsLabelledNewick="true" adjustTipHeights="false">
+        <tree id="tree" spec='TreeParser' name="stateNode" IsLabelledNewick="true" adjustTipHeights="false">
             <input name='newick'>
                 ((((((((((((((((((((((Aptenodytes_forsteri:0.9657211899757385,Aptenodytes_patagonicus:0.9657211899757385):6.498311996459961,((Pygoscelis_antarctica:2.5619122982025146,(Pygoscelis_papua:1.7450807094573975,Pygoscelis_adeliae:1.7450807094573975):0.8168314695358276):3.3757898807525635,Pygoscelis_grandis:1.6873267889022827):1.5263311862945557):2.5947582721710205,((Megadyptes_antipodes:4.691669940948486,((((Eudyptes_chrysocome:0.31931251287460327,Eudyptes_moseleyi:0.31931251287460327):0.028562061488628387,Eudyptes_filholi:0.34787458181381226):0.9136660099029541,(Eudyptes_chrysolophus:0.30304017663002014,Eudyptes_schlegeli:0.30304017663002014):0.9585003852844238):0.7963163256645203,(Eudyptes_pachyrhynchus:1.7289456129074097,(Eudyptes_robustus:1.078609585762024,Eudyptes_sclateri:1.078609585762024):0.6503360867500305):0.3289112448692322):2.6338131427764893):4.601079940795898,Madrynornis_mirandus:0):0.7660415768623352):1.2229118347167969,((Eudyptula_minor:7.606512546539307,(((Spheniscus_demersus:0.613757312297821,Spheniscus_magellanicus:0.613757312297821):0.6456596851348877,(Spheniscus_humboldti:1.0917493104934692,Spheniscus_mendiculus:1.0917493104934692):0.16766773164272308):4.456439018249512,(Spheniscus_urbinai:0,Spheniscus_megaramphus:0.09992797672748566):1.4618892669677734):1.8906562328338623):1.765014410018921,Marplesornis_novaezealandiae:4.854386329650879):1.910176396369934):2.9949634075164795,Spheniscus_muizoni:0.9592653512954712):0.6491492390632629,Palaeospheniscus_patagonicus:0):0.14857472479343414,Palaeospheniscus_bergi:1.6837700605392456):2.190355062484741,Palaeospheniscus_biloculata:0):0.2734209895133972,Eretiscus_tonnii:0.7017570734024048):7.91005802154541,Platydyptes_novaezealandiae:0):0.57845538854599,Platydyptes_marplesi:1.4584511518478394):3.1793086528778076,((Paraptenodytes_antarcticus:6.7462639808654785,(Archaeospheniscus_lopdelli:0.5280417799949646,Duntroonornis_parvus:0):0.17456820607185364):0.8213815093040466,Archaeospheniscus_lowei:3.118652820587158):1.382182002067566):4.645090579986572,(Kairuku_waitaki:0.18811920285224915,Kairuku_grebneffi:0):7.897828102111816):0.3810765743255615,(Icadyptes_salasi:0,Palaeeudyptes_antarcticus:0.4954206943511963):0.30580055713653564):1.049736738204956,Pachydyptes_ponderosus:0.8035074472427368):1.543388843536377,(Inkayacu_paracasensis:0,Burnside_Palaeudyptes:0.9452356100082397):1.817319393157959):0.43343058228492737,(Palaeeudyptes_klekowskii:0,Palaeeudyptes_gunnari:0.15668436884880066):0.31590521335601807):4.112104892730713,(Anthropornis_nordenskjoeldi:1.2527426481246948,Anthropornis_grandis:1.3118032217025757):5.179835319519043):0.39409998059272766,((((Delphinornis_wimani:0.2778623700141907,Delphinornis_arctowskii:0.3046158254146576):1.155847191810608,Delphinornis_larseni:0.34682318568229675):0.458961546421051,Delphinornis_gracilis:0.028739765286445618):4.467134475708008,Marambiornis_exilis:6.469234943389893):1.3685147762298584):5.594600200653076,Perudyptes_devriesi:1.5484833717346191):5.838472843170166,Mesetaornis_polaris:0.7278688549995422):15.143290519714355,(Waimanu_tuatahi:2.490018606185913,Waimanu_manneringi:0):7.7427520751953125):0.0
             </input>
@@ -586,7 +586,7 @@
                     <parameter estimate="false" id="RealParameter.04" name="beta">0.3819</parameter>
                 </Gamma>
             </prior>
-            <distribution spec="SABirthDeathModel" id="birthDeath" tree="@Tree.t:tree" conditionOnRhoSampling="true">
+            <distribution spec="SABirthDeathModel" id="birthDeath" tree="@tree" conditionOnRhoSampling="true">
                 <parameter name="origin" id='origin' value="150." lower="0." upper="160."/>
                 <parameter name="diversificationRate" id='diversificationRate' value="0.5" lower="0."/>
                 <parameter name="turnover" id='turnover' value=".5" lower="0." upper = "1."/>
@@ -596,7 +596,7 @@
             </distribution>
         </distribution>
         <distribution id="likelihood" spec="util.CompoundDistribution">
-            <distribution id="morphTreeLikelihood.penguins2" spec="TreeLikelihood" useAmbiguities="true" tree="@Tree.t:tree">
+            <distribution id="morphTreeLikelihood.penguins2" spec="TreeLikelihood" useAmbiguities="true" tree="@tree">
                 <data id="penguins2" spec="FilteredAlignment" ascertained="true" excludefrom="164" excludeto="166" filter="2-3,6-7,10,14,17-20,22-30,33,36-37,40,43,45-55,57,59,61-62,65,67-70,75,77-82,84-85,87,89-92,95,98-99,101-103,105-108,110-116,119,121,123,125,128-132,134-135,138-139,141-142,144-150,152-153,155,157,159,161-165,168,170,172,174-185,188-191,193,196-198,201-204,207-208,211-213,215-217,219-221,223-226,228-234,236-237,239-244,246-247">
                     <data idref="penguins_morph"/>
                     <userDataType id="morphDataType.penguins2" spec="beast.evolution.datatype.StandardData" ambiguities="01 12 45" nrOfStates="2"/>
@@ -607,13 +607,13 @@
                     <parameter estimate="false" id="proportionInvariant.s:penguins2" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
                     <substModel datatype="@morphDataType.penguins2" id="LewisMK.s:penguins2" spec="LewisMK"/>
                 </siteModel>
-                <branchRateModel clock.rate="@ucldMean.c:penguins_morph" id="RelaxedClock.c:penguins_morph" rateCategories="@rateCategories.c:penguins_morph" spec="beast.evolution.branchratemodel.UCRelaxedClockModel" tree="@Tree.t:tree">
+                <branchRateModel clock.rate="@ucldMean.c:penguins_morph" id="RelaxedClock.c:penguins_morph" rateCategories="@rateCategories.c:penguins_morph" spec="beast.evolution.branchratemodel.UCRelaxedClockModel" tree="@tree">
                     <LogNormal S="@ucldStdev.c:penguins_morph" id="LogNormalDistributionModel.c:clock_morph" meanInRealSpace="true" name="distr">
                         <parameter estimate="false" id="Mrelaxed_morph" lower="0.0" name="M" upper="1.0">1.0</parameter>
                     </LogNormal>
                 </branchRateModel>
             </distribution>
-            <distribution branchRateModel="@RelaxedClock.c:penguins_morph" id="morphTreeLikelihood.penguins3" spec="TreeLikelihood" useAmbiguities="true" tree="@Tree.t:tree">
+            <distribution branchRateModel="@RelaxedClock.c:penguins_morph" id="morphTreeLikelihood.penguins3" spec="TreeLikelihood" useAmbiguities="true" tree="@tree">
                 <data
                     id="penguins3"
                     spec="FilteredAlignment"
@@ -630,7 +630,7 @@
                     <substModel datatype="@morphDataType.penguins3" id="LewisMK.s:penguins3" spec="LewisMK"/>
                 </siteModel>
             </distribution>
-            <distribution branchRateModel="@RelaxedClock.c:penguins_morph" id="morphTreeLikelihood.penguins4" spec="TreeLikelihood" useAmbiguities="true" tree="@Tree.t:tree">
+            <distribution branchRateModel="@RelaxedClock.c:penguins_morph" id="morphTreeLikelihood.penguins4" spec="TreeLikelihood" useAmbiguities="true" tree="@tree">
                 <data
                     id="penguins4"
                     spec="FilteredAlignment"
@@ -647,7 +647,7 @@
                     <substModel datatype="@morphDataType.penguins4" id="LewisMK.s:penguins4" spec="LewisMK"/>
                 </siteModel>
             </distribution>
-            <distribution branchRateModel="@RelaxedClock.c:penguins_morph" id="morphTreeLikelihood.penguins5" spec="TreeLikelihood" useAmbiguities="true" tree="@Tree.t:tree">
+            <distribution branchRateModel="@RelaxedClock.c:penguins_morph" id="morphTreeLikelihood.penguins5" spec="TreeLikelihood" useAmbiguities="true" tree="@tree">
                 <data
                     id="penguins5"
                     spec="FilteredAlignment"
@@ -664,7 +664,7 @@
                     <substModel datatype="@morphDataType.penguins5" id="LewisMK.s:penguins5" spec="LewisMK"/>
                 </siteModel>
             </distribution>
-            <distribution branchRateModel="@RelaxedClock.c:penguins_morph" id="morphTreeLikelihood.penguins6" spec="TreeLikelihood" useAmbiguities="true" tree="@Tree.t:tree">
+            <distribution branchRateModel="@RelaxedClock.c:penguins_morph" id="morphTreeLikelihood.penguins6" spec="TreeLikelihood" useAmbiguities="true" tree="@tree">
                 <data
                     id="penguins6"
                     spec="FilteredAlignment"
@@ -681,7 +681,7 @@
                     <substModel datatype="@morphDataType.penguins6" id="LewisMK.s:penguins6" spec="LewisMK"/>
                 </siteModel>
             </distribution>
-            <distribution branchRateModel="@RelaxedClock.c:penguins_morph" id="morphTreeLikelihood.penguins7" spec="TreeLikelihood" useAmbiguities="true" tree="@Tree.t:tree">
+            <distribution branchRateModel="@RelaxedClock.c:penguins_morph" id="morphTreeLikelihood.penguins7" spec="TreeLikelihood" useAmbiguities="true" tree="@tree">
                 <data
                     id="penguins7"
                     spec="FilteredAlignment"
@@ -698,7 +698,7 @@
                     <substModel datatype="@morphDataType.penguins7" id="LewisMK.s:penguins7" spec="LewisMK"/>
                 </siteModel>
             </distribution>
-            <distribution id="treeLikelihood.penguins_rag1" spec="TreeLikelihood" tree="@Tree.t:tree">
+            <distribution id="treeLikelihood.penguins_rag1" spec="TreeLikelihood" tree="@tree">
                 <data data="@penguins" filter="1-2682" id="penguins_rag1" spec="FilteredAlignment"/>
                 <siteModel gammaCategoryCount="4" id="SiteModel.s:penguins_rag1" spec="SiteModel">
                     <parameter id="mutationRate.s:penguins_rag1" name="mutationRate">0.2</parameter>
@@ -716,13 +716,13 @@
                         </frequencies>
                     </substModel>
                 </siteModel>
-                <branchRateModel clock.rate="@ucldMean.c:penguins_dna" id="RelaxedClock.c:penguins_dna" rateCategories="@rateCategories.c:penguins_dna" spec="beast.evolution.branchratemodel.UCRelaxedClockModel" tree="@Tree.t:tree">
+                <branchRateModel clock.rate="@ucldMean.c:penguins_dna" id="RelaxedClock.c:penguins_dna" rateCategories="@rateCategories.c:penguins_dna" spec="beast.evolution.branchratemodel.UCRelaxedClockModel" tree="@tree">
                     <LogNormal S="@ucldStdev.c:penguins_dna" id="LogNormalDistributionModel.c:clock_dna" meanInRealSpace="true" name="distr">
                         <parameter estimate="false" id="Mrelaxed_dna" lower="0.0" name="M" upper="1.0">1.0</parameter>
                     </LogNormal>
                 </branchRateModel>
             </distribution>
-            <distribution id="treeLikelihood.penguins_cyt_b" spec="TreeLikelihood" tree="@Tree.t:tree" branchRateModel="@RelaxedClock.c:penguins_dna">
+            <distribution id="treeLikelihood.penguins_cyt_b" spec="TreeLikelihood" tree="@tree" branchRateModel="@RelaxedClock.c:penguins_dna">
                 <data data="@penguins" filter="2683-3825" id="penguins_cyt_b" spec="FilteredAlignment"/>
                 <siteModel gammaCategoryCount="4" id="SiteModel.s:penguins_cyt_b" spec="SiteModel">
                     <parameter id="mutationRate.s:penguins_cyt_b" name="mutationRate">0.2</parameter>
@@ -741,7 +741,7 @@
                     </substModel>
                 </siteModel>
             </distribution>
-            <distribution id="treeLikelihood.penguins_coi" spec="TreeLikelihood" tree="@Tree.t:tree" branchRateModel="@RelaxedClock.c:penguins_dna">
+            <distribution id="treeLikelihood.penguins_coi" spec="TreeLikelihood" tree="@tree" branchRateModel="@RelaxedClock.c:penguins_dna">
                 <data data="@penguins" filter="3826-5376" id="penguins_coi" spec="FilteredAlignment"/>
                 <siteModel gammaCategoryCount="4" id="SiteModel.s:penguins_coi" spec="SiteModel">
                     <parameter id="mutationRate.s:penguins_coi" name="mutationRate">0.2</parameter>
@@ -760,7 +760,7 @@
                     </substModel>
                 </siteModel>
             </distribution>
-            <distribution id="treeLikelihood.penguins_12srna" spec="TreeLikelihood" tree="@Tree.t:tree" branchRateModel="@RelaxedClock.c:penguins_dna">
+            <distribution id="treeLikelihood.penguins_12srna" spec="TreeLikelihood" tree="@tree" branchRateModel="@RelaxedClock.c:penguins_dna">
                 <data data="@penguins" filter="5377-6481" id="penguins_12srna" spec="FilteredAlignment"/>
                 <siteModel gammaCategoryCount="4" id="SiteModel.s:penguins_12srna" spec="SiteModel">
                     <parameter id="mutationRate.s:penguins_12srna" name="mutationRate">0.2</parameter>
@@ -779,7 +779,7 @@
                     </substModel>
                 </siteModel>
             </distribution>
-            <distribution id="treeLikelihood.penguins_16srna" spec="TreeLikelihood" tree="@Tree.t:tree" branchRateModel="@RelaxedClock.c:penguins_dna">
+            <distribution id="treeLikelihood.penguins_16srna" spec="TreeLikelihood" tree="@tree" branchRateModel="@RelaxedClock.c:penguins_dna">
                 <data data="@penguins" filter="6482-8145" id="penguins_16srna" spec="FilteredAlignment"/>
                 <siteModel gammaCategoryCount="4" id="SiteModel.s:penguins_16srna" spec="SiteModel">
                     <parameter id="mutationRate.s:penguins_16srna" name="mutationRate">0.2</parameter>
@@ -808,19 +808,19 @@
     <!-- <operator id='rhoOperator' spec='ScaleOperator' scaleFactor=".75" weight="10" parameter="@rho"/> -->
     <operator id="updownDiversificationTurnover" spec="UpDownOperator" scaleFactor=".95" weight="1.0" up="@diversificationRate" down="@turnover"/>
     
-    <operator spec='LeafToSampledAncestorJump' weight="20" tree="@Tree.t:tree"/>
-    <operator spec='SAWilsonBalding' weight="20" tree="@Tree.t:tree"/>
-    <operator spec='SAExchange' isNarrow="false" weight="20" tree="@Tree.t:tree"/>
-    <operator spec='SAExchange' weight="20" tree="@Tree.t:tree"/>
-    <operator spec='SAUniform' weight="20" tree="@Tree.t:tree"/>
-    <operator id='treeScaler' spec='SAScaleOperator' scaleFactor=".95" weight="10.0" tree="@Tree.t:tree"/>
-    <operator id='rootScaler' spec='SAScaleOperator' scaleFactor=".95" weight="5.0" tree="@Tree.t:tree" rootOnly='true'/>
+    <operator spec='LeafToSampledAncestorJump' weight="20" tree="@tree"/>
+    <operator spec='SAWilsonBalding' weight="20" tree="@tree"/>
+    <operator spec='SAExchange' isNarrow="false" weight="20" tree="@tree"/>
+    <operator spec='SAExchange' weight="20" tree="@tree"/>
+    <operator spec='SAUniform' weight="20" tree="@tree"/>
+    <operator id='treeScaler' spec='SAScaleOperator' scaleFactor=".95" weight="10.0" tree="@tree"/>
+    <operator id='rootScaler' spec='SAScaleOperator' scaleFactor=".95" weight="5.0" tree="@tree" rootOnly='true'/>
     
-    <operator spec='SampledNodeDateRandomWalker' windowSize="1"  tree="@Tree.t:tree" weight="10">
+    <operator spec='SampledNodeDateRandomWalker' windowSize="1"  tree="@tree" weight="10">
         <!-- this input specify the taxa with variable dates. In this example only one taxon has a variably sampling date.
          If this input is not specified then all the leaves except the most recent are assumed to have
          variable sampling dates. -->
-        <taxonset spec="TaxonSet">
+        <taxonset id="fossilTaxa" spec="TaxonSet">
             <taxon id="Spheniscus_urbinai" spec="Taxon"/>
             <taxon id="Spheniscus_megaramphus" spec="Taxon"/>
             <taxon id="Spheniscus_muizoni" spec="Taxon"/>
@@ -900,6 +900,8 @@
         <samplingDates id="samplingDate37" spec="beast.evolution.tree.SamplingDate" taxon="@Waimanu_manneringi" lower="60.5" upper="61.6"/>
     </operator>
 
+    <!-- INSERT SINGLE SAMPLINGDATE -->
+
     <operator id="gammaShapeScaler.s:penguins_morph" parameter="@gammaShape.s:penguins_morph" scaleFactor="0.5" spec="ScaleOperator" weight="0.1"/>
     
     <operator id="gammaShapeScaler.s:penguins_rag1" parameter="@gammaShape.s:penguins_rag1" scaleFactor="0.5" spec="ScaleOperator" weight="0.2"/>
@@ -970,7 +972,7 @@
     <operator id="relaxedUpDownOperator.c:penguins" scaleFactor="0.45" spec="UpDownOperator" weight="5.0">
         <parameter idref="ucldMean.c:penguins_dna" name="up"/>
         <parameter idref="ucldMean.c:penguins_morph" name="up"/>
-        <tree idref="Tree.t:tree" name="down"/>
+        <tree idref="tree" name="down"/>
     </operator>
     
     <operator autoOptimize="true" delta="0.2" id="MutationRateExchanger" integer="false" spec="DeltaExchangeOperator" weight="1.0">
@@ -1000,8 +1002,8 @@
         <log idref="treeLikelihood.penguins_12srna"/>
         <log idref="treeLikelihood.penguins_16srna"/>
         
-        <log id="TreeHeight.t:penguins" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:tree"/>
-        <log id="SACount" spec="beast.evolution.tree.SampledAncestorLogger" tree="@Tree.t:tree"/>
+        <log id="TreeHeight.t:penguins" spec="beast.evolution.tree.TreeHeightLogger" tree="@tree"/>
+        <log id="SACount" spec="beast.evolution.tree.SampledAncestorLogger" tree="@tree"/>
         
         <log idref="origin"/>
         <log idref="diversificationRate"/>
@@ -1011,11 +1013,11 @@
         
         <log idref="ucldMean.c:penguins_morph"/>
         <log idref="ucldStdev.c:penguins_morph"/>
-        <log branchratemodel="@RelaxedClock.c:penguins_morph" id="rate.c:penguins_morph" spec="beast.evolution.branchratemodel.RateStatistic" tree="@Tree.t:tree"/>
+        <log branchratemodel="@RelaxedClock.c:penguins_morph" id="rate.c:penguins_morph" spec="beast.evolution.branchratemodel.RateStatistic" tree="@tree"/>
         
         <log idref="ucldMean.c:penguins_dna"/>
         <log idref="ucldStdev.c:penguins_dna"/>
-        <log branchratemodel="@RelaxedClock.c:penguins_dna" id="rate.c:penguins_dna" spec="beast.evolution.branchratemodel.RateStatistic" tree="@Tree.t:tree"/>
+        <log branchratemodel="@RelaxedClock.c:penguins_dna" id="rate.c:penguins_dna" spec="beast.evolution.branchratemodel.RateStatistic" tree="@tree"/>
         
         <log idref="mutationRate.s:penguins_rag1"/>
         <log idref="mutationRate.s:penguins_cyt_b"/>
@@ -1081,7 +1083,7 @@
     </logger>
 
     <logger fileName="$(filebase)-$(seed).trees" id="treelog.t:penguins" logEvery="10000" mode="tree">
-        <log id="TreeWithMetaDataLogger.t:penguins" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:tree"/>
+        <log id="TreeWithMetaDataLogger.t:penguins" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@tree"/>
     </logger>
 
 </run>
