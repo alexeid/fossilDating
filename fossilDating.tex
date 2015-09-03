@@ -129,9 +129,10 @@ In order to determine $p(H_1|D,M)$ and $p(H_2|D,M)$, we need to evaluate $p(t|M_
 This is done by sampling parameters from the prior distributions and then evaluating $p(t|T,d,r,s)$. Note that instead of deriving $p(t|T,d,r,s)$ we could have simulated sampling times for the chosen $T,d,r,s$ however some parameter combinations yield huge trees making a full simulation  approach very slow.
 
 First we determined $p(t|M_\mathcal{T})$ for the prior distributions as in \autocite{gavr2014} ($T: Unif(0,160), d: lognorm(-3.5,1.5), r: Unif(0,1), s: Unif(0,1)$). This prior specification leads to a distribution of sampling time with almost all mass close to the present (xxx give precise values, Figure xxx, black line). 
-Second we  determined $p(t|M_\mathcal{T})$ for the prior distributions ($T: Unif(0,160), d: lognorm(-3.5,0.5), r: Unif(0,1), s: Unif(0,1)$). This produces a prior where larger sampling times have a non-negligable weight (Figure xxx, red line).
 
-blabla on only d affecting the prior  shape $p(t|M_\mathcal{T})$ really.
+Second we  determined $p(t|M_\mathcal{T})$ for the following prior distributions $d: lognorm(-3.5,0.5), r: Unif(0,1)$. For $s$ we assume an implicit prior: lognorm(-2,1) for $\psi$, and $s=\psi/(\mu+\psi)$. For $T$, we also assume an implicit prior. We assume a uniform distribution on $[1,100]$ for the number of present day species, $N$. In expectation, we have $N=  \frac{e^{d T}}{1-p_0(T)}$ species after time $T$. This leads to $T=\log((1-r)N +r)/d$.
+This produces a prior where larger sampling times have a non-negligable weight (Figure xxx, red line).
+The implicit prior on $s$ assures that we do not obtain huge sampling rates (which is the case if $s$ and $r$ close to $1$). The implicit prior on $T$ assures that we do not obtain trees with arbitrary large number of extant species (which is the case for large $T$ and large $d$).
 
 This simple exercise highlights that whenever using Bayes factor to test a hypothesis, we have to first investigate what our prior on the hypothesis is. 
 In our example, the first prior seemed reasonable for the parameters specified, however by allowing very large diversification rates, the resulting huge trees dominate the shape of our prior for our hypothesis  $p(t|M_\mathcal{T})$, namely most samples are very very recent.  Thus this prior  puts a negligible weight on hypothesis $H_1$ for older fossils.
