@@ -2,12 +2,33 @@
 %% http://bibdesk.sourceforge.net/
 
 
-%% Created for alexei at 2015-08-26 16:56:35 +0200 
+%% Created for alexei at 2015-09-03 10:20:16 +0200 
 
 
 %% Saved with string encoding Unicode (UTF-8) 
 
 
+
+@article{HeledDrummond2015,
+	Abstract = {Here we introduce a general class of multiple calibration birth-death tree priors for use in Bayesian phylogenetic inference. All tree priors in this class separate ancestral node heights into a set of "calibrated nodes" and "uncalibrated nodes" such that the marginal distribution of the calibrated nodes is user-specified whereas the density ratio of the birth-death prior is retained for trees with equal values for the calibrated nodes. We describe two formulations, one in which the calibration information informs the prior on ranked tree topologies, through the (conditional) prior, and the other which factorizes the prior on divergence times and ranked topologies, thus allowing uniform, or any arbitrary prior distribution on ranked topologies. Although the first of these formulations has some attractive properties, the algorithm we present for computing its prior density is computationally intensive. However, the second formulation is always faster and computationally efficient for up to six calibrations. We demonstrate the utility of the new class of multiple-calibration tree priors using both small simulations and a real-world analysis and compare the results to existing schemes. The two new calibrated tree priors described in this article offer greater flexibility and control of prior specification in calibrated time-tree inference and divergence time dating, and will remove the need for indirect approaches to the assessment of the combined effect of calibration densities and tree priors in Bayesian phylogenetic inference.},
+	Author = {Heled, Joseph and Drummond, Alexei J.},
+	Date-Added = {2015-09-03 08:08:11 +0000},
+	Date-Modified = {2015-09-03 08:16:55 +0000},
+	Doi = {10.1093/sysbio/syu089},
+	Journal = {Syst Biol},
+	Journal-Full = {Systematic biology},
+	Keywords = {BEAST; Bayesian inference; Yule prior; birth--death tree prior; fossil calibrations; multiple calibrations},
+	Mesh = {Algorithms; Animals; Anura; Bayes Theorem; Calibration; Classification; Computer Simulation; Phylogeny; Time; Typhaceae},
+	Month = {May},
+	Number = {3},
+	Pages = {369-83},
+	Pmc = {PMC4395842},
+	Pmid = {25398445},
+	Pst = {ppublish},
+	Title = {Calibrated birth-death phylogenetic time-tree priors for bayesian inference},
+	Volume = {64},
+	Year = {2015},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1093/sysbio/syu089}}
 
 @article{Etienne:2012by,
 	Abstract = {The branching times of molecular phylogenies allow us to infer speciation and extinction dynamics even when fossils are absent. Troublingly, phylogenetic approaches usually return estimates of zero extinction, conflicting with fossil evidence. Phylogenies and fossils do agree, however, that there are often limits to diversity. Here, we present a general approach to evaluate the likelihood of a phylogeny under a model that accommodates diversity-dependence and extinction. We find, by likelihood maximization, that extinction is estimated most precisely if the rate of increase in the number of lineages in the phylogeny saturates towards the present or first decreases and then increases. We demonstrate the utility and limits of our approach by applying it to the phylogenies for two cases where a fossil record exists (Cetacea and Cenozoic macroperforate planktonic foraminifera) and to three radiations lacking fossil evidence (Dendroica, Plethodon and Heliconius). We propose that the diversity-dependence model with extinction be used as the standard model for macro-evolutionary dynamics because of its biological realism and flexibility.},
@@ -396,9 +417,9 @@
 	Year = {2007}}
 
 @article{drummond2010,
-	Author = {Drummond, A. J. and Suchard, M. A.},
+	Author = {Drummond, Alexei J. and Suchard, Marc A.},
 	Date-Added = {2015-04-21 22:40:37 +0000},
-	Date-Modified = {2015-04-21 22:40:44 +0000},
+	Date-Modified = {2015-09-03 08:20:13 +0000},
 	Issn = {1741-7007},
 	Journal = {BMC Biology},
 	Number = {1},
@@ -438,9 +459,9 @@
 
 @article{Heled2012,
 	Abstract = {The use of fossil evidence to calibrate divergence time estimation has a long history. More recently, Bayesian Markov chain Monte Carlo has become the dominant method of divergence time estimation, and fossil evidence has been reinterpreted as the specification of prior distributions on the divergence times of calibration nodes. These so-called "soft calibrations" have become widely used but the statistical properties of calibrated tree priors in a Bayesian setting hashave not been carefully investigated. Here, we clarify that calibration densities, such as those defined in BEAST 1.5, do not represent the marginal prior distribution of the calibration node. We illustrate this with a number of analytical results on small trees. We also describe an alternative construction for a calibrated Yule prior on trees that allows direct specification of the marginal prior distribution of the calibrated divergence time, with or without the restriction of monophyly. This method requires the computation of the Yule prior conditional on the height of the divergence being calibrated. Unfortunately, a practical solution for multiple calibrations remains elusive. Our results suggest that direct estimation of the prior induced by specifying multiple calibration densities should be a prerequisite of any divergence time dating analysis.},
-	Author = {Heled, Joseph and Drummond, Alexei J},
+	Author = {Heled, Joseph and Drummond, Alexei J.},
 	Date-Added = {2014-05-15 21:54:36 +0000},
-	Date-Modified = {2014-05-15 21:54:43 +0000},
+	Date-Modified = {2015-09-03 08:17:01 +0000},
 	Doi = {10.1093/sysbio/syr087},
 	Journal = {Systematic Biology},
 	Journal-Full = {Systematic Biology},
