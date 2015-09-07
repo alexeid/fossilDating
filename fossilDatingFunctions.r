@@ -44,6 +44,40 @@ loadFossilFiles <- function(dir, regxp, fossilTable, minLogRows) {
 }
 
 ###############################################################################
+# read the names and age estimates from a single fossil file
+###############################################################################
+loadFossilFile <- function(filename, fossilTable, minLogRows) {
+
+  require(coda)
+  logfile <- read.table(filename, sep="\t", header=T)
+  if (nrow(logfile) >= minLogRows) {
+    logfile$X <- NULL
+    lastState <- logfile$Sample[nrow(logfile)]    
+    thinState <- lastState - logfile$Sample[nrow(logfile)-1]
+   
+    logfile <- mcmc(logfile[,2:ncol(logfile)],start=0, end=lastState, thin=thinState)
+  
+    height <- list()
+    names <- character(0)
+    for (i in 1:nrow(fossilTable)) {
+  
+      name <- as.character(fossilTable$Species.name[i])
+
+      varName <- paste("height.",name,".",sep="")
+      varName <- gsub(" ","_",varName)
+
+      height[[i]] <- logfile[,(varnames(logfile) == varName ), drop=FALSE]
+      names[i] <- name
+      varnames(height[[i]]) <- name        
+    } 
+  } else {
+    print(paste("Didn't process",filename[1]," because expected at least ", minLogRows, " rows but found ",nrow(logfile), "rows."))
+  }
+  list(heights=height, names=names)
+}
+
+
+###############################################################################
 # Construct and return main summary data frame of statistics
 ###############################################################################
 createSummaryTable <- function(names, height, fossilTable, sequences, priorRange=160, hpdProb=0.95) {
@@ -65,9 +99,15 @@ createSummaryTable <- function(names, height, fossilTable, sequences, priorRange
     post[i] <- length(height[[i]][height[[i]] < fossilTable$Upper[i] & height[[i]] > fossilTable$Lower[i]])/length(height[[i]])    
   }
   
+  
   prior <- numeric(0)
-  for (i in 1:length(height)) {
-    prior[i] <- (fossilTable$Upper[i] - fossilTable$Lower[i]) / priorRange
+  if ("prior" %in% colnames(fossilTable)) {
+  	prior <- fossilTable$prior
+  } else {
+    
+    for (i in 1:length(height)) {
+      prior[i] <- (fossilTable$Upper[i] - fossilTable$Lower[i]) / priorRange
+    }
   }
   
   probInHPD <- numeric(0)
