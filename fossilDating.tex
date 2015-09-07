@@ -90,6 +90,7 @@ These three questions are investigated using two morphological data sets, one of
 \subsection*{Estimating the phylogenetic age of penguin fossils}
 
 For each of the 36 penguin fossils in turn we performed a separate Bayesian phylogenetic analysis in which the focal fossil's palaeontological age constraints were replaced by a broad uniform prior of $(0,T_\text{max})$ Mya. 
+\todo{This needs to change to the new prior!} 
 For the penguins we chose $T_\text{max}=160$ as the upper limit as we expect no serious argument that any crown bird fossil would be older than 160Mya and it also corresponds to the upper limit on the origin of the whole phylogeny. 
 For the choices of morphological substitution model and tree prior we followed \textcite{gavryushkina2015bayesian} and considered two of her modelling combinations. 
 The first was \Mstrict{} in which a strict clock and the simplest model of morphological substitution was assumed \autocite{Lewis2001}.
@@ -98,14 +99,14 @@ We also employed \Mrelaxed{} from \textcite{gavryushkina2015bayesian} which invo
 
 \subsection*{Bayes factor}
 
-The Bayes factor ($BF$) computes the evidence for one hypothesis ($H_1$) over another ($H_2$) as the ratio of the marginal probability of the data under each of the two hypotheses and a model $M$. 
+The Bayes factor ($BF$) computes the evidence for one hypothesis ($H_1$) over another ($H_2$) as the ratio of the marginal probability of the data under each of the two hypotheses and a model $M$, 
 
 
 \begin{equation}
-BF = \frac{\Pr\{D|H_1,M\}}{\Pr\{D|H_2,M\}} = \frac{p(H_1|D,M)}{p(H_2|D,M)}\frac{p(H_2|M)}{p(H_1|M)}
+BF = \frac{\Pr\{D|H_1,M\}}{\Pr\{D|H_2,M\}} = \frac{p(H_1|D,M)}{p(H_2|D,M)}\frac{p(H_2|M)}{p(H_1|M)}.
 \end{equation}
 
-We are interested in computing the Bayes factor that quantifies the amount of phylogenetic evidence in support of the geological age range for each fossil. In this case $H_1$ is the hypothesis that the true fossil age is within the given paleontological age range, and $H_2$ is the alternative hypothesis that the true fossil age is outside the geological range. 
+We are interested in computing the Bayes factor that quantifies the amount of phylogenetic evidence in support of the palaeontological age range for each fossil. In this case $H_1$ is the hypothesis that the true fossil age is within the given paleontological age range, and $H_2$ is the alternative hypothesis that the true fossil age is outside the palaeontological range. 
 %, but within the broader interval of $(0,T_\text{max})$ Mya. 
 The model $M$ consists of two parts, we call them $M_\mathcal{T}$ and $M_m$. The model $M_\mathcal{T}$ specifies the tree generation process  giving rise to the number of observed samples and sampling times. The model $M_m$ specifies the morphological evolution giving rise to the morphological characters for the samples. The data $D$ is the number of samples together with the sampling times ($D_\mathcal{T}$) and  the morphological characters for each sample ($D_m$). 
 We have $$\frac{p(H_2|M)}{p(H_1|M)}=\frac{p(H_2|M_\mathcal{T})}{p(H_1|M_\mathcal{T})}=\frac{1-p(H_1|M_\mathcal{T})}{p(H_1|M_\mathcal{T})}$$
