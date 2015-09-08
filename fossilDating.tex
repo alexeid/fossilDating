@@ -134,8 +134,9 @@ with $p_0(t|d,r) = \frac{1-e^{-d*t}}{1/r - e^{-d*t}}$.
 Next, we need to evaluate $p(t|M_\mathcal{T}) = \int_{T,d,r,s} p(t|T,d,r,s) p(T) p(d) p(r) p(s)$ with $p(T) p(d) p(r) p(s)$ being the prior distributions for the parameters. This is done by sampling parameters from the prior distributions and then evaluating $p(t|T,d,r,s)$. 
 
 \begin{figure}
-\includegraphics[width=6in]{priors.pdf}
-\caption{\label{hist8_older}Probability density for the sampling times under the fossilized birth-death process. The dot-dashed line uses priors on the parameters as in \textcite{gavryushkina2015bayesian}. The solid line uses the new prior with implicit assumptions on $T$ and $s$, the dashed line results from only assuming the implicit prior on $T$, the dotted line results from only assuming the  implicit prior on $s$.}
+\includegraphics[width=12cm]{priors.pdf}
+\caption{\label{hist8_older}Probability density for the sampling times under the fossilized birth-death process. The dot-dashed line uses priors on the parameters as in \textcite{gavryushkina2015bayesian}. 
+The solid line uses the new prior with implicit assumptions on $T$ and $s$, the dashed line results from only assuming the implicit prior on $T$, the dotted line results from only assuming the  implicit prior on $s$.}
 \label{Fig:Prior}
 \end{figure}
 
@@ -179,8 +180,8 @@ As with the penguin data set we also performed an analysis for each of the 123 c
 
 \subsection*{Penguins conform well to a strict morphological clock}
 Although \Mstrict{} is a very simple model, the phylogenetic age estimates for the penguin fossils were remarkably consistent with their palaeontological age ranges. 
-Figure \ref{fig:phyloAgeVsGeoAge}a plots the geological age and range against the phylogenetic age estimates. The points in this plot have $R^2 = 0.905$. 
-The median error (difference between the phylogenetic median and the geological median) is 2.0 Myr. A summary of the individual estimates are tabulated in Table \ref{fossilTable1}.
+Figure \ref{fig:phyloAgeVsGeoAge}a plots the geological age and range against the phylogenetic age estimates. The points in this plot have $R^2 = 0.903$. 
+The median error (difference between the phylogenetic median and the geological median) is 1.96 Myr. A summary of the individual estimates are tabulated in Table \ref{fossilTable1}.
 
 As judged by Bayes factors, none of the fossils exhibited strong evidence (i.e. $|\text{log BF}| > 3.0$) that the phylogenetic age was inconsistent with the geological age range assuming a uniform prior from $(0,160)$ Mya. 
 However if we consider only the posterior probability that the fossil is in the geological age range then three of the 36 fossils has a posterior probability $< 0.05$, suggesting low posterior support for the phylogenetic age being within the palaeontological age range.
@@ -192,7 +193,7 @@ The small posterior probabilities are partially caused in these cases because th
 \subsection*{Relaxing the clock, site partitions, rate variation among sites}
 
 \Mrelaxed{} was the best-fitting model for this data set according to the analysis of \textcite{gavryushkina2015bayesian}. 
-As with \Mstrict{} this model produced phylogenetic age estimates that were very concordant with the geological age ranges of the fossils (Figure \ref{fig:phyloAgeVsGeoAge}b), with an overall $R^2 = 0.927$. The median error was 2.1 Myr across all 36 fossils. 
+As with \Mstrict{} this model produced phylogenetic age estimates that were very concordant with the geological age ranges of the fossils (Figure \ref{fig:phyloAgeVsGeoAge}b), with an overall $R^2 = 0.924$. The median error was 2.1 Myr across all 36 fossils. 
 Again, as with \Mstrict{}, none of the fossils exhibited strong evidence (i.e. $|\text{log BF}| > 3.0$) that the phylogenetic age was inconsistent with the geological age range assuming a uniform prior from $(0,160)$ Mya. 
 However if we consider the posterior probability that the fossil is in the geological age range then five of the 36 fossils had a posterior probability $< 0.05$ for \Mrelaxed{}, suggesting low posterior support for the phylogenetic age being within the palaeontological age range. 
 These five fossils were {\em Madrynornis mirandus}, {\em Paraptenodytes antarcticus}, {\em Perudyptes devriesi}, {\em Sphenicus muizoni} and {\em Waimanu manneringi} with posterior probabilities that the phylogenetic age is in the palaeontological range of 0.024, 0.016, 0.048, 0.007, 0.037 respectively. 
@@ -233,7 +234,8 @@ The three labelled fossils show significant inconsistency.}
 \subsection*{Comparison of simple and complex model results}
 
 Overall the results of analyzing the penguin data set with the M1 and M8 models were strikingly concordant. 
-Figure \ref{fig:compareM1M8} shows four regressions between the two models: (a) Regression of estimated phylogenetic age of \Mstrict{} against \Mrelaxed{}, (b) Regression of the error in the phylogenetic age estimate of \Mstrict{} against \Mrelaxed{} (c) Regression of posterior probability of palaeontological range of \Mstrict{} against \Mrelaxed{}, (d) Regression of Bayes factor (BF) for palaeontological range of \Mstrict{} against \Mrelaxed{}.
+Figure \ref{fig:compareM1M8} shows four regressions between the two models: (a) Regression of estimated phylogenetic age of \Mstrict{} against \Mrelaxed{}, (b) Regression of the error in the phylogenetic age estimate of \Mstrict{} against \Mrelaxed{} (c) Regression of posterior probability of palaeontological range of \Mstrict{} against \Mrelaxed{}, (d) Regression of Bayes factor (BF) for palaeontological range of \Mstrict{} against \Mrelaxed{}. 
+The main difference is that the relaxed model appears to be a better fit to the data. Under \Mrelaxed{} all fossils have positive evidence for their geological age range, whereas under \Mstrict{} there are a handful of fossils with negative evidence for the corresponding geological age range. Furthermore, assuming the median geological age is the truth, the variance in the phylogenetic estimation error of the fossil ages is larger under \Mstrict{} than under \Mrelaxed{}.
 
 \begin{figure}
 \includegraphics{Figure_comparison.pdf}
@@ -269,6 +271,7 @@ If the vertical line doesn't cross $x=y$, then the geological age is not in the 
 \section*{Discussion}
 
 In this paper we have demonstrated that even a small number of morphological characters (some of the fossils had as few as 7 morphological traits coded) can be used in the context of a rich fossil reference data set, to provide an accurate and precise age of the fossil based on a phylogenetic model. 
+We found that although a strict morphological clock does a surprisingly good job of estimated fossil ages, there is evidence that phylogenetic estimation of fossil ages is improved by a model that includes a relaxed morphological clock.
 There are a diverse array of potential applications for this methodology. 
 The most obvious is the estimation of dates for fossils that are temporally unconstrained, either due to poor knowledge of the age of the sediments in which it was found or a complete lack of provenance data (e.g. a recent fossil described as a `four-legged snake' has excited controversy for a lack of provenance\footnote{See \url{http://news.sciencemag.org/paleontology/2015/07/four-legged-snake-fossil-stuns-scientists-and-ignites-controversy}}). 
 It can also be used a way of testing the ``morphological clock'' and to discover potential problems in the data by identifying outlier fossils with respect to model fit. 
