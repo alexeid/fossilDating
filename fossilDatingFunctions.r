@@ -144,7 +144,7 @@ writeSummaryTable <- function(filename, caption, label, df) {
   colnames(dfshort) <- c("post", "BF", "phylo age", "lower", "upper", "error", "ESS")
   
   xtab <- xtable(dfshort, 
-    caption=caption, label=label, digits=c(2,2,1,1,1,1,1,0))
+    caption=caption, label=label, digits=c(2,2,2,1,1,1,2,0))
   print(file=filename, xtab)
 }
 
