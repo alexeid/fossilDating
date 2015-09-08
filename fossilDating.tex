@@ -125,7 +125,7 @@ $$p(t|T,d,r,s) = \frac{1}{1-p_0(T;d,r)} \sum_{k=1}^\infty k \psi p_k(T-t;d,r) (1
 with $\psi=\frac{s}{1-s} \frac{rd}{1-r}$ being the sampling rate, and $p_i(t;d,r)$ being the probabiltiy of a single lineage producing $i$ surviving lineages at time $t$.
 The equation above calculates the required probability: The left term conditions on survival of the process ($1-p_0(T;d,r)$). Then we calculate the probability to have $k$ lineages at time $t$ before the present $( p_k(T-t;d,r))$, multiply by the sampling rate $k \psi$, and weight by the probability that at least one lineage of the $k$ lineages survives to the present $ (1-p_0(t;d,r)^k)$. This expression is then summed over $k=1,\ldots, \infty$.
 
-We simplify, using the equations for $p_i(t;d,r)$ given in \cite{Kendall1948}, to obtain,
+We simplify, using the equations for $p_i(t;d,r)$ given in \autocite{kendall1948}, to obtain,
 \begin{eqnarray*}
 p(t|T,d,r,s) &=& \frac{1}{1-p_0(T;d,r)}  \psi p_1(T-t|d,r) \\ & & \times \left[  \frac{1}{(1-p_0(T-t|d,r)/r)^2} - \frac{p_0(t|d,r)}{(1-p_0(t|d,r) p_0(T-t|d,r)/r)^2}  \right]\\
 &=&  \psi  \left[ \frac{e^{d(T-t)}}{1-p_0(T;d,r)} - \frac{p_0(T|d,r)-p_0(T-t|d,r)}{(1-p_0(T-t|d,r))(1-p_0(t|d,r))} \right],
@@ -135,8 +135,10 @@ with $p_0(t|d,r) = \frac{1-e^{-d*t}}{1/r - e^{-d*t}}$.
 Next, we need to evaluate $p(t|M_\mathcal{T}) = \int_{T,d,r,s} p(t|T,d,r,s) p(T) p(d) p(r) p(s)$ with $p(T), p(d), p(r)$ and $p(s)$ being the prior distributions for the parameters. This is done by sampling parameters from the prior distributions, and then evaluating $p(t|T,d,r,s)$. 
 
 \begin{figure}
-\includegraphics[width=6in]{priors.pdf}
-\caption{\label{hist8_older}Probability density for the sampling times under the fossilized birth-death process. The dot-dashed line uses priors on the parameters as in \textcite{gavryushkina2015bayesian}. The solid line uses the new prior with implicit assumptions on $T$ and $s$, the dashed line results from only assuming the implicit prior on $T$, the dotted line results from only assuming the  implicit prior on $s$. (Since the dashed, dotted and dot-dashed lines are governed by rare parameter combinations leading to huge trees and huge sample sizes, these lines are very sensitive to drawing another rare event, and thus need to be taken with some caution).}
+\includegraphics[width=12cm]{priors.pdf}
+\caption{\label{hist8_older}Probability density for the sampling times under the fossilized birth-death process. The dot-dashed line uses priors on the parameters as in \textcite{gavryushkina2015bayesian}. 
+The solid line uses the new prior with implicit assumptions on $T$ and $s$, the dashed line results from only assuming the implicit prior on $T$, the dotted line results from only assuming the  implicit prior on $s$. 
+(Since the dashed, dotted and dot-dashed lines are governed by rare parameter combinations leading to huge trees and huge sample sizes, these lines are very sensitive to drawing another rare event, and thus need to be taken with some caution).}
 \label{Fig:Prior}
 \end{figure}
 
