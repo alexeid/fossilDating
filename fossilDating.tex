@@ -115,57 +115,52 @@ For caclulating the Bayes factor, the probabilities $p(H_1|D,M)$ and $p(H_2|D,M)
 It remains to calculate the probabilities $p(H_1|M)$ and $p(H_2|M)$.
 Since $H_1$ and $H_2$ are independent of $M_m$, we have $$\frac{p(H_2|M)}{p(H_1|M)}=\frac{p(H_2|M_\mathcal{T})}{p(H_1|M_\mathcal{T})}=\frac{1-p(H_1|M_\mathcal{T})}{p(H_1|M_\mathcal{T})}.$$
 
+One way to determine $p(H_1|M_\mathcal{T})$ would be to simulate trees under the model $\mathcal{T}$ and record the fraction of sampling times  within a given  paleontological age range. However, such a simulation approach turned out to be very time-consuming, and the procedure below provided a much faster evaluation of $p(H_1|M_\mathcal{T})$.
 
-We now derive  $p(H_1|M_\mathcal{T})$. In our case, the model $M_\mathcal{T}$ is the fossilized birth-death process with priors on its parameters. Using the parameterization in \textcite{gavryushkina2015bayesian}, the parameters are the time of the start of the process $T$, the net diversification rate $d$ (= speciation rate - extinction rate), the turnover $r$ (= extinction rate / speciation rate) and the sampling probability $s$ (=sampling rate / (extinction rate + sampling rate)).
+We  derive some analytic results for evaluating $p(H_1|M_\mathcal{T})$. In our case, the model $M_\mathcal{T}$ is the fossilized birth-death process with priors on its parameters. Using the parameterization in \textcite{gavryushkina2015bayesian}, the parameters are the time of the start of the process $T$, the net diversification rate $d$ (= speciation rate - extinction rate), the turnover $r$ (= extinction rate / speciation rate) and the sampling probability $s$ (=sampling rate / (extinction rate + sampling rate)).
 We derive the probability density of sampling a fossil at time $t$ in the past, given the model $M_\mathcal{T}$. This probability density will allow us to directly determine $p(H_1|M_\mathcal{T})$.
 
 For a given $T$, $d$, $r$ and $s$, the probability density of sampling a fossil at time $t$, given the process does not go extinct for time $T$, is,
 $$p(t|T,d,r,s) = \frac{1}{1-p_0(T;d,r)} \sum_{k=1}^\infty k \psi p_k(T-t;d,r) (1-p_0(t;d,r)^k)$$
 with $\psi=\frac{s}{1-s} \frac{rd}{1-r}$ being the sampling rate, and $p_i(t;d,r)$ being the probabiltiy of a single lineage producing $i$ surviving lineages at time $t$.
-In words, the equation above calculates the following: the left term conditions on survival of the process ($1-p_0(T;d,r)$). Then we calculate the probability to have $k$ lineages at time $t$ before the present $( p_k(T-t;d,r))$, multiply by the sampling rate $k \psi$, and weight by the probability that at least one lineage of the $k$ lineages survives to the present $ (1-p_0(t;d,r)^k)$. This expression is then summed over $k=1,\ldots, \infty$.
+The equation above calculates the required probability: The left term conditions on survival of the process ($1-p_0(T;d,r)$). Then we calculate the probability to have $k$ lineages at time $t$ before the present $( p_k(T-t;d,r))$, multiply by the sampling rate $k \psi$, and weight by the probability that at least one lineage of the $k$ lineages survives to the present $ (1-p_0(t;d,r)^k)$. This expression is then summed over $k=1,\ldots, \infty$.
 
-We simplify, using the equations for $p_i(t;d,r)$ given in \cite{Kendall1948},
+We simplify, using the equations for $p_i(t;d,r)$ given in \cite{Kendall1948}, to obtain,
 \begin{eqnarray*}
 p(t|T,d,r,s) &=& \frac{1}{1-p_0(T;d,r)}  \psi p_1(T-t|d,r) \\ & & \times \left[  \frac{1}{(1-p_0(T-t|d,r)/r)^2} - \frac{p_0(t|d,r)}{(1-p_0(t|d,r) p_0(T-t|d,r)/r)^2}  \right]\\
 &=&  \psi  \left[ \frac{e^{d(T-t)}}{1-p_0(T;d,r)} - \frac{p_0(T|d,r)-p_0(T-t|d,r)}{(1-p_0(T-t|d,r))(1-p_0(t|d,r))} \right],
 \end{eqnarray*}
 with $p_0(t|d,r) = \frac{1-e^{-d*t}}{1/r - e^{-d*t}}$.
 
-Next, we need to evaluate $p(t|M_\mathcal{T}) = \int_{T,d,r,s} p(t|T,d,r,s) p(T) p(d) p(r) p(s)$ with $p(T) p(d) p(r) p(s)$ being the prior distributions for the parameters. This is done by sampling parameters from the prior distributions and then evaluating $p(t|T,d,r,s)$. 
+Next, we need to evaluate $p(t|M_\mathcal{T}) = \int_{T,d,r,s} p(t|T,d,r,s) p(T) p(d) p(r) p(s)$ with $p(T), p(d), p(r)$ and $p(s)$ being the prior distributions for the parameters. This is done by sampling parameters from the prior distributions, and then evaluating $p(t|T,d,r,s)$. 
 
 \begin{figure}
-\includegraphics[width=12cm]{priors.pdf}
-\caption{\label{hist8_older}Probability density for the sampling times under the fossilized birth-death process. The dot-dashed line uses priors on the parameters as in \textcite{gavryushkina2015bayesian}. 
-The solid line uses the new prior with implicit assumptions on $T$ and $s$, the dashed line results from only assuming the implicit prior on $T$, the dotted line results from only assuming the  implicit prior on $s$.}
+\includegraphics[width=6in]{priors.pdf}
+\caption{\label{hist8_older}Probability density for the sampling times under the fossilized birth-death process. The dot-dashed line uses priors on the parameters as in \textcite{gavryushkina2015bayesian}. The solid line uses the new prior with implicit assumptions on $T$ and $s$, the dashed line results from only assuming the implicit prior on $T$, the dotted line results from only assuming the  implicit prior on $s$. (Since the dashed, dotted and dot-dashed lines are governed by rare parameter combinations leading to huge trees and huge sample sizes, these lines are very sensitive to drawing another rare event, and thus need to be taken with some caution).}
 \label{Fig:Prior}
 \end{figure}
 
 
 We determined $p(t|M_\mathcal{T})$ for the prior distributions as in \textcite{gavryushkina2015bayesian}, 
-$$T: Unif(0,160), d: lognorm(-3.5,1.5), r: Unif(0,1), s: Unif(0,1).$$ This prior specification leads to a distribution of sampling time with almost all mass close to the present (Figure \ref{Fig:Prior}, dot-dashed line). Thus, essentially $p(H_1|M_\mathcal{T})=0$  which leads to a huge Bayes Factor. This means we always reject $H_2$, but not because we necessarily agree with the paleontological range, but because our model has no weight for older sampling times.
+$$T: Unif(0,160), d: lognorm(-3.5,1.5), r: Unif(0,1), s: Unif(0,1).$$ This prior specification leads to a distribution of sampling time with almost all mass close to the present (Figure \ref{Fig:Prior}, dot-dashed line). Thus, essentially $p(H_1|M_\mathcal{T})=0$  which leads to a huge Bayes Factor. This means we always reject $H_2$, but not because we necessarily agree with the paleontological age range, but because our model has no prior weight for the paleontological age range.
 
 Inspection of our prior identifies two problems: (i) If we draw a large   $T$ and large $d$, we obtain very large trees with arbitrary many species close to the present, thus we have most of the sampling times close to the present. (ii) If we draw $r$ and $s$ close to 1, then we obtain a very large per-lineage  sampling rate $\psi=\frac{s}{1-s} \frac{rd}{1-r}$. Thus these parameter combinations govern the probability density curve and cause most prior weight to be close to the present.
 
-
-Thus we assumed new prior distributions: $d: lognorm(-3.5,0.5)$ (note the smaller standard deviation which avoids to put too much weight on very fast growing trees); $r: Unif(0,1)$ as before. 
+We thus assumed new prior distributions. The net diversification rate $d: lognorm(-3.5,0.5)$ was chosen with a  smaller standard deviation which avoids  too much weight on very fast growing trees. The turnover $r: Unif(0,1)$ was set as before. 
 
 For $s$ we assume an implicit prior: we assume $lognorm(-2,1)$ for $\psi$, and $$s=\psi/(\mu+\psi)$$ (with extinction rate $\mu = r d /(1-r)$). This avoids very high sampling rates.
 
 For $T$, we also assume an implicit prior. We assume a uniform distribution on $[1,100]$ for the number of present day species, $N$. In expectation, we have $N=  \frac{e^{d T}}{1-p_0(T)}$ species after time $T$. This leads to $$T=\log((1-r)N +r)/d.$$
-Overall, this prior produces a sampling time distribution where larger sampling times have a non-negligable weight (Figure \ref{Fig:Prior}, solid line). We need further an implicit prior for both $T$ and $s$: only specifying the implicit prior on $T$ yields the dashed line in Figure \ref{Fig:Prior}, while only specifying the implicit prior on $s$ yields the dotted line in Figure \ref{Fig:Prior}.
-We used the new prior for our final analyses and the Bayes Factor calculation.
+Overall, this prior produces a sampling time distribution where old sampling times have a non-negligable weight (Figure \ref{Fig:Prior}, solid line). 
+The choice of an implicit prior for both $T$ and $s$ was important: only specifying the implicit prior on $T$ yields the dashed line in Figure \ref{Fig:Prior}, while only specifying the implicit prior on $s$ yields the dotted line in Figure \ref{Fig:Prior}.
+We used this new prior for our  analyses and the Bayes Factor calculation.
 
-This example highlights that whenever using Bayes factor to test a hypothesis, we have to first investigate what our prior on the hypothesis is. In our example, the  prior from \textcite{gavryushkina2015bayesian} seemed reasonable for the parameters specified, however this prior puts a negligible weight on hypothesis $H_1$ for older fossils.
-
-
-
-
-
-\todo{CHECK IF THIS IS TRUE:} Changing to our new prior has immense impact on the Bayes factor analysis, but in our case has a minor effect on the posterior distribution of trees / parameters.
-
-Discuss stepping stone approach - disadvantage in general that we do not see our prior assumption for the tested hypothesis. Here not possible at all, as in stepping stone the $D_\mathcal{T}$ is treated as part of the model, not the data. This probably originated as  classic tree model is the coalescent, where sampling is not modelled but conditioned upon.
+Changing to our new prior has immense impact on the Bayes factor analysis, but in our case has a minor effect on the posterior distribution of trees / parameters compared to using the prior in  \textcite{gavryushkina2015bayesian}.
+This investigation of the prior distribution on trees and sampling times highlights that whenever using Bayes factors to test a hypothesis, we have to first investigate what our prior on the hypothesis is. In our example, the  prior from \textcite{gavryushkina2015bayesian} seemed reasonable for the parameters specified, however this prior puts a negligible weight on hypothesis $H_1$ for older fossils.
 
 
+Further, we want to note that a classic  stepping stone approach to calculate Bayes factors would have not been possible in our case:  In stepping stone approaches the $D_\mathcal{T}$ is treated as part of the model, not part of the data. However, using a birth-death model, the sampling times are part of the data. The approach was valid when choosing a  coalescent tree prior, as in that case sampling times are conditioned upon (and thus can be seen as part of the model) rather than being modelled (and thus are a realisation of the model which means they are data).
+In general, even if stepping stone approaches are appropriate, we recommend to investigate $P(H_1|M)$ to investigate the prior assumption on the hypothesis to be tested. Such an investigation reveals if the cause of a high or low Bayes factor is due to the prior or due to signal in the data.
 
 \subsection*{Applying a morphological clock to Canid evolution}
 
