@@ -1,4 +1,4 @@
-setwd("~/Subversion/compevol/research/fossilDating")
+setwd("~/Git/fossilDating")
 createPhyloAgeVsPhyloAgePDF("compareAgeM1M8.pdf",df8,df1,"Model 8", "Model 1",c(),c())
 
 pdf(file="comparePostM1M8.pdf", width=5, height=5, pointsize=10)
@@ -23,7 +23,7 @@ abline(lm, col="red")
 r2 <- format(summary(lm)$r.squared,digits=3)
 eq <- bquote(bold(R^2 == .(r2)))
     
-text(0.5,5.5, labels=eq,pos=4)
+text(0.5,4.1, labels=eq,pos=4)
 dev.off()
 
 pdf(file="compareErrorM1M8.pdf", width=5, height=5, pointsize=10)
