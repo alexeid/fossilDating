@@ -7,6 +7,9 @@ regexp = "\\-[0-9]+\\.log"
 seq <- read.table("~/Git/fossilDating/sorted_sequences.txt", header=T, sep="\t")
 seq$Sequence <- as.character(seq$Sequence)
 
+h1prob <- read.table("~/Git/fossilDating/1_penguins_eNprior/H1prob-final.txt", sep=" ", header=T)
+fossilTable8$prior <- h1prob$fossilH1
+
 result8 <- loadFossilFiles(".", regexp, fossilTable8, 10001)
 height8 <- result8$heights
 df8 <- createSummaryTable(result8$names, height8, fossilTable8, seq)
@@ -26,6 +29,10 @@ createPrecisionVsKnownCharactersFigure("8_precisionVsKnownCharacters.pdf", df8, 
 
 # Need to split younger and older ones
 
-createHistPlotFigures("8_fossilDatingHist_younger", result8$names[df8$geo < 32], height8[df8$geo < 32], fossilTable8[df8$geo < 32,], combinedPlots=TRUE, xmin=0, xmax=45)
+createHistPlotFigures("8_fossilDatingHist_younger", result8$names[df8$geo < 32], height8[df8$geo < 32], fossilTable8[df8$geo < 32,], combinedPlots=TRUE, xmin=0, xmax=45, numrow=6, numcol=3)
 
-createHistPlotFigures("8_fossilDatingHist_older", result8$names[df8$geo > 32], height8[df8$geo > 32], fossilTable8[df8$geo > 32,], combinedPlots=TRUE, xmin=10, xmax=70)
+createHistPlotFigures("8_fossilDatingHist_older", result8$names[df8$geo > 32], height8[df8$geo > 32], fossilTable8[df8$geo > 32,], combinedPlots=TRUE, xmin=10, xmax=70, numrow=6, numcol=3)
+
+createHistPlotFigures("8_fossilDatingHist_younger_wide", result8$names[df8$geo < 32], height8[df8$geo < 32], fossilTable8[df8$geo < 32,], combinedPlots=TRUE, xmin=0, xmax=45, numrow=3, numcol=6, pdfWidth=12, pdfHeight=6, histCol=rgb(0.1, 0.1, 0.9, 1.0))
+
+createHistPlotFigures("8_fossilDatingHist_older_wide", result8$names[df8$geo > 32], height8[df8$geo > 32], fossilTable8[df8$geo > 32,], combinedPlots=TRUE, xmin=10, xmax=70, numrow=3, numcol=6, pdfWidth=12, pdfHeight=6, histCol=rgb(0.1, 0.1, 0.9, 1.0))

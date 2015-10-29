@@ -294,12 +294,12 @@ createDensityPlotFigures <- function (filePrefix, names, height, fossilTable, co
 ####################################################################
 # produce the hist plots and write to pdf files
 ####################################################################
-createHistPlotFigures <- function (filePrefix, names, height, fossilTable, combinedPlots, xmin=0, xmax=66,binsPerMY=1) {
+createHistPlotFigures <- function (filePrefix, names, height, fossilTable, combinedPlots, xmin=0, xmax=66,binsPerMY=1,numcol=3, numrow=6, pdfWidth=8, pdfHeight=11.5, histCol="dark gray") {
 
   if (combinedPlots) {
   
-    pdf(file=paste(filePrefix, ".pdf", sep=""), width=8, height=11.5)
-    par(mfrow = c(7,3),
+    pdf(file=paste(filePrefix, ".pdf", sep=""), width=pdfWidth, height=pdfHeight)
+    par(mfrow = c(numrow,numcol),
         oma = c(4,4,0,0) + 0.1,
         mar = c(1,1,2,1) + 0.1,
         mgp=c(2.5,0.65, 0),lwd=0.5)
@@ -312,7 +312,7 @@ createHistPlotFigures <- function (filePrefix, names, height, fossilTable, combi
       pdf(file=paste(fossilTable$File.name[i],".pdf",sep=""))
     }
     
-    hist <- hist(height[[i]], xlim=c(xmin,xmax),breaks=c((0:(xmax*binsPerMY)/binsPerMY),10*xmax),freq=FALSE, xlab="",main="",col="dark gray", border="white")
+    hist <- hist(height[[i]], xlim=c(xmin,xmax),breaks=c((0:(xmax*binsPerMY)/binsPerMY),10*xmax),freq=FALSE, xlab="",main="",col=histCol, border="black")
     title(main = list(names[i], cex = 1.0))
     #rect(lower, 0.0, upper, density, col=rgb(1.0,0.0,0.0,0.5))
     
@@ -327,7 +327,10 @@ createHistPlotFigures <- function (filePrefix, names, height, fossilTable, combi
     y <- c(0.0, density, density, 0.0)
     
     
-    lines(x,y, col="red",lwd=1)
+    rect(lower, 0.0, upper, density, col=rgb(1,0.25,0.25,0.5),border=FALSE)
+    lines(x,y, col="black",lwd=1)
+    
+    #plot(hist, add=T)
 
     if (!combinedPlots) {
       dev.off()
