@@ -3,6 +3,7 @@
 %handout, if no \pause
 
 \usepackage{tabularx}
+\usepackage{tikz}
 \usepackage[]{algorithm2e}
 \usepackage{listings}
 \usepackage{lstautogobble}
@@ -16,6 +17,18 @@
 
 \newcommand{\Mstrict}{{M1}}
 \newcommand{\Mrelaxed}{{M8}}
+% turnover = birth / death
+\newcommand{\turnover}{\nu}
+
+% sampling proportion = \psi / \psi + \mu
+\newcommand{\fosp}{s}
+\newcommand{\sampleprop}{sampling proportion}
+
+
+\definecolor{newblue}{rgb}{0.3, 0.5, 0.9}
+\definecolor{newblue1}{rgb}{0.3, 0.3, 0.7}
+\definecolor{newred}{RGB}{200,0,0}
+
 
 
 %\documentclass[handout,xcolor=pdftex,dvipsnames,table]{beamer} % USE THIS WITH pdfpages STUFF
@@ -145,10 +158,354 @@
 
 \section{Fossilized birth-death process}
 
-\begin{frame}
-\frametitle{The fossilized birth-death process}
+\begin{frame}{The problem}
+
+\begin{itemize}
+
+\item We have 
+\begin{itemize}
+  \item \normalsize{{\bf molecular data} of extant species,} 
+  \item \normalsize{{\bf morphological data} of extant and fossil species and }
+  \item \normalsize{{\bf Fossil ages} (or geological time intervals).}
+\end{itemize} 
+\item We want to utilise all this data to learn about {\bf evolutionary history} and {\bf macroevolutionary processes}.
+\item {\bf Bayesian statistical inference} is our preferred method of learning about the world.
+
+
+\end{itemize}
 
 \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Node dating}
+
+\begin{itemize}
+\item {\bf Divergence time dating is tricky :) }
+\item {\bf A common practice is node dating}. One or more divergences in a phylogeny are assigned ages by identifying fossils of known geological age that correspond* to each divergence. 
+\item This method has a few drawbacks:
+\begin{itemize}
+\item Often only the oldest fossil in a calibrated clade is used,
+\item Calibration densities are often {\it ad hoc},
+\item Difficult* to combine calibrations with tree priors,
+\item Computational complexity of some methods mean that only a few nodes can be calibrated (Heled \& Drummond 2012).
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Tip dating and total evidence}
+
+Two main features of new method for divergence-time dating:
+\begin{itemize}
+\item Explicit modelling of fossilization events as a part of the tree branching process (Pyron 2011, Heath {\it et al} 2014),
+\item Utilising all existing data \textcolor{newblue1}{(total evidence)} in a joint inference (Pyron 2011, Ronquist {\it et al} 2012).
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\begin{frame}{Total evidence}
+
+%\begin{itemize}
+
+%\item Pyron 2011 uses Lewis MK model to model evolution of morphological characters.  
+%\item Ronquist et al 2012, Wood et al 2012. 
+%\item They used Yule or Uniform tree prior. 
+%\end{itemize}
+
+
+%\end{frame}
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Birth-death-sampling models}
+
+\begin{figure}
+  \begin{center}
+               \input{pics/SampledTree1}
+            \end{center}
+            
+         \end{figure}    
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+\begin{frame}{Birth-death-sampling models}
+
+
+ \begin{figure}
+            \begin{center}
+               \input{pics/SampledTree2}
+            \end{center}
+            
+         \end{figure}
+    
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+\begin{frame} {Fossillized birth-death model (FBD)}
+
+
+\begin{columns}[t]
+\begin{column}{.5\textwidth}
+
+Stadler 2010, Heath {\it et al} 2014. 
+\vspace{0.2cm}
+
+The process starts at time $t_{or}>0$ and ends at time zero (present time).  
+  \vspace{0.01cm}
+   \begin{itemize}
+\item birth rate $\lambda$
+\item death rate $\mu$
+\item sampling rate $\psi$
+\item sampling at present probability $\rho$ 
+   \end{itemize}
+\vspace{0.01cm}
+
+   \end{column}
+   \begin{column}{.5\textwidth}
+
+            \begin{center}
+               \input{pics/SATree2}
+            \end{center}
+         
+         \begin{center}\emph{Sampled tree} \end{center}   
+
+   \end{column}    
+\end{columns}
+
+\vspace{0.2cm}
+
+Model parameters: \color{newblue1} $\eta = (t_{or}, \lambda, \mu, \psi, \rho)$.
+
+\color{black}
+All the parameters are identifiable. 
+
+\vspace{1.5cm}
+
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame} {Fossilized birth-death (FBD) skyline model}
+
+Stadler \& K\"uhnert et al 2012, Gavryushkina {\it et al} 2014.
+
+\vspace{0.2cm}
+
+There are $k$ time intervals and parameters remain constants within the intervals but may vary from one interval to another
+
+\begin{columns}[c]
+\begin{column}{.5\textwidth}
+\begin{itemize}
+\item birth rates $\lambda_1, \ldots, \lambda_k$
+\item death rates $\mu_1, \ldots, \mu_k$
+\item sampling rates $\psi_1, \ldots, \psi_k$
+\item sampling at time $t_k$ (present) probability $\rho$
+\end{itemize}
+
+\begin{center}
+Model parameters:
+\color{newblue1} $\eta = (t_{or}, \bar \lambda, \bar \mu, \bar \psi, \rho)$ 
+
+\end{center}
+  \end{column}
+   \begin{column}{.5\textwidth}
+\begin{center}
+\input{pics/SkylineTree}
+\end{center}
+\begin{center}\emph{\small Sampled tree} \end{center}   
+ \end{column}    
+\end{columns}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\iffalse 
+
+\begin{frame}{Variation in the choice of the tree model parameters}
+
+The $t_{or}$ parameter can be replaced with $t_{root}$ parameter assuming the process started with a branching event. 
+
+\vskip2mm
+
+Instead of $\lambda$, $\mu$, and $\psi$ we can also use an alternative parameterisation:
+
+\renewcommand{\arraystretch}{1.2}
+
+\begin{equation*} 
+\begin{tabular}{ll} 
+\text{net diversification rate} & $d = \lambda-\mu$  \\ 
+\text{turnover rate} & $\turnover = \frac \mu \lambda$ \\ 
+\text{\sampleprop} & $\fosp = \frac\psi {\mu + \psi}$  \\ 
+\end{tabular} \end{equation*}
+
+\end{frame}
+
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Heath {\it et al} approach and its extensions}
+
+ Heath {\it et al} 2014 first used FBD model to infer divergence times of bears in a Bayesian MCMC framework:  
+
+\begin{itemize}
+\item The topology of extant species is fixed
+\item Only used occurrence dates of fossils, and no morphology 
+\item Fixed $\rho$ to the truth in the inference
+\end{itemize}
+
+We extend this model in two ways:
+
+\begin{itemize}
+\item Sampling sampled ancestor trees (Gavryushkina {\it et al} 2014)
+\item Incorparating morphological data
+\end{itemize}
+
+Implemented in SA and Morph-models packages for BEAST2 (\url{www.beast2.org})
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Comparative data of fossil tips vs only occurrence dates}
+
+\begin{figure}
+\includegraphics[width=\textwidth]{pics/Height_SA/Rplots.pdf}
+\end{figure}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Comparative data of fossil tips vs only occurrence dates}
+
+\setlength{\oddsidemargin}{0.1in} % adjust as necessary
+
+\begin{columns}[c]
+
+\begin{column}{.7\textwidth}
+\begin{center}
+\begin{figure}
+\includegraphics[height=0.65\textheight]{pics/TurnoverHPD/Rplots.pdf}
+\end{figure}
+\end{center}
+ \end{column}
+ 
+\begin{column}{.3\textwidth}
+\begin{center}
+turnover~rate~=~$\frac \mu \lambda$ 
+\end{center}
+ \end{column}    
+\end{columns}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Biased estimates when not modelling sampled ancestors}
+
+\begin{figure}
+\includegraphics[width=\textwidth]{pics/SAvsNoSA/Rplots.pdf}
+\end{figure}
+
+\begin{center}
+diversification rate = $\lambda-\mu$ 
+\end{center}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Analysis of penguin morphological data}
+
+Penguin dataset (Ksepka et al 2012) consisting of morphological data of:
+\begin{itemize}
+\item all extant penguins (19 species)
+\item 36 fossil species assigned to stratigraphic intervals
+\end{itemize}
+
+\vskip2mm
+
+Models:
+
+\begin{itemize}
+\item Lewis MK vs MKv (Lewis 2001)
+\item Partitions vs single alignment
+\item Rate variation across sites and across partitions
+\item Tree prior: FBD and Skyline FBD
+\item Different tree model parameterisations
+\end{itemize}
+
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Parameterisations}
+
+\renewcommand{\arraystretch}{1.2}
+
+lmp:
+
+\color{newblue1} 
+
+\begin{equation*} 
+\begin{tabular}{ll} 
+\text{birth rate} & $\lambda$  \\ 
+\text{death rate} & $\mu$ \\ 
+\text{sampling rate} & $\psi$  \\ 
+\textcolor{black}{other parameters} & \textcolor{black}{$t_{or}, \rho$} \\
+\end{tabular} \end{equation*}
+
+\textcolor{black}{dvs:}
+
+\begin{equation*} 
+\begin{tabular}{ll} 
+\text{net diversification rate} & $d = \lambda-\mu$  \\ 
+\text{turnover rate} & $\turnover = \frac \mu \lambda$ \\ 
+\text{\sampleprop} & $\fosp = \frac\psi {\mu + \psi}$  \\ 
+\textcolor{black}{other parameters} & \textcolor{black}{$t_{or}, \rho$} \\
+\end{tabular} \end{equation*}
+
+
+
+\end{frame}
+
+
 
 \section{Penguin dating}
 
@@ -225,15 +582,26 @@ total-evidence analysis with crown fossils only.}
 
 \section{Fossil dating}
 
-\begin{frame}
+\begin{frame}{But what about those hyper parameter priors?}
 \begin{figure}
 \includegraphics[width=0.6\textwidth]{priors.pdf}
 \label{Fig:Prior}
 \end{figure}
 
-Density for sampling times under fossilized birth-death process. Dot-dashed line uses priors from \textcite{gavryushkina2015bayesian}. 
-Solid line is new prior with implicit assumptions on $T$ and $s$, dashed line results from only assuming implicit prior on $T$,  dotted line results from only assuming implicit prior on $s$.
+\small{Prior density for sampling times under fossilized birth-death process. Dot-dashed line uses priors from \textcite{gavryushkina2015bayesian}. 
+Solid line is new prior with implicit assumptions on $T$ and $s$, dashed line results from only assuming implicit prior on $T$,  dotted line results from only assuming implicit prior on $s$.}
 \end{frame}
+
+\begin{frame}{And what about this guy?}
+\includegraphics[width=0.5\textwidth]{Homo_naledi.jpg}
+\includegraphics[width=0.5\textwidth]{Atlantic_Homo_naledi.jpg}
+
+\bigskip{}
+
+{\bf Can we date fossil remains using Bayesian phylogenetics? }
+
+\end{frame}
+
 
 \begin{frame}
 \begin{figure}
