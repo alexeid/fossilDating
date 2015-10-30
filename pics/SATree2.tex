@@ -1,0 +1,44 @@
+\usetikzlibrary{shapes,snakes}
+
+\begin{tikzpicture}[thick,scale=0.45]
+
+\begin{scope}
+
+\draw[ -> ,color=gray] (5, 1) -- (5, 9.5);
+\draw[thin,dashed,color=gray] (5, 8.5) -- (0, 8.5);
+
+\node[anchor=west]  at (5, 8.5) (or) {\textcolor{gray}{\footnotesize $t_{or}$}};
+
+\draw[thin,dashed, color=gray] (-4, 1) -- (5, 1);
+\node[anchor=west]  at (5, 1) (zero) {\textcolor{gray}{\footnotesize $0$}};
+
+
+
+%sampled nodes
+\node[fill,circle, inner sep=2pt] at (-3, 3.9)(s2){};
+\node[fill,circle, inner sep=2pt] at (0.7, 4.5)(s1){};
+\node[fill,circle, inner sep=2pt] at (0.7, 1)(s3){};
+\node[fill,circle, inner sep=2pt] at (-2, 6.2)(s4){};
+\node[fill,circle, inner sep=2pt] at (4, 3.1)(s5){};
+\node[fill,circle, inner sep=2pt] at (-1, 1)(s8){};
+\node[fill,circle, inner sep=2pt] at (-1, 2.5)(s9){};
+\node[fill,circle, inner sep=2pt] at (2.6, 1)(s10){};
+
+
+%branches
+\draw (0, 8.5) -- (0,7) -- (-2, 7) --(-2, 5.5) --(-3, 5.5) -- (-3, 4.9) -- (s2);
+\draw (-2, 5.5) -- (-1, 5.5) -- (s8); 
+\draw (0,7) -- (2,7) -- (2,5.8) -- (0.7, 5.8) -- (0.7, 4.5) -- (s3); 
+\draw (2, 5.8) -- (3.3, 5.8) -- (3.3, 4) -- (2.6, 4) --  (s10); 
+\draw (3.3, 4) -- (4, 4) -- (s5);
+
+
+
+\end{scope}
+
+
+
+\end{tikzpicture}
+
+
+

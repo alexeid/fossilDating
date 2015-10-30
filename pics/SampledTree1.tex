@@ -1,0 +1,105 @@
+\usetikzlibrary{shapes,snakes}
+
+\begin{tikzpicture}[thick, scale=0.6, color=gray]
+
+\begin{scope}
+
+%terminal nodes
+\node at (-3.5, 2.5)(s2){};
+\node at (0, 1)(s3){};
+\node at (-2.5, 1)(s4){};
+\node at (4, 3.1)(s5){};
+\node at (1.4, 3.5)(s7){};
+\node at (-1, 1)(s8){};
+\node at (3.2, 1)(s9){};
+\node at (2, 1)(s10){};
+
+%branches
+\draw (0, 7.5) -- (0,7) -- (-2, 7) --(-2, 5.5) --(-3, 5.5) -- (-3, 4.9) -- (-3.5, 4.9) -- (s2);
+\draw (-3, 4.9) -- (-2.5, 4.9) -- (s4); 
+\draw (-2, 5.5) -- (-1, 5.5) -- (s8); 
+\draw (0,7) -- (2,7) -- (2,5.8) -- (0.7, 5.8) -- (0.7, 4.5) -- (0, 4.5) -- (s3); 
+\draw (0.7, 4.5) -- (1.4, 4.5) -- (s7); 
+\draw (2, 5.8) -- (3.3, 5.8) -- (3.3, 4) -- (2.6, 4) -- (2.6, 2.1) -- (2, 2.1) -- (s10); 
+\draw (2.6, 2.1) -- (3.2, 2.1) -- (s9);
+\draw (3.3, 4) -- (4, 4) -- (s5);
+
+\node at (0, -1) {Full tree};
+
+\pause 
+
+%sampled nodes
+\node[fill,circle, inner sep=2pt] at (-2.5, 1)(sA){};
+\node[anchor=north] (Alet) at (sA) {\textcolor{black}{\footnotesize A}};
+\node[fill,circle, inner sep=2pt] at (0, 1)(sB){};
+\node[anchor=north] (Alet) at (sB) {\textcolor{black}{\footnotesize B}};
+\node[fill,circle, inner sep=2pt] at (2, 1)(sC){};
+\node[anchor=north] (Alet) at (sC) {\textcolor{black}{\footnotesize C}};
+\node[fill,circle, inner sep=2pt] at (3.2, 1)(sD){};
+\node[anchor=north] (Alet) at (sD) {\textcolor{black}{\footnotesize D}};
+
+\pause 
+
+\node[fill,circle, inner sep=2pt] at (3.3, 5)(sE){};
+\node[anchor=west] (Alet) at (sE) {\textcolor{black}{\footnotesize E}};
+\node[fill,circle, inner sep=2pt] at (-1, 2.9)(sF){};
+\node[anchor=west] (Alet) at (sF) {\textcolor{black}{\footnotesize F}};
+
+\pause 
+
+\color{newblue1}
+
+%branches
+\draw (0, 7.5) -- (0,7) -- (-2, 7) --(-2, 5.5) --(-3, 5.5) -- (-3, 4.9);
+\draw (-3, 4.9) -- (-2.5, 4.9) -- (s4); 
+\draw (-2, 5.5) -- (-1, 5.5) -- (sF); 
+\draw (0,7) -- (2,7) -- (2,5.8) -- (0.7, 5.8) -- (0.7, 4.5) -- (0, 4.5) -- (s3); 
+\draw (2, 5.8) -- (3.3, 5.8) -- (3.3, 4) -- (2.6, 4) -- (2.6, 2.1) -- (2, 2.1) -- (s10); 
+\draw (2.6, 2.1) -- (3.2, 2.1) -- (s9);
+
+%sampled nodes
+\node[fill,circle, inner sep=2pt] at (-2.5, 1)(sA){};
+\node[anchor=north] (Alet) at (sA) {\textcolor{black}{\footnotesize A}};
+\node[fill,circle, inner sep=2pt] at (0, 1)(sB){};
+\node[anchor=north] (Alet) at (sB) {\textcolor{black}{\footnotesize B}};
+\node[fill,circle, inner sep=2pt] at (2, 1)(sC){};
+\node[anchor=north] (Alet) at (sC) {\textcolor{black}{\footnotesize C}};
+\node[fill,circle, inner sep=2pt] at (3.2, 1)(sD){};
+\node[anchor=north] (Alet) at (sD) {\textcolor{black}{\footnotesize D}};
+
+\node[fill,circle, inner sep=2pt] at (3.3, 5)(sE){};
+\node[anchor=west] (Alet) at (sE) {\textcolor{black}{\footnotesize E}};
+\node[fill,circle, inner sep=2pt] at (-1, 2.9)(sF){};
+\node[anchor=west] (Alet) at (sF) {\textcolor{black}{\footnotesize F}};
+
+\end{scope}
+
+\begin{scope}[xshift=8.5cm]
+
+\color{white}
+
+%terminal nodes
+\node[fill,circle, inner sep=2pt] at (-3, 1)(sA){};
+\node[anchor=north] (Alet) at (sA) {\textcolor{white}{\footnotesize A}};
+\node[fill,circle, inner sep=2pt] at (0.7, 1)(sB){};
+\node[anchor=north] (Alet) at (sB) {\textcolor{white}{\footnotesize B}};
+\node[fill,circle, inner sep=2pt] at (2.7, 1)(sC){};
+\node[anchor=north] (Alet) at (sC) {\textcolor{white}{\footnotesize C}};
+\node[fill,circle, inner sep=2pt] at (3.9, 1)(sD){};
+\node[anchor=north] (Alet) at (sD) {\textcolor{white}{\footnotesize D}};
+\node[fill,circle, inner sep=2pt] at (-1, 2.9)(sF){};
+\node[anchor=west] (Alet) at (sF) {\textcolor{white}{\footnotesize F}};
+\node[fill,circle, inner sep=2pt] at (3.3, 5)(sE){};
+\node[anchor=west] (Alet) at (sE) {\textcolor{white}{\footnotesize E}};
+
+%branches
+\draw (0, 7.5) -- (0,7) -- (-2, 7) --(-2, 5.5) --(-3, 5.5)  -- (sA);
+\draw (-2, 5.5) -- (-1, 5.5) -- (sF); 
+\draw (0,7) -- (2,7) -- (2,5.8) -- (0.7, 5.8) -- (0.7, 4.5) -- (sB); 
+\draw (2, 5.8) -- (3.3, 5.8) -- (3.3, 4) -- (3.3, 2.1) -- (2.7, 2.1) -- (sC); 
+\draw (3.3, 2.1) -- (3.9, 2.1) -- (sD);
+
+\end{scope}
+
+\end{tikzpicture}
+
