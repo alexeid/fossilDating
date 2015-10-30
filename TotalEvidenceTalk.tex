@@ -445,7 +445,8 @@ diversification rate = $\lambda-\mu$
 
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Penguin dating}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -505,9 +506,9 @@ lmp:
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Penguin dating}
 
 \begin{frame}
 \begin{figure}
@@ -521,6 +522,8 @@ variable characters, {\it R} for relaxed clock model, {\it dns} for $d$, $\nu$, 
 \lambda$, $\mu$, and $\psi$ tree prior parameterisation.} 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}
 \begin{figure}
 \includegraphics[width=\textwidth]{../ag_morpho_data/figures/pp.pdf}
@@ -530,6 +533,8 @@ variable characters, {\it R} for relaxed clock model, {\it dns} for $d$, $\nu$, 
 
 The posterior trees are on the unbalanced end of the predictive distribution.}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \begin{figure}
@@ -542,6 +547,8 @@ ancestors. Fossils with positive evidence of being sampled ancestors are shown i
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}
 \begin{figure}
 \begin{center}
@@ -553,6 +560,8 @@ ancestors. Fossils with positive evidence of being sampled ancestors are shown i
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}
 \begin{figure}
 \includegraphics[width=0.95\textwidth]{../ag_morpho_data/figures/extant_tree.pdf}
@@ -561,6 +570,8 @@ ancestors. Fossils with positive evidence of being sampled ancestors are shown i
 \small{The posterior summary tree of extant penguins with 95\% HPD intervals and
 posterior supports of clades after removing fossils.}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \begin{figure}
@@ -573,6 +584,8 @@ posterior supports of clades after removing fossils.}
 total-evidence analysis with crown fossils only.}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}
 \frametitle{Dating the evolutionary history of penguins}
 \begin{figure}
@@ -580,7 +593,8 @@ total-evidence analysis with crown fossils only.}
 \end{figure}
 \end{frame}
 
-\section{Fossil dating}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{But what about those hyper parameter priors?}
 \begin{figure}
@@ -592,18 +606,41 @@ total-evidence analysis with crown fossils only.}
 Solid line is new prior with implicit assumptions on $T$ and $s$, dashed line results from only assuming implicit prior on $T$,  dotted line results from only assuming implicit prior on $s$.}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fossil dating}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}{And what about this guy?}
 \includegraphics[width=0.5\textwidth]{Homo_naledi.jpg}
 \includegraphics[width=0.5\textwidth]{Atlantic_Homo_naledi.jpg}
 
 \bigskip{}
 
-{\bf Can we date fossils using Bayesian phylogenetics? }
+
+
+\end{frame}
+
+\begin{frame}{Can we date fossils using Bayesian phylogenetics? }
+
+Given:
+\begin{itemize}
+\item A reference set of fossils of known age, and
+\item A morphological characterization for reference fossils, and
+\item The fossilized birth-death model of sampled ancestor trees
+\item A ``clock-like'' model of morphological evolution 
+\item A morphological characterization of a related focal fossil of unknown age 
+\end{itemize}
+
+{\bf Can the age of the focal fossil be estimated using Bayesian phylogenetic inference?}
+
+\medskip{}
+
+We tested this hypothesis by using the penguin data set. For each of the 36 fossils in turn, we discarded the age information of the focal fossil to mimic the scenario where the age was unknown, and sought to estimate its age using the reference 35 fossils as the reference set. 
 
 \end{frame}
 
 
-\begin{frame}{Yes, we can!}
+\begin{frame}{Estimating the phylogenetic age of a fossil}
 \begin{figure}
 \includegraphics[width=\textwidth]{Figure1.pdf}
 \end{figure}
@@ -652,16 +689,72 @@ A plot of the number of non-ambiguous morphological sites for the taxon against 
 \end{figure}
 \end{frame}
 
-\begin{frame}{Conclusions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Canids}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\begin{figure}
+\includegraphics[width=0.70\textwidth]{canids/1c_phyloAgeVsGeoAge.pdf}
+\end{figure}
+{\small Bayesian phylogenetic ages for each of 123 canid fossils plotted against palaeontological ages, under \Mstrict{}. 
+Bayesian estimates are represented by the median and the 99\% HPD interval of posterior. Blue line shows the $x=y$. 
+16 fossils with inconsistent estimates are labelled.}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{canids/1_canids-1440516016976-tree5001.pdf}
+\end{figure}
+A sample from the posterior distribution of an analysis of the canid data set, showing two main clades, one containing the extant taxa and another constituted entirely of extinct fossil species.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Hominins}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Controversies in human evolution: {\it Ardipithecus ramidus}}
+\begin{figure}
+\includegraphics[width=\textwidth]{ardi_crop.jpg}
+\end{figure}
+`Ardi', 4.4M years old was described as a the oldest fossil relative on the human lineage, a {\it hominin}, and thus more closely related to the human than the chimpanzee. 
+\end{frame}
+
+\begin{frame}{Hominin phylogeny inferred using FBD tree prior \& morphological clock.}
+\begin{figure}
+\includegraphics[width=0.75\textwidth]{homininSummaryTree.pdf}
+\end{figure}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Conclusions and Future Directions}
+
+\begin{itemize}
+\item FBD (skyline) is an elegant solution to the divergence dating problem
+\item Bayesian inference implementations of FBD on sampled ancestor trees are already quite computationally tractable
+\item The effects of hyper parameter priors need to be examined carefully
+\item The {\bf morphological clock hypothesis seems adequate} to estimate fossil ages in a range of well-characterized fossil data sets.
+\item Summarizing sampled ancestor trees is more complicated and more work on summary and visualization are needed.
+\item Improved models of fossilization, speciation and extinction are obvious candidates for future work.
+\end{itemize}
+
 \end{frame}
 
 \begin{frame}{Acknowledgements}
 \begin{itemize}
-\item Sasha Gavryushkina
-\item Tanja Stadler
-\item David Welch
-\item Tracy Heath
-\item Daniel Ksepka
+\item Sasha Gavryushkina, University of Auckland
+\item Tanja Stadler, ETH
+\item David Welch, University of Auckland
+\item Tracy Heath, Iowa State University
+\item Daniel Ksepka, Bruce Museum, Greenwich
 \end{itemize}
 \end{frame}
 
