@@ -2,8 +2,10 @@
 
 \usepackage{xcolor}
 
+\usepackage[numbers]{natbib}
 
 \newcommand{\response}[1]{\medskip{}\textcolor{blue}{{Response: #1}}\medskip{}}
+\newcommand{\respquote}[1]{\medskip{}\textcolor{blue}{``{\it #1}''}\medskip{}}
 
 \begin{document}
 
@@ -51,6 +53,17 @@ p.1. Abstract: change ``phylogenetic age'' by ``phylogenetic estimates of fossil
 \response{We have replaced all instances of ``phylogenetic age'' with variants of ``phylogenetic estimates of fossil age''.}
 
 p.4. Data set descriptions: For each dataset please add a small paragraph providing additional details, i.e. total number of characters, amount of missing data, fossil age ranges (say, penguin fossils range from xx Mya to yy Mya), and character state space (i.e. characters ranged from binary to k=x).
+
+\response{We added the following paragraph:}
+
+\respquote{We used a data set originally published by \cite{ksepka2012} consisting of morphological data from fossil and living penguin 
+species. 
+We used the same subset of this original data as in \cite{gavryushkina2015bayesian}. 
+Additionally we discarded the molecular sequence data from the living species. 
+The resulting morphological data matrix we used contains 36 fossil species, 19 extant species and the morphological matrix contains 202 characters. 
+The morphological characters ranged from binary to k=7. 
+The majority of these (\textgreater 95\%) have fewer than four states and 48 of the binary characters were encoded as presence/absence. 
+See \cite{gavryushkina2015bayesian} for further details.}
 
 Maybe add a small "phylogentics analysis" section, between p.4 and p.5: 
 
@@ -134,5 +147,8 @@ Figure 8: I did not see a reference for this in the text
 
 Tables 1 and 2: I think it would be useful to readers if you add the geological age ranges of the fossils, along with upper and lower bounds of the strata.
 
+\bibliographystyle{vancouver}
+
+\bibliography{fossilDating}
 
 \end{document}
