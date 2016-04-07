@@ -121,12 +121,11 @@ These two questions are investigated using two morphological data sets, one of 3
 
 We used a data set originally published by \cite{ksepka2012} consisting of morphological data from fossil and living penguin 
 species. 
-We used the same subset of this original data as in \cite{gavryushkina2015bayesian}. 
-Additionally we discarded the molecular sequence data from the living species. 
-The resulting morphological data matrix we used contains 36 fossil species, 19 extant species and the morphological matrix contains 202 characters. 
-The morphological characters ranged from binary to k=7. 
-The majority of these (\textgreater 95\%) have fewer than four states and 48 of the binary characters were encoded as presence/absence. 
-See \cite{gavryushkina2015bayesian} for further details.
+We used the same subset of the morphological data as in \cite{gavryushkina2015bayesian} but we did not use the molecular sequence data from the living species. 
+The morphological data matrix we used contains 36 fossil species, 19 extant species and 202 characters (ranging from binary to k=7). 
+The majority of these characters (\textgreater 95\%) have fewer than four states and 48 of the binary characters were encoded as presence/absence. 
+The fossil ages ranged from 
+See \cite{gavryushkina2015bayesian} for further details of data selection.
 
 For each of the 36 penguin fossils in turn we performed a separate Bayesian phylogenetic analysis in which the focal fossil's palaeontological age constraints were replaced by 
 the fossilized birth-death process prior as described below.  
@@ -136,11 +135,11 @@ We also employed \Mrelaxed{} from \cite{gavryushkina2015bayesian} which involved
 
 \subsection*{Phylogenetic estimates of the ages of Canids fossils}
 
-The second data set that we investigated was a morphological data matrix of 132 canid species \cite[9 extant and 123 fossil;][]{Slater2015}. 
+The second data set that we investigated was a morphological data matrix of 132 canid species \cite[9 extant and 123 fossil;][]{Slater2015} with 123 characters (ranging from binary to k=5). 
 The 9 extant species represent about 25\% of the extant canid species and include representatives of four genera (6 {\em Canis}, 1 {\em Cuon}, 1 {\em Lycaon}, 1 {\em Urocyon}) and both tribes (8 Canini, 1 Vulpini). 
 For this data set we did not have a geological age range for each fossil. Instead we used the point estimates for each fossil species' geological age that were employed by the author of the original study.
 
-We applied the M1 model to this data set assuming a fixed geological age for each taxon. Unlike the original study \cite{Slater2015} we did not apply any other constraints or priors on ancestral divergence times beyond the ages of the included fossils. 
+We applied the \Mstrict{} model to this data set assuming a fixed geological age for each taxon. Unlike the original study \cite{Slater2015} we did not apply any other constraints or priors on ancestral divergence times beyond the ages of the included fossils. 
 As with the penguin data set we also performed an analysis for each of the 123 canid fossils in turn. Since we can't calculate Bayes factors without a fossil age range (see following section) we simply used the same priors on macroevolutionary parameters as employed by \cite{gavryushkina2015bayesian} in their \Mstrict{} model except with an upper limit on the origin of $T_\text{max} = 80$. To phylogenetically estimate the age of the focal fossil we sampled its age under the fossilized birth-death prior in the range $(0,T_\text{max})$ Mya.
 %TS: which priors on d, r, s, T did we use now? 
 
@@ -277,7 +276,7 @@ The three labelled fossils have posterior probability of less than 0.05 for thei
 
 \subsection*{Comparison of simple and complex model results}
 
-Overall the results of analyzing the penguin data set with the M1 and M8 models were strikingly concordant. 
+Overall the results of analyzing the penguin data set with the \Mstrict{} and \Mrelaxed{} models were strikingly concordant. 
 Figure \ref{fig:compareM1M8} shows four regressions between the two models: (a) Regression of estimated phylogenetic estimates of fossil ages of \Mstrict{} against \Mrelaxed{}, (b) Regression of the error in the phylogenetic estimates of fossil ages of \Mstrict{} against \Mrelaxed{} (c) Regression of posterior probability of palaeontological range of \Mstrict{} against \Mrelaxed{}, (d) Regression of Bayes factor (BF) for palaeontological range of \Mstrict{} against \Mrelaxed{}. 
 %TS is the following quantified? otherwise I'd delete the next sentence!?
 Under \Mrelaxed{} all fossils have positive evidence for their geological age range, whereas under \Mstrict{} there are a handful of fossils with negative evidence for the corresponding geological age range. Furthermore, assuming the median geological age is the truth, the variance in the phylogenetic estimation error of the fossil ages is larger under \Mstrict{} than under \Mrelaxed{}.
