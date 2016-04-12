@@ -262,7 +262,7 @@
 <parameter id="clockRate">0.1</parameter>
 
 
-<run chainLength="50000000" id="mcmc" spec="MCMC">
+<run chainLength="100000000" id="mcmc" spec="MCMC">
     <state id="state" storeEvery="100000">
         <tree id="tree" name="stateNode" trait="@tipDates" taxonset="@TaxonSet.canids" spec="beast.evolution.tree.ZeroBranchSATree" nodetype='beast.evolution.tree.ZeroBranchSANode'/>
         <stateNode idref="origin"/>
@@ -584,7 +584,7 @@
     
     <operator id="clockRateScaler" spec="ScaleOperator" scaleFactor="0.75" weight="3.0" parameter="@clockRate" />
 
-    <logger fileName="$(filebase)-$(seed).log" id="tracelog" logEvery="12000" model="@posterior" sanitiseHeaders="true" sort="smart">
+    <logger fileName="$(filebase)-$(seed).log" id="tracelog" logEvery="10000" model="@posterior" sanitiseHeaders="true" sort="smart">
         <log idref="posterior"/>
         <log idref="likelihood"/>
         <log idref="prior"/>
@@ -611,7 +611,7 @@
         <log idref='TipDatesLogger'/>
     </logger>
     
-    <logger id="treelog.t:canids" fileName="$(filebase)-$(seed).trees" logEvery="12000" mode="tree">
+    <logger id="treelog.t:canids" fileName="$(filebase)-$(seed).trees" logEvery="10000" mode="tree">
         <log id="TreeWithMetaDataLogger.t:canids" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@tree"/>
     </logger>
 
