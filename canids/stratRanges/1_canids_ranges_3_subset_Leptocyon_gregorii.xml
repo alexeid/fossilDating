@@ -579,7 +579,7 @@
     </operator>
         
     <!-- INSERT SINGLE SAMPLINGDATE -->
-    <operator spec='SampledNodeDateRandomWalkerForZeroBranchSATrees' windowSize="1."  tree="@tree" weight="1.">
+    <operator spec='SampledNodeDateRandomWalkerForZeroBranchSATrees' windowSize="2."  tree="@tree" weight="0.5" useWindowSizeWithSamplingDates="true">
         <taxonset spec="TaxonSet">
             <taxon idref="Leptocyon_gregorii" spec="beast.evolution.alignment.Taxon"/>
         </taxonset>
