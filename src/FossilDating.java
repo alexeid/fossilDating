@@ -73,7 +73,7 @@ public class FossilDating {
                 writer.write(l);
                 writer.write("\n");
                 if (l.matches(".*INSERT SINGLE SAMPLINGDATE.*")) {
-                    writer.write("    <operator spec='SampledNodeDateRandomWalker' windowSize=\"1.\"  tree=\"@tree\" weight=\"3.\">\n" +
+                    writer.write("    <operator spec='SampledNodeDateRandomWalkerForZeroBranchSATrees' windowSize=\"1.\"  tree=\"@tree\" weight=\"1.\">\n" +
                             "        <taxonset spec=\"TaxonSet\">\n" +
                             "            <taxon " + idString + "=\"" + taxon + "\" spec=\"beast.evolution.alignment.Taxon\"/>\n" +
                             "        </taxonset>\n" +

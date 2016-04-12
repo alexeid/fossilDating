@@ -19,25 +19,18 @@
  <sequence id="seq_Borophagus_secundus"         taxon="Borophagus_secundus"         totalcount="5" value="0000?00100?100100??300???3140?11201110000010?1001111100000201?0?04000010?0?32001010000000?1?011111121??100??1?0?01010?????"/>
  <sequence id="seq_Caedocyon_tedfordi"          taxon="Caedocyon_tedfordi"          totalcount="5" value="0200???110??00?0???0????12000?101000???000???1???????????????????301000?00?20???????????????????10????????????????????????"/>
  <sequence id="seq_Canis_adustus"               taxon="Canis_adustus"               totalcount="5" value="010010003110100?0000??20100001110?001??0?02?011001111001000?101101100000100101?10000??00110??10111?210110000??0?0?1??????1"/>                            
- <sequence id="seq_Canis_antonii"               taxon="Canis_antonii"               totalcount="5" value="01001001311010011100??10100001100?100??1?02?0110111110011000101001000001100300?10?10??00111??10111?210110000?10?0?1???????"/>
  <sequence id="seq_Canis_armbrusteri"           taxon="Canis_armbrusteri"           totalcount="5" value="0100?001311010001110??11130001210?001??1?02?0110111110011020101101100100101301?10110??11111??10111?220210010010?0?1??11?2?"/>
- <sequence id="seq_Canis_arnensis"              taxon="Canis_arnensis"              totalcount="5" value="01001000311010010000??10100001100?001??1?02?0100011110010000101001000?0110?300?10?10??10111??10111?2?0?100?0010?0?1???????"/>
  <sequence id="seq_Canis_aureus"                taxon="Canis_aureus"                totalcount="5" value="01001000311010011100??11100001100?001??1?02?0100111110010000101001000001100201?10010??10111??10111?210110000010?0?1??11111"/>
- <sequence id="seq_Canis_chihliensis"           taxon="Canis_chihliensis"           totalcount="5" value="01001000311010011100??10130001110?101??1?02?0110111110010000101101000000100300?10?10??10111??10111?210100000010?0?1???????"/>
  <sequence id="seq_Canis_dirus"                 taxon="Canis_dirus"                 totalcount="5" value="01001001311010011110??11130001211?100??1?02?0110111110011020101101100100101301?10110??11111??10111?220210010010?0?1??11121"/>
  <sequence id="seq_Canis_edwardii"              taxon="Canis_edwardii"              totalcount="5" value="01001000311010011100??11100001110?001??1?02?010011111001100010100100000010?201?10?10??00111??10111?210110000010?0?1??11?1?"/>
- <sequence id="seq_Canis_etruscus"              taxon="Canis_etruscus"              totalcount="5" value="01001000311010011100??10100001110?001??1?02?0100011110011000101?0100000010130??10?10??10111??10111?210110000010?0?1?????1?"/>
  <sequence id="seq_Canis_falconeri"             taxon="Canis_falconeri"             totalcount="5" value="0100?001311010011100??10100001100?100??1?02?0110111110011000101001?00?0?10??0??????0????1????10111?2????????010???1???????"/>
  <sequence id="seq_Canis_ferox"                 taxon="Canis_ferox"                 totalcount="5" value="00001000311010010000??10000001100?001??1?02?010001110001000010100100000010?200?10?10??10111??10111?210110000010?0?1??11?1?"/>
  <sequence id="seq_Canis_latrans"               taxon="Canis_latrans"               totalcount="5" value="01001000311010011100??11100001110?001??1?02?0100111110011000101001000001100201?10?10??10111??10111?210110000010?0?1??11121"/>
  <sequence id="seq_Canis_lepophagus"            taxon="Canis_lepophagus"            totalcount="5" value="00001000311010010000??10000001100?001??1?02?0100011110010000101001000000100200?10?10??10111??10111?210110000010?0?1??11?1?"/>
  <sequence id="seq_Canis_lupus"                 taxon="Canis_lupus"                 totalcount="5" value="01001000311010011100??21100001210?101??1?02?0100111110011000101101100000100301?10110??11111??10111?220210000010?0?1??11121"/>
  <sequence id="seq_Canis_mesomelas"             taxon="Canis_mesomelas"             totalcount="5" value="01001000311010010000??10100001110?101??1?02?0110011110010000101101000000100100?10000??00110??10111?210110000010?0?1??????1"/>
- <sequence id="seq_Canis_mosbachensis"          taxon="Canis_mosbachensis"          totalcount="5" value="01001000311010011100??11100001110?001??1?02?010011111001100010100100000010?201?????0??10111??10111?2????????010???1??1111?"/>
- <sequence id="seq_Canis_palmidens"             taxon="Canis_palmidens"             totalcount="5" value="01001000311010011100??11100001110?001??1?02?011011111001100010100100000110030??10??0??00111??10111?210110000010?0?1??111??"/>
  <sequence id="seq_Canis_simensis"              taxon="Canis_simensis"              totalcount="5" value="01001000311010010000??20100001111?001??1?02?1110011110010000101002100000100200?10110??00111??10111?2101100000?0?0?1??????1"/>
  <sequence id="seq_Canis_thooides"              taxon="Canis_thooides"              totalcount="5" value="00001000311010010000??10000001100?001??1?02?0100011110010000101001?00?0?10??0???0??????0??1??10111??????????010???1??1111?"/>
- <sequence id="seq_Canis_variabilis"            taxon="Canis_variabilis"            totalcount="5" value="01001000311010011100??11100001110?001??1?02?0100111110011000101001000001100201?10?10??00111??10111?210110000010?0?1??11?1?"/>
  <sequence id="seq_Carpocyon_compressus"        taxon="Carpocyon_compressus"        totalcount="5" value="0001?00?00?000000??000???2040?10200110000010?1001111100000101?0?00000010?0?31101000000?00?1?011111121??100??0?0?000000?0??"/>
  <sequence id="seq_Carpocyon_limosus"           taxon="Carpocyon_limosus"           totalcount="5" value="0???????????00??0????????2040?10200110000111?10?1?1????0????1?0?0?0000?0?0????0?????????0????1?11?????????????????????????"/>
  <sequence id="seq_Carpocyon_robustus"          taxon="Carpocyon_robustus"          totalcount="5" value="0?0??00?00?000000??100???2040?10200110000010?1001111100000101?0?00000010?0?31?010?0000?00?1?011111121??100??0?1?010000?0??"/>
@@ -155,30 +148,23 @@
 		Borophagus_secundus = 4.9,
 		Caedocyon_tedfordi = 28,
 		Canis_adustus = 0.0,
-		Canis_antonii = 1.2,
 		Canis_armbrusteri = 0.3,
-		Canis_arnensis = 1.5,
 		Canis_aureus = 0.0,
-		Canis_chihliensis = 1.2,
 		Canis_dirus = 0.012,
 		Canis_edwardii = 0.3,
-		Canis_etruscus = 1.7,
 		Canis_falconeri = 1.5,
 		Canis_ferox = 3.5,
 		Canis_latrans = 0.0,
 		Canis_lepophagus = 3.4,
 		Canis_lupus = 0.0,
 		Canis_mesomelas = 0.0,
-		Canis_mosbachensis = 0.5,
-		Canis_palmidens = 1.5,
 		Canis_simensis = 0.0,
 		Canis_thooides = 3,
-		Canis_variabilis = 0.5,
 		Carpocyon_compressus = 13.6,
 		Carpocyon_limosus = 4.9,
 		Carpocyon_robustus = 10.3,
 		Carpocyon_webbi = 10.3,
-		Cerdocyon_texanus = 4.9,
+		Cerdocyon_texanus = 5,
 		Cormocyon_copei = 20.43,
 		Cormocyon_haydeni = 20.43,
 		Cuon_javanicus = 0.0,
@@ -276,7 +262,7 @@
 <parameter id="clockRate">0.1</parameter>
 
 
-<run chainLength="60000000" id="mcmc" spec="MCMC">
+<run chainLength="50000000" id="mcmc" spec="MCMC">
     <state id="state" storeEvery="100000">
         <tree id="tree" name="stateNode" trait="@tipDates" taxonset="@TaxonSet.canids" spec="beast.evolution.tree.ZeroBranchSATree" nodetype='beast.evolution.tree.ZeroBranchSANode'/>
         <stateNode idref="origin"/>
@@ -347,7 +333,7 @@
     <operator id='treeScaler' spec='SAScaleOperator' scaleFactor=".95" weight="0.5" tree="@tree"/>
     <operator id='rootScaler' spec='SAScaleOperator' scaleFactor=".95" weight="0.1" tree="@tree" rootOnly='true'/>
 
-    <operator spec='SampledNodeDateRandomWalkerForZeroBranchSATrees' windowSize="10."  tree="@tree" weight="5.">
+    <operator spec='SampledNodeDateRandomWalkerForZeroBranchSATrees' windowSize="2"  tree="@tree" weight="5." weightFile="samplingDates_ESS.txt" weightOutFile="$(filebase)-$(seed)-samplingDate-weights.txt">
         <!-- this input specify the taxa with variable dates. In this example only one taxon has a variably sampling date.
          If this input is not specified then all the leaves except the most recent are assumed to have
          variable sampling dates. -->
@@ -369,25 +355,18 @@
             <taxon id="Borophagus_pugnator" spec="Taxon"/>
             <taxon id="Borophagus_secundus" spec="Taxon"/>
             <taxon id="Caedocyon_tedfordi" spec="Taxon"/>
-            <taxon id="Canis_antonii" spec="Taxon"/>
             <taxon id="Canis_armbrusteri" spec="Taxon"/>
-            <taxon id="Canis_arnensis" spec="Taxon"/>
-            <taxon id="Canis_chihliensis" spec="Taxon"/>
             <taxon id="Canis_dirus" spec="Taxon"/>
             <taxon id="Canis_edwardii" spec="Taxon"/>
-            <taxon id="Canis_etruscus" spec="Taxon"/>
             <taxon id="Canis_falconeri" spec="Taxon"/>
             <taxon id="Canis_ferox" spec="Taxon"/>
             <taxon id="Canis_lepophagus" spec="Taxon"/>
-            <taxon id="Canis_mosbachensis" spec="Taxon"/>
-            <taxon id="Canis_palmidens" spec="Taxon"/>
             <taxon id="Canis_thooides" spec="Taxon"/>
-            <taxon id="Canis_variabilis" spec="Taxon"/>
             <taxon id="Carpocyon_compressus" spec="Taxon"/>
             <taxon id="Carpocyon_limosus" spec="Taxon"/>
             <taxon id="Carpocyon_robustus" spec="Taxon"/>
             <taxon id="Carpocyon_webbi" spec="Taxon"/>
-            <taxon id="Cerdocyon_texanus" spec="Taxon"/>
+            <taxon id="Cerdocyon_texanus" spec="Taxon"/>  
             <taxon id="Cormocyon_copei" spec="Taxon"/>
             <taxon id="Cormocyon_haydeni" spec="Taxon"/>
             <taxon id="Cynarctoides_accridens" spec="Taxon"/>
@@ -509,6 +488,7 @@
         <samplingDates id="samplingDate28" spec="beast.evolution.tree.SamplingDate" taxon="@Carpocyon_limosus" lower="4.9" upper="9"/>
         <samplingDates id="samplingDate29" spec="beast.evolution.tree.SamplingDate" taxon="@Carpocyon_robustus" lower="9" upper="12"/>
         <samplingDates id="samplingDate30" spec="beast.evolution.tree.SamplingDate" taxon="@Carpocyon_webbi" lower="9" upper="14.8"/>
+        <samplingDates id="samplingDate31" spec="beast.evolution.tree.SamplingDate" taxon="@Cerdocyon_texanus" lower="4.9" upper="7"/>
         <samplingDates id="samplingDate32" spec="beast.evolution.tree.SamplingDate" taxon="@Cormocyon_copei" lower="17.5" upper="28"/>
         <samplingDates id="samplingDate33" spec="beast.evolution.tree.SamplingDate" taxon="@Cormocyon_haydeni" lower="17.5" upper="28"/>
         <samplingDates id="samplingDate34" spec="beast.evolution.tree.SamplingDate" taxon="@Cynarctoides_accridens" lower="12" upper="19"/>
@@ -597,24 +577,7 @@
         <samplingDates id="samplingDate127" spec="beast.evolution.tree.SamplingDate" taxon="@Vulpes_stenognathus" lower="4.9" upper="10"/>
         <samplingDates id="samplingDate129" spec="beast.evolution.tree.SamplingDate" taxon="@Xenocyon_texanus" lower="0.15" upper="0.85"/>
     </operator>
-    
-    <operator spec='SampledNodeDateRandomWalkerForZeroBranchSATrees' windowSize="10."  tree="@tree" weight="1.5">
-
-        <taxonset id="fossilTaxa2" spec="TaxonSet">
-            <taxon idref="Canis_antonii"/> <!-- no range, good mixing -->
-            <taxon idref="Canis_arnensis"/> <!-- no range, marginal mixing -->
-            <taxon idref="Canis_chihliensis"/> <!-- no range, good mixing -->
-            <taxon idref="Canis_edwardii"/> <!-- has range, poor mixing, sd=0.79 -->
-            <taxon idref="Canis_etruscus"/> <!-- no range, marginal mixing -->
-            <taxon idref="Canis_mosbachensis"/> <!-- no range, very poor mixing, sd=0.94 -->
-            <taxon idref="Canis_palmidens"/> <!-- no range, very poor mixing, sd=0.85 -->
-            <taxon idref="Canis_variabilis"/> <!-- no range -->
-            <taxon idref="Cerdocyon_texanus"/> <!-- no range, good mixing -->
-        </taxonset>   
-             
-        <samplingDates id="samplingDate21b" spec="beast.evolution.tree.SamplingDate" taxon="@Canis_edwardii" lower="0.15" upper="4.9"/>
-    </operator>
-    
+        
     <!-- INSERT SINGLE SAMPLINGDATE -->
     
     <operator id="updownTree" spec="UpDownOperator" scaleFactor=".95" weight="3.0" up="@clockRate" down="@tree"/>
