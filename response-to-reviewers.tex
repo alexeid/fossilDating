@@ -1,0 +1,152 @@
+\documentclass[11pt]{article}
+
+\usepackage{xcolor}
+
+\usepackage[numbers]{natbib}
+
+\newcommand{\response}[1]{\medskip{}\textcolor{blue}{{Response: #1}}\medskip{}}
+\newcommand{\respquote}[1]{\medskip{}\textcolor{blue}{``{\it #1}''}\medskip{}}
+
+\begin{document}
+
+\title{Response to reviewers' comments of RSTB-2015-0129 entitled "Bayesian phylogenetic estimation of fossil ages}
+\author{Alexei Drummond and Tanja Stadler}
+\date{}
+\maketitle
+
+Dear Dr Drummond,
+
+Thank you for submitting your article RSTB-2015-0129 entitled ``Bayesian phylogenetic estimation of fossil ages'' for publication in the upcoming theme issue of Philosophical Transactions B.
+
+I am pleased to inform you that the reviews were positive and have just recommended some minor changes prior to final approval for publication. Please find the referees' comments below.
+
+I glanced over your ms. and have two small comments.
+
+First, please check the journal style and fix the formatting issues of the References section.  Right now some references use first names, some use first initials, and so on.  
+
+\response{We have changed the reference style to Vancouver, as per author instructions for Philosophical Transactions B.}
+
+The second is that all of us (the two referees and myself) are surprised at the optimistic tone in the Abstract, and we can expect that an average reader will be as well.  As referee 1 commented on, your results do not really support this level of optimism.  Many people are uncomfortable with the idea of a morphological clock, because morphological characters are well known to have highly variable rates and undergo convergent evolution.  Perhaps you can be more explicit about the results, saying something like that the estimation accuracy is high in the sense that the HPD intervals include the true ages, but the precision is low in that the intervals are wide.  (I think for true ages younger than 30 myrs, an interval of 10-15 myrs is wide.)
+
+\response{We have changed the abstract along the lines suggested. Specifically we have added the sentence ``We find that the estimation accuracy of fossil ages is generally high with credible intervals seldom excluding the true age, although the credible intervals were often wide, reflecting low precision.''}
+
+Yours sincerely,
+
+Dr Ziheng Yang
+z.yang@ucl.ac.uk
+
+Referee reports:
+
+\section*{Referee: 1}
+
+Comments to Author(s)
+This paper is timely, as there has been a recent surge in interest in modelling morphological evolution to date species divergence times. The topic is also very interesting. However, many papers have obtained very ancient divergence time estimates under the method. For example, Beck and Lee (2014, PRSB, 281:20141278) found very ancient estimates of mammal divergence times, and estimates had also very large uncertainties. Other works report similar patters (e.g. Arcila et al. 2014, MPE, 82:131). People are very puzzled about whether these ancient date estimates are reliable, or whether the Mk model (which is simply the Jukes-Cantor extended to k states) is too simplistic. I therefore was a bit surprised when I read the abstract of the present ms, as it portrays the method very optimistically. However, after having examined the ms, I can see that levels of uncertainty in estimated fossil ages are very large (e.g. Figure 7). I therefore think the optimistic tone needs to be moderated.
+
+\response{We have changed the abstract to moderate the tone. Specifically we have added the sentence ``We find that the estimation accuracy of fossil ages is generally high with credible intervals seldom excluding the true age, although the credible intervals were often wide, reflecting low precision.''}
+
+Overall I find the paper interesting. One strength is the modelling of the fossil ages as distributions based on stratigraphy, an important point we have recently highlighted (O'Reilly et al. 2015, TIGs, in press). I also find interesting the comparison between the stratigraphic age of fossils and the Bayesian estimates using the birth-death process.
+
+I think the paper can be improved in certain areas. A bit of text needs to be added to clarify certain things (perhaps the ms is too short). Below I make several suggestions.
+
+p.1. Abstract: change ``phylogenetic age'' by ``phylogenetic estimates of fossil age''. Please change throughout the ms.
+
+\response{We have replaced all instances of ``phylogenetic age'' with variants of ``phylogenetic estimates of fossil age''.}
+
+p.4. Data set descriptions: For each dataset please add a small paragraph providing additional details, i.e. total number of characters, amount of missing data, fossil age ranges (say, penguin fossils range from xx Mya to yy Mya), and character state space (i.e. characters ranged from binary to k=x).
+
+\response{We added the following paragraph:}
+
+\respquote{We used a data set originally published by \cite{ksepka2012} consisting of morphological data from fossil and living penguin 
+species. 
+We used the same subset of the morphological data as in \cite{gavryushkina2015bayesian} but we did not use the molecular sequence data from the living species. 
+The morphological data matrix we used contains 36 fossil species, 19 extant species and 202 characters (ranging from binary to k=7). 
+The majority of these characters (\textgreater 95\%) have fewer than four states and 48 of the binary characters were encoded as presence/absence. 
+See \cite{gavryushkina2015bayesian} for further details of data selection.}
+
+Maybe add a small "phylogentics analysis" section, between p.4 and p.5: 
+
+Here you can describe the analysis steps that are common to both datasets. Please provide brief descriptions of models M1 and M8. I note that in Lewis' Mk model, the k stands for the dimension of the character substitution matrix, so M2 means a 2x2 substitution matrix (binary characters). This does not seem to be the case here. The authors could either change their notation slightly (suggestion: Mk-1, Mk-8), or explicitly state that their nomenclature does not follow Lewis. 
+
+Provide a better description of the stepwise analysis of fossil ages. My impression (but I am not totally sure) is that in one analysis, fossil ages are unknown parameters and have uniform prior distributions set according to the stratigraphic bounds. Then, in stepwise analysis, each fossil age is in turn represented not by the stratigraphic uniform distribution, but by a prior density derived from the fossilised birth-death process. Give some details please. I was trying to work out the general form of the posterior distribution, I was guessing something like:
+
+$$p(tip\_ages) p(node\_ages) L(D|ages,tree)$$
+
+where $p(tip\_ages)$ is the prior density on fossil ages using uniform distributions, $p(node\_ages)$ is the prior on internal node ages given the BD process, and $L(D|ages,tree)$ is the likelihood of the morphological data D, given the ages and the topology calculated using Lewis (2001) formula. However, it seems from the text in p.5 that another likelihood term may be involved. For the stepwise deletion procedure, I am guessing the priors are something like $p(tip\_ages\hat{}) p(node\_ages, tip\_age*)$, where now $tip\_ages\hat{}$ includes all the fossil ages except the one under analysis, which has been moved into the other BD-based prior term $(tip\_age*)$. Please provide general forms for the posteriors and make the connection with equation (1).
+
+Give some more info on how the prior on the root age is set. Is Tmax the same as the root age? If it is, please state explicitly.
+
+Please give the prior on the morphological substitution rate, and for relaxed-clock models, the prior on the rate variation parameter (I am assuming you are using log-normal clock, so prior on log-variance).
+
+p.8 paragraph starting on line 43. Do you mean that with the particular implementation of marginal likelihood calculation in BEAST you cannot calculate the BF? Or is this a general problem with any implementation of stepping-stones and this model? I am also confused, do sampling times refer to the ages of fossil tips? Aren't these unknown parameters being estimated in the MCMC? Then they would appear as terms in the prior and the likelihood. (?)
+
+p.9 Results section. For both data sets the authors state that the relaxed clock model fits the data better, but I can't find the BF for this. Also, for both data sets, the authors have sections titled "Penguins conform well to a strict morphological clcok" and "Canids conform well to a morphological clock", but these headings seem to contradict the statement in lines 48-49 p.12 of discussion. I am also puzzled as the authors have not quantified here departure from the clock. 
+
+Please provide a table with prior and posterior mean estimates of the age of the root for both data sets under all models used, and 95\% CI. Similarly, in the same table provide prior and posterior estimates of mean morphological substitution rate for all data sets and models (relaxed and strict clock). For the relaxed-clocks, provide prior and posterior estimates of rate-variation parameter. Then, when the authors discuss whether the data fit or not the strict clock, they should refer to the estimates in the table.
+
+Provide axis labels and axis titles in Figures 2, 6 and 7.
+
+I think Figures 4 and 5 should be merged into one figure.
+
+Figure 3 and 6: Mention the dataset in the legend (canids? penguins?).
+
+Figure 6, panels (b), (c) and (d) seem empty.
+
+Figure 7: Add dots indicating posterior means.
+
+Figure 8: Please replace this with the consensus tree and provide 95\% CIs of internal node ages.
+
+I could not find references to Figures 3 and 8 in the text.
+
+In the results section, please provide some quantification of the uncertainty in time estimates. For example,  the authors could provide estimates of the precision as (95\% CI width)/(posterior mean of fossil age) and express this as a percentage. Roughly, looking at figure 7, it seems that for some nodes the 95\% CI limits would range from anywhere between 50\% to 150\% of the point stratigraphic estimate. Clearly, uncertainty here is very, very large. 
+
+Considering the point above (and the large CIs observed in figures 2 and 7), it is clear that estimates are not precise (note, I refer to accuracy as bias of estimates and precision as 1/variance of estimates). So, please remove any references in the ms about having obtained precise estimates. Estimates do seem to be accurate, as the posterior means are close to stratigraphic mid-points, but the authors must stress, in the abstract, results and discussion, that uncertainties are large.
+
+As I pointed out at the beginning of this review, many papers report ancient estimates of node ages using morphological data. How do the posterior age of the root for canids and penguins obtained in this paper compare with estimates from traditional methods? Please mention briefly in discussion. For example, some of the previous estimates could be added to the table I suggested.
+
+I think the insistence by the authors to use the term "morhpological clock" will cause controversy. Please provide some evidence that departure of the clock is small (for example, posterior estimates of the rate variation parameter are, say, close to zero). Otherwise I suggest removing the term.
+
+As a side note I would like to point out that there is an extensive literature on morphological rates of evolution, indeed, before molecular data became available in the sixties, most work on evolution was effectively work on phenotypic (morphological) evolution. One of the reasons the molecular clock was so controversial when it was initially proposed, was precisely because early workers were skeptical that molecular rates should be constant when morphological rates were so variable. For example, in his 1985 book on the neutral theory, Kimura has a whole chapter contrasting morphological vs. molecular rates (I strongly encourage the authors to read this), and he provides lots of citation to early works (for example, Haldane's) on morphological rates. Michael Lynch has some theoretical work where he shows that under neutral mutation and random drift, morphological clocks can be achieved (can't remember the reference) and he gives examples in humans. It may be worth looking this up if the authors want to add a balance discussion of this in their ms. There are also lots of papers throughout the 80s and 90s on morphological rates. One thing that surprises me with the new morphological papers is that a lot of this literature has been completely ignored. I encourage the authors to read and cite some of these works.
+
+I am troubled about the sensitivity of the BF to the prior in this case. Can the authors give some clear, easy to follow, recommendations for biologists that may wish to use the method in their own works? Another issue is that when the model is changed, the BF change. The authors should point out to the reader that rejecting the stratigraphic estimate of a fossil with BF does not prove that the stratigraphic age is wrong. If the morphological or clock model are misspecified (i.e. they are  bad description of the data), then I would expect the BF to fail. For example, if a lineage has shown explosively fast rates of evolution, then I would expect the Bayesian phylogenetic estimates of the fossil age to contradict the stratigraphic range if a strict clock is imposed.
+
+Best wishes,
+Mario dos Reis.
+
+\section*{Referee: 2}
+
+Comments to Author(s)
+This manuscript provides evidence that Bayesian modelling of morphological evolution in a phylogenetic context can predict the age of a fossil taxon with a considerable degree of accuracy. Frankly, I find the results surprising and I must say that this has helped to assuage many of the doubts I have had about the efficacy of such methods, and I expect the same will be said about many others in this field. Certainly this has the potential to settle some of the longstanding debates between molecular and morphological systematists and has a number of potential applications. I look forward to further testing across different taxonomic datasets and deeper divergence times to see if the predictive power of this method holds up. 
+
+I only recommend minimal revisions to the manuscript.
+
+General comments:
+Perhaps another reason for the discrepancy between phylogenetic and geological age is due to stasis of morphology through the fossil record. For example, imagine the anatomy of a specific fossil taxon appeared 30 Ma but underwent no morphological evolution through the next 10 million years. If this taxon is recovered from strata dating to 20 Ma, and the models you are using sufficiently capture morphological evolutionary rates, the phylogenetic age estimate should predate that of the fossil's appearance by, on average, 10 million years. This may also be a useful application of this method: making predictions of where a taxon should appear prior to the known fossil record for that particular species.
+
+One concern I have with this method, which perhaps doesn't apply to these datasets, is how it handles situations where there is rampant morphological convergence across species in the dataset. For example, previous analyses have shown that large morphological datasets group together mammals with convergent ecotypes (e.g., ant-eating, tree-dwelling, hoofed; Springer et a. 2013 Science) and squamates without legs (e.g., snakes, amphisbaenians, anniellids; Gauthier et al. 2012 Bulletin of the Peabody Museum of Natural History), respectively, in sharp contrast to both molecular data and, frequently, the fossil record. Presumably it should lead to highly inaccurate phylogenetic age estimates, though this might also be a potential application of the method (i.e., highly inaccurate dates may be suggestive of homoplasy appropriately grouping taxa together).
+
+This raises a further question of whether this method can be used in conjunction with molecular data to correct for morphological homoplasy. Beyond this, perhaps one could test how the molecular dataset can influence the phylogenetic age of these fossils, and could provide further insights regarding whether divergence times derived from molecular clocks are accurate. I'm not suggesting more analyses, but perhaps further discussion of these issues.
+
+Specific comments:
+Inconsistent with British spelling of palaeontology (=paleontology) and palaentological in text/figures/legends
+
+Page 3 line 27: reference is not completely within parentheses
+
+Page 6 line 53: T and large d, we obtain very large trees with arbitrary <--(Typo?) many species
+
+Page 8 line 54 (poor wording or maybe typo): In general, even if stepping stone approaches are appropriate, we recommend to investigate*** P(H1|M) to investigate*** the prior assumption on the hypothesis to be tested. Such an investigation***
+
+Page 9: for the species that fell far beyond the regression line, do you have any hypotheses for these discrepancies? Were there insufficient coded characters (including nonoverlapping characters), homoplasy or reason to doubt the geological age?
+
+Figure 3: I did not see a reference for this in the text
+
+Figures 4 and 5: It appears that the figure legends were cut off. Both ended with "red boxes"
+
+Figure 8: I did not see a reference for this in the text
+
+Tables 1 and 2: I think it would be useful to readers if you add the geological age ranges of the fossils, along with upper and lower bounds of the strata.
+
+\bibliographystyle{vancouver}
+
+\bibliography{fossilDating}
+
+\end{document}
