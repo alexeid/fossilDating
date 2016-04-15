@@ -151,14 +151,14 @@ writeSummaryTable <- function(filename, caption, label, df) {
 ###############################################################################
 # produce the phylo age versus geo age plot and write to pdf file
 ###############################################################################
-createPhyloAgeVsGeoAgePDF <- function(filename, df, fossilTable, labelled, labelPos, min=0, max=65) {
+createPhyloAgeVsGeoAgePDF <- function(filename, df, fossilTable, labelled, labelPos, min=0, max=65, xlabel="paleontological age (Myr)") {
 
   require(plotrix)
 
   pdf(file=filename, width=5, height=5, pointsize=10)
 
   par(mar = c(4,4,1,1) + 0.1)
-  plot(c(min,max*0.925),c(min,max*0.925), type="n", xlab="paleontological age (Myr)", ylab="Bayesian phylogenetic age estimate (Myr)", ylim=c(min,max), xlim=c(min,max))
+  plot(c(min,max*0.925),c(min,max*0.925), type="n", xlab=xlabel, ylab="Bayesian phylogenetic age estimate (Myr)", ylim=c(min,max), xlim=c(min,max))
 
   draw.ellipse(df$geo, df$est, df$geo-fossilTable$Lower, df$est-df$hpd_lower, angle = 0, segment = c(180,360), border =rgb(0.5,0.5,0.5,0.2), col=rgb(0.5,0.5,0.5,0.1), arc.only=FALSE)
 
@@ -346,20 +346,30 @@ createHistPlotFigures <- function (filePrefix, names, height, fossilTable, combi
 ####################################################################
 # produce the precision versus number of known characters plot
 ####################################################################
-createPrecisionVsKnownCharactersFigure <- function(filename, df, labelled, labelPos) {
+createPrecisionVsKnownCharactersFigure <- function(filename, df, labelled, labelPos, relativeHPD=FALSE) {
 
   pdf(file=filename, width=5, height=5, pointsize=10)
-  plot(df$characters,df$precision, pch=16, xlab="Number of known characters", ylab="Precision of phylogenetic age estimate (1/variance)", xlim=c(0,max(df$characters)*1.05))
   
-  text(df$characters[labelled], df$precision[labelled], labels=df$names[labelled],pos=labelPos,offset=0.45, cex=0.7)
+  pr <- df$precision
+  ylabel <- "Precision of phylogenetic age estimate (1/variance)"
+  if (relativeHPD) {
+  	pr <- (df$hpd_upper-df$hpd_lower)/df$est
+    ylabel <- "Relative HPD of phylogenetic age estimate (HPD range / age)"
+  }
+  
+  plot(df$characters,pr, pch=16, xlab="Number of known characters", ylab=, xlim=c(0,max(df$characters)*1.05))
+  
+  
+  
+  text(df$characters[labelled], pr[labelled], labels=df$names[labelled],pos=labelPos,offset=0.45, cex=0.7)
 
-  lm <- lm(df$precision ~ df$characters)
+  lm <- lm(pr ~ df$characters)
   abline(lm, col="red")
       
   r2 <- format(summary(lm)$r.squared,digits=3)
   eq <- bquote(bold(R^2 == .(r2)))
     
-  text(max(df$characters)*0.05,max(df$precision)*0.925, labels=eq,pos=4)
+  text(max(df$characters)*0.05,max(pr)*0.925, labels=eq,pos=4)
   
   dev.off()
 }
