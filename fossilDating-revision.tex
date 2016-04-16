@@ -24,7 +24,8 @@
 
 \newcommand{\todo}[1]{\textcolor{blue}{{TODO: #1}}}
 
-\newcommand{\alexei}[1]{\textcolor{NavyBlue}{{#1}}}
+\newcommand{\gslater}[1]{\textcolor{NavyBlue}{{#1}}}
+\newcommand{\alexei}[1]{\textcolor{red}{{#1}}}
 
 
 %\newcommand{\cite}[1]{\cite{#1}}
@@ -316,7 +317,7 @@ If the vertical line doesn't cross $x=y$, then the mean of the stratigraphic age
 
 \begin{figure}
 \includegraphics[width=15cm]{canids/stratRanges/1_canids_ranges_3_subset-1460502871266-tree10001.pdf}
-\caption{\label{fig:canidTree} A sample from the posterior distribution of an analysis of the canid data set, \alexei{showing three main clades, one clade with extant representatives and two extinct clades ({\it Hesperocyoninae} and {\it Borophaginae}).}}
+\caption{\label{fig:canidTree} A sample from the posterior distribution of an analysis of the canid data set, \gslater{showing three main clades, one clade with extant representatives and two extinct clades ({\it Hesperocyoninae} and {\it Borophaginae}).}}
 \end{figure}
 
 \section*{Discussion}
@@ -327,18 +328,17 @@ We found that fossil estimates were both slightly more accurate and more precise
 This may suggest that the larger reference set of fossils in the canid data set (115 versus 35) more than makes up for the smaller number of characters (122 versus 245) with regards to accuracy and precision of fossil age estimates. However since the average age of the canid fossils is considerably less than that for the penguin fossils, it could simply be that the absolute errors are smaller because the true values are smaller.
 
 There are a diverse array of potential applications for this methodology. 
-The most obvious is the estimation of dates for fossils that are temporally unconstrained, either due to poor knowledge of the age of the sediments in which it was found, or because the fossil was not associated with a sediment of known age \cite{Berger2015}, or because of a complete lack of provenance data (e.g. a recent fossil described as a `four-legged snake' has excited controversy for a lack of provenance\footnote{See \url{http://news.sciencemag.org/paleontology/2015/07/four-legged-snake-fossil-stuns-scientists-and-ignites-controversy}}). 
+The most obvious is the estimation of dates for fossils that are temporally unconstrained, either due to poor knowledge of the age of the sediments in which it was found, \alexei{or because the fossil was not associated with a horizon of known age e.g. \cite{Berger2015},} or because of a complete lack of provenance data (e.g. a recent fossil described as a `four-legged snake' has excited controversy for a lack of provenance\footnote{See \url{http://news.sciencemag.org/paleontology/2015/07/four-legged-snake-fossil-stuns-scientists-and-ignites-controversy}}). 
 It can also be used a way of testing the ``morphological clock'' and to discover potential problems in the data by identifying outlier fossils with respect to model fit. 
 The median error in age estimates for the two data sets investigated were 2 My and 1.6 My respectively, using either a very simple or more complex models of discrete morphological change. 
 In all cases we used the new fossilized birth-death tree prior, which is a crucial ingredient in allowing for the estimating of fossil ages under a birth-death tree prior. 
 
-\alexei{One difference between the two data sets analyzed here is that the penguin fossils were largely single specimens, or single localities, so that the age range specified for the fossil represents uncertainty in the geological age of the sediment the fossil was associated with (for example, uncertainty in radiometric dates from the volcanic tuffs above or below the fossiliferous horizon and uncertainty about the age difference between the volcanic tuff and the horizon the fossil is in). 
+\gslater{One difference between the two data sets analyzed here is that the penguin fossils were largely single specimens, or at least single localities, so that the age range specified for the fossil represents uncertainty in the geological age of the horizon the fossil was associated with (for example, uncertainty in radiometric dates from the volcanic layers above or below the fossil-carrying horizon and uncertainty about the age difference between the volcanic layers and the horizon the fossil is in). 
 On the other hand, most of the canid species were assigned stratigraphic age ranges based on multiple specimens from multiple localities spanning a substantial time range. 
 For example, there are thousands of specimens of {\it Hesperocyon gregarious} from multiple sites in North America spanning $>5\text{myr}$ (pers. comm. Graham Slater). 
-In fact the canids that fall off the x=y line in Figure 7 are mostly (but not exclusively) taxa represented by singletons and therefore those with relatively short stratigraphic ranges. 
-This raises the question of whether multiple specimens of a single species that span a significant time frame and/or different localities should be coded separately. Even if not coded as separate taxa it may be possible to use the information about the individual specimen ages explicitly in some other way. 
-We leave these considerations for future work. }
-Future work may also investigate in a more systematic fashion how the amount of morphological data available for a new fossil and the number of related reference fossils of known age affect the accuracy of the phylogenetic estimate of a fossil's age.
+In this context it is interesting to note the canids that fall off the x=y line in Figure 7 are mostly (but not exclusively) taxa represented by singletons and therefore those with relatively short stratigraphic ranges. 
+This raises the question of whether multiple specimens of a single species that span a significant time frame and/or different localities should be coded as separate taxa. Even if not coded as separate taxa it may be possible to extend the method used here to explicitly account for multiple specimens and associated ages when a fossil species is represented by more than one fossil. We leave these considerations for future work. }
+ Future work may also investigate in a more systematic fashion how the amount of morphological data available for a new fossil and the number of related reference fossils of known age affect the accuracy of the phylogenetic estimate of a fossil's age.
 
 In the mean time we anticipate that this approach will help to promote the application of a consistent probabilistic framework to consider both molecular and fossil evidence. Our results are encouraging in suggesting that the statistical models presented are adequate for inference of phylogenetic time-trees from morphological fossil data.
 
@@ -348,7 +348,7 @@ All BEAST2 xml input files and R analysis scripts required to reproduce the resu
 
 \section*{Acknowledgements}
 
-The authors would like to thank Daniel Ksepka and Graeme T. Lloyd for insightful comments and suggestions on early drafts of this manuscript. We are also very grateful to Graham Slater for comments on the phylogenetic analysis of canids and for providing stratigraphic age ranges for the canid fossils. We thank Mario do Reis and one anonymous reviewer for helpful comments during revision. AJD and TS were partially funded by Marsden grant UOA1324 from the Royal Society of New Zealand (\url{http://www.royalsociety.org.nz/programme?s/funds/marsden/awards/2013-awards/}). AJD was funded by a Rutherford Discovery Fellowship from the Royal Society of New Zealand (\url{http://www.royalsociety.org.nz}).  TS was supported in part by the European Research Council under the 7th Framework Programme of the European Commission (PhyPD; grant agreement 335529). AJD and TS also thank ETH Z\"{u}rich for funding.
+The authors would like to thank Daniel Ksepka and Graeme T. Lloyd for insightful comments and suggestions on early drafts of this manuscript. \alexei{We are also very grateful to Graham Slater for comments on the phylogenetic analysis of canids and for providing stratigraphic age ranges for the canid fossils. We thank Mario do Reis and one anonymous reviewer for helpful comments during revision.} AJD and TS were partially funded by Marsden grant UOA1324 from the Royal Society of New Zealand (\url{http://www.royalsociety.org.nz/programme?s/funds/marsden/awards/2013-awards/}). AJD was funded by a Rutherford Discovery Fellowship from the Royal Society of New Zealand (\url{http://www.royalsociety.org.nz}).  TS was supported in part by the European Research Council under the 7th Framework Programme of the European Commission (PhyPD; grant agreement 335529). AJD and TS also thank ETH Z\"{u}rich for funding.
 
 \bibliographystyle{vancouver}
 
