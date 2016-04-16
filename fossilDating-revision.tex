@@ -3,7 +3,7 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{amsmath}
-\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
 
 \usepackage[numbers]{natbib}
 
@@ -23,6 +23,9 @@
 \newcommand{\ncanidfossils}{{116}}
 
 \newcommand{\todo}[1]{\textcolor{blue}{{TODO: #1}}}
+
+\newcommand{\alexei}[1]{\textcolor{NavyBlue}{{#1}}}
+
 
 %\newcommand{\cite}[1]{\cite{#1}}
 
@@ -120,13 +123,13 @@ These two questions are investigated using two morphological data sets, one of 3
 
 \subsection*{Phylogenetic estimates of the ages of penguin fossils}
 
-We used a data set originally published by \cite{ksepka2012} consisting of morphological data from fossil and living penguin 
+\alexei{We used a data set originally published by \cite{ksepka2012} consisting of morphological data from fossil and living penguin 
 species. 
 We used the same subset of the morphological data as in \cite{gavryushkina2015bayesian} but we did not use the molecular sequence data from the living species. 
 The morphological data matrix we used contains 36 fossil species, 19 extant species and 202 characters (ranging from binary to k=7). 
 The majority of these characters (\textgreater 95\%) have fewer than four states and 48 of the binary characters were encoded as presence/absence. 
 The fossil ages ranged from 
-See \cite{gavryushkina2015bayesian} for further details of data selection.
+See \cite{gavryushkina2015bayesian} for further details of data selection.}
 
 For each of the 36 penguin fossils in turn we performed a separate Bayesian phylogenetic analysis in which the focal fossil's palaeontological age constraints were replaced by 
 the fossilized birth-death process prior as described below.  
@@ -136,9 +139,9 @@ We also employed \Mrelaxed{} from \cite{gavryushkina2015bayesian} which involved
 
 \subsection*{Phylogenetic estimates of the ages of Canids fossils}
 
-The second data set that we investigated was a morphological data matrix of 125 canid species \cite[9 extant and \ncanidfossils{} fossil;][]{Slater2015} with 122 characters (ranging from binary to k=5). 
+\alexei{The second data set that we investigated was a morphological data matrix of 125 canid species \cite[9 extant and \ncanidfossils{} fossil;][]{Slater2015} with 122 characters (ranging from binary to k=5). }
 The 9 extant species represent about 25\% of the extant canid species and include representatives of four genera (6 {\em Canis}, 1 {\em Cuon}, 1 {\em Lycaon}, 1 {\em Urocyon}) and both tribes (8 Canini, 1 Vulpini). 
-We had stratigraphic ranges based on paleontological data for all \ncanidfossils{} fossils (Graham Slater, pers. comms). 
+\alexei{We had stratigraphic ranges based on paleontological data for all \ncanidfossils{} fossils (Graham Slater, pers. comms). }
 
 We applied the \Mstrict{} model to this data and assumed a uniform prior on each fossil's age within their respective stratigraphic ranges. Unlike the original study \cite{Slater2015} we did not apply any other constraints or priors on ancestral divergence times beyond the ages of the fossils. 
 As with the penguin data set we also performed an analysis for each of the \ncanidfossils{} canid fossils in turn. We used the same priors on macroevolutionary parameters as employed by \cite{gavryushkina2015bayesian} in their \Mstrict{} model except with an upper limit on the origin of $T_\text{max} = 80$. To phylogenetically estimate the age of the focal fossil we sampled its age under the fossilized birth-death prior in the range $(0,T_\text{max})$ Mya.
@@ -147,7 +150,7 @@ As with the penguin data set we also performed an analysis for each of the \ncan
 \subsection*{Phylogenetic analyses}
 
 Following \cite{gavryushkina2015bayesian}, we apply the Lewis Mk model 
-\citep{Lewis2001} for discrete morphological character evolution, which assumes a character can take $k$ states and the transition rates from one state to another are equal for all states. As did \cite{gavryushkina2015bayesian}, we treat 34 characters that were ordered in \citep{ksepka2012} as unordered. 
+\cite{Lewis2001} for discrete morphological character evolution, which assumes a character can take $k$ states and the transition rates from one state to another are equal for all states. As did \cite{gavryushkina2015bayesian}, we treat 34 characters that were ordered in \cite{ksepka2012} as unordered. 
 
 We applied two phylogenetic models to the penguin data set: \Mstrict{} and \Mrelaxed{}. \Mstrict{} assumed a strict morphological clock and no gamma-distributed rate heterogeneity among sites. Model \Mrelaxed{} partitioned the alignment into six partitions, with the $i$'th partition containing all characters that had $k=i+1$ character states across the sampled taxa.
 
@@ -313,23 +316,29 @@ If the vertical line doesn't cross $x=y$, then the mean of the stratigraphic age
 
 \begin{figure}
 \includegraphics[width=15cm]{canids/stratRanges/1_canids_ranges_3_subset-1460502871266-tree10001.pdf}
-\caption{\label{fig:canidTree} A sample from the posterior distribution of an analysis of the canid data set, showing two main clades, one containing the extant taxa and another constituted entirely of extinct fossil species.}
+\caption{\label{fig:canidTree} A sample from the posterior distribution of an analysis of the canid data set, \alexei{showing three main clades, one clade with extant representatives and two extinct clades ({\it Hesperocyoninae} and {\it Borophaginae}).}}
 \end{figure}
 
 \section*{Discussion}
 
-In this paper we have demonstrated that even a small number of morphological characters (some of the fossils had as few as 7 morphological traits coded) can be used in the context of a rich fossil reference data set, to provide an accurate and precise age of the fossil based on a phylogenetic model. 
-We found that although a strict morphological clock does a surprisingly good job of estimated fossil ages, there is evidence that phylogenetic estimation of fossil ages is improved by a model that includes a relaxed morphological clock. 
+In this paper we have demonstrated that even a small number of morphological characters (some of the fossils had as few as 7 morphological traits coded) can be used in the context of a rich fossil reference data set, to provide an accurate age of the fossil based on a phylogenetic model. 
+We found that although a strict morphological clock does a surprisingly good job of estimating fossil ages, there is evidence that phylogenetic estimation of fossil ages is improved by a model that includes a relaxed morphological clock. 
 We found that fossil estimates were both slightly more accurate and more precise on average in the canid data set. 
-This may suggest that the larger reference set of fossils in the canid data set (122 versus 35) more than makes up for the smaller number of characters (122 versus 245) with regards to accuracy and precision of fossil age estimates.
+This may suggest that the larger reference set of fossils in the canid data set (115 versus 35) more than makes up for the smaller number of characters (122 versus 245) with regards to accuracy and precision of fossil age estimates. However since the average age of the canid fossils is considerably less than that for the penguin fossils, it could simply be that the absolute errors are smaller because the true values are smaller.
 
 There are a diverse array of potential applications for this methodology. 
-The most obvious is the estimation of dates for fossils that are temporally unconstrained, either due to poor knowledge of the age of the sediments in which it was found or a complete lack of provenance data (e.g. a recent fossil described as a `four-legged snake' has excited controversy for a lack of provenance\footnote{See \url{http://news.sciencemag.org/paleontology/2015/07/four-legged-snake-fossil-stuns-scientists-and-ignites-controversy}}). 
+The most obvious is the estimation of dates for fossils that are temporally unconstrained, either due to poor knowledge of the age of the sediments in which it was found, or because the fossil was not associated with a sediment of known age \cite{Berger2015}, or because of a complete lack of provenance data (e.g. a recent fossil described as a `four-legged snake' has excited controversy for a lack of provenance\footnote{See \url{http://news.sciencemag.org/paleontology/2015/07/four-legged-snake-fossil-stuns-scientists-and-ignites-controversy}}). 
 It can also be used a way of testing the ``morphological clock'' and to discover potential problems in the data by identifying outlier fossils with respect to model fit. 
 The median error in age estimates for the two data sets investigated were 2 My and 1.6 My respectively, using either a very simple or more complex models of discrete morphological change. 
 In all cases we used the new fossilized birth-death tree prior, which is a crucial ingredient in allowing for the estimating of fossil ages under a birth-death tree prior. 
 
-Future work may investigate in a more systematic fashion how the amount of morphological data available for a new fossil and the number of related reference fossils of known age affect the accuracy of the phylogenetic estimate of a fossil's age.
+\alexei{One difference between the two data sets analyzed here is that the penguin fossils were largely single specimens, or single localities, so that the age range specified for the fossil represents uncertainty in the geological age of the sediment the fossil was associated with (for example, uncertainty in radiometric dates from the volcanic tuffs above or below the fossiliferous horizon and uncertainty about the age difference between the volcanic tuff and the horizon the fossil is in). 
+On the other hand, most of the canid species were assigned stratigraphic age ranges based on multiple specimens from multiple localities spanning a substantial time range. 
+For example, there are thousands of specimens of {\it Hesperocyon gregarious} from multiple sites in North America spanning $>5\text{myr}$ (pers. comm. Graham Slater). 
+In fact the canids that fall off the x=y line in Figure 7 are mostly (but not exclusively) taxa represented by singletons and therefore those with relatively short stratigraphic ranges. 
+This raises the question of whether multiple specimens of a single species that span a significant time frame and/or different localities should be coded separately. Even if not coded as separate taxa it may be possible to use the information about the individual specimen ages explicitly in some other way. 
+We leave these considerations for future work. }
+Future work may also investigate in a more systematic fashion how the amount of morphological data available for a new fossil and the number of related reference fossils of known age affect the accuracy of the phylogenetic estimate of a fossil's age.
 
 In the mean time we anticipate that this approach will help to promote the application of a consistent probabilistic framework to consider both molecular and fossil evidence. Our results are encouraging in suggesting that the statistical models presented are adequate for inference of phylogenetic time-trees from morphological fossil data.
 
@@ -339,7 +348,7 @@ All BEAST2 xml input files and R analysis scripts required to reproduce the resu
 
 \section*{Acknowledgements}
 
-The authors would like to thank Daniel Ksepka and Graeme T. Lloyd for insightful comments and suggestions on early drafts of this manuscript. We are very grateful to Graham Slater for providing stratigraphic age ranges for the Canid fossils. We thank Mario do Reis and one anonymous reviewer for helpful comments during revision. AJD and TS were partially funded by Marsden grant UOA1324 from the Royal Society of New Zealand (\url{http://www.royalsociety.org.nz/programme?s/funds/marsden/awards/2013-awards/}). AJD was funded by a Rutherford Discovery Fellowship from the Royal Society of New Zealand (\url{http://www.royalsociety.org.nz}).  TS was supported in part by the European Research Council under the 7th Framework Programme of the European Commission (PhyPD; grant agreement 335529). AJD and TS also thank ETH Z\"{u}rich for funding.
+The authors would like to thank Daniel Ksepka and Graeme T. Lloyd for insightful comments and suggestions on early drafts of this manuscript. We are also very grateful to Graham Slater for comments on the phylogenetic analysis of canids and for providing stratigraphic age ranges for the canid fossils. We thank Mario do Reis and one anonymous reviewer for helpful comments during revision. AJD and TS were partially funded by Marsden grant UOA1324 from the Royal Society of New Zealand (\url{http://www.royalsociety.org.nz/programme?s/funds/marsden/awards/2013-awards/}). AJD was funded by a Rutherford Discovery Fellowship from the Royal Society of New Zealand (\url{http://www.royalsociety.org.nz}).  TS was supported in part by the European Research Council under the 7th Framework Programme of the European Commission (PhyPD; grant agreement 335529). AJD and TS also thank ETH Z\"{u}rich for funding.
 
 \bibliographystyle{vancouver}
 
