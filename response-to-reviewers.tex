@@ -5,7 +5,10 @@
 \usepackage[numbers]{natbib}
 
 \newcommand{\response}[1]{\medskip{}\textcolor{blue}{{Response: #1}}\medskip{}}
-\newcommand{\respquote}[1]{\medskip{}\textcolor{blue}{``{\it #1}''}\medskip{}}
+\newcommand{\respquote}[1]{{\medskip{}\textcolor{blue}{{\it #1}}\medskip{}}}
+
+\newcommand{\Mstrict}{{Mk-1}}
+\newcommand{\Mrelaxed}{{Mk-8}}
 
 \begin{document}
 
@@ -66,6 +69,11 @@ See \cite{gavryushkina2015bayesian} for further details of data selection.}
 Maybe add a small "phylogentics analysis" section, between p.4 and p.5: 
 
 Here you can describe the analysis steps that are common to both datasets. Please provide brief descriptions of models M1 and M8. I note that in Lewis' Mk model, the k stands for the dimension of the character substitution matrix, so M2 means a 2x2 substitution matrix (binary characters). This does not seem to be the case here. The authors could either change their notation slightly (suggestion: Mk-1, Mk-8), or explicitly state that their nomenclature does not follow Lewis. 
+
+\response{We added a section called Phylogenetic analyses with following text:}
+
+\respquote{Following \cite{gavryushkina2015bayesian}, we apply the Lewis Mk model \cite{Lewis2001} for discrete morphological character evolution, which assumes a character can take $k$ states and the transition rates from one state to another are equal for all states. As did \cite{gavryushkina2015bayesian}, we treat 34 characters that were ordered in \cite{ksepka2012} as unordered. 
+We applied two phylogenetic models to the penguin data set: Mk-1 and Mk-8. Mk-1 assumed a strict morphological clock and no gamma-distributed rate heterogeneity among sites. Model Mk-8 partitioned the alignment into six partitions, with the $i$'th partition containing all characters that had $k=i+1$ character states across the sampled taxa.}
 
 Provide a better description of the stepwise analysis of fossil ages. My impression (but I am not totally sure) is that in one analysis, fossil ages are unknown parameters and have uniform prior distributions set according to the stratigraphic bounds. Then, in stepwise analysis, each fossil age is in turn represented not by the stratigraphic uniform distribution, but by a prior density derived from the fossilised birth-death process. Give some details please. I was trying to work out the general form of the posterior distribution, I was guessing something like:
 
