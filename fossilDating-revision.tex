@@ -75,7 +75,7 @@ and for uncovering potential model misspecification and/or data errors when cont
 
 Contention between palaeontologists and molecular biologists over which data provides the most accurate inferences about evolutionary history has previously fostered an adversarial relationship between the two fields \cite{Donoghue2007}. 
 Although there has indeed been much controversy surrounding apparent discrepancies between palaeontological and molecular phylogenetic inferences \cite{BromhamPenny2003} it is also clear that fossil and molecular data both produce broadly concordant views of evolutionary history \cite{BentonAyala2003}. 
-%Indeed one of the first examples of applying a macroevolutionary phylogenetic model to perform inference directly on fossil occurrence data in fact demonstrated concordance between inferences from  molecular data and paleontological data in primates \cite{tavare2002using}. 
+%Indeed one of the first examples of applying a macroevolutionary phylogenetic model to perform inference directly on fossil occurrence data in fact demonstrated concordance between inferences from  molecular data and palaeontological data in primates \cite{tavare2002using}. 
 % AJD: The following two sentences are inflammatory to palaeontologists
 %Nevertheless there have been only few attempts to apply phylogenetic reasoning to palaeontological questions. 
 %Models of molecular evolution have been refined over many decades \cite{Felsenstein2004,Yang:2006yu}. 
@@ -147,7 +147,7 @@ The second data set that we investigated was a morphological data matrix of 125 
 %}%
 The 9 extant species represent about 25\% of the extant canid species and include representatives of four genera (6 {\em Canis}, 1 {\em Cuon}, 1 {\em Lycaon}, 1 {\em Urocyon}) and both tribes (8 Canini, 1 Vulpini). 
 %\alexei{%
-We had stratigraphic ranges based on paleontological data for all \ncanidfossils{} fossils (Graham Slater, pers. comms). 
+We had stratigraphic ranges based on palaeontological data for all \ncanidfossils{} fossils (Graham Slater, pers. comms). 
 %}%
 
 We applied the \Mstrict{} model to this data and assumed a uniform prior on each fossil's age within their respective stratigraphic ranges. Unlike the original study \cite{Slater2015} we did not apply any other constraints or priors on ancestral divergence times beyond the ages of the fossils. 
@@ -169,7 +169,7 @@ The Bayes factor ($BF$) computes the evidence for one hypothesis ($H_1$) over an
 BF = \frac{p(D|H_1,M)}{p(D|H_2,M)} = \frac{p(H_1|D,M)}{p(H_2|D,M)}\frac{p(H_2|M)}{p(H_1|M)}.
 \end{equation}
 
-We are interested in computing the Bayes factor that quantifies the amount of phylogenetic evidence in support of the palaeontological age range for each fossil. In this case $H_1$ is the hypothesis that the true fossil age is within the given paleontological age range, and $H_2$ is the alternative hypothesis that the true fossil age is outside the palaeontological range. 
+We are interested in computing the Bayes factor that quantifies the amount of phylogenetic evidence in support of the palaeontological age range for each fossil. In this case $H_1$ is the hypothesis that the true fossil age is within the given palaeontological age range, and $H_2$ is the alternative hypothesis that the true fossil age is outside the palaeontological range. 
 %, but within the broader interval of $(0,T_\text{max})$ Mya. 
 The model $M$ consists of two parts, $M=(M_\mathcal{T},M_m)$. The model $M_\mathcal{T}$ specifies the tree generation process  giving rise to the number of observed samples and sampling times. The model $M_m$ specifies the morphological evolution along the tree giving rise to the morphological characters for the samples. The data $D=(D_\mathcal{T},D_m)$ is the number of samples together with the sampling times ($D_\mathcal{T}$) and  the morphological characters for each sample ($D_m$). 
 
@@ -178,7 +178,7 @@ For caclulating the Bayes factor, the probabilities $p(H_1|D,M)$ and $p(H_2|D,M)
 It remains to calculate the probabilities $p(H_1|M)$ and $p(H_2|M)$.
 Since $H_1$ and $H_2$ are independent of $M_m$, we have $$\frac{p(H_2|M)}{p(H_1|M)}=\frac{p(H_2|M_\mathcal{T})}{p(H_1|M_\mathcal{T})}=\frac{1-p(H_1|M_\mathcal{T})}{p(H_1|M_\mathcal{T})}.$$
 
-One way to determine $p(H_1|M_\mathcal{T})$ would be to simulate trees under the model $M_\mathcal{T}$ and record the fraction of sampling times  within a given  paleontological age range. However, such a simulation approach turns out to be very time-consuming, and the procedure below provided a much faster evaluation of $p(H_1|M_\mathcal{T})$.
+One way to determine $p(H_1|M_\mathcal{T})$ would be to simulate trees under the model $M_\mathcal{T}$ and record the fraction of sampling times  within a given palaeontological age range. However, such a simulation approach turns out to be very time-consuming, and the procedure below provided a much faster evaluation of $p(H_1|M_\mathcal{T})$.
 
 We  will now derive some analytic results for evaluating $p(H_1|M_\mathcal{T})$. In our case, the model $M_\mathcal{T}$ is the fossilized birth-death process with priors on its parameters. Using the parameterization in \cite{gavryushkina2015bayesian}, the parameters are the time of the start of the process $T$, the net diversification rate $d$ (= speciation rate - extinction rate), the turnover $r$ (= extinction rate / speciation rate) and the sampling probability $s$ (=sampling rate / (extinction rate + sampling rate)).
 We derive the probability density of sampling a fossil at time $t$ in the past, given the model $M_\mathcal{T}$. This probability density will allow us to directly determine $p(H_1|M_\mathcal{T})$.
@@ -206,9 +206,9 @@ The solid line uses the new prior with implicit assumptions on $T$ and $s$, the 
 \end{figure}
 
 We determined $p(t|M_\mathcal{T})$ for the prior distributions as in \cite{gavryushkina2015bayesian}, 
-$$T: Unif(0,160), d: lognorm(-3.5,1.5), r: Unif(0,1), s: Unif(0,1).$$ This prior specification leads to a distribution of sampling time with almost all probability mass close to the present (Figure \ref{Fig:Prior}, dot-dashed line). Thus, essentially $p(H_1|M_\mathcal{T})=0$  which leads to a huge Bayes Factor. This means we always reject $H_2$, but not because we necessarily agree with the paleontological age range, but because our model has no prior weight for the paleontological age range.
+$$T: Unif(0,160), d: lognorm(-3.5,1.5), r: Unif(0,1), s: Unif(0,1).$$ This prior specification leads to a distribution of sampling time with almost all probability mass close to the present (Figure \ref{Fig:Prior}, dot-dashed line). Thus, essentially $p(H_1|M_\mathcal{T})=0$  which leads to a huge Bayes Factor. This means we always reject $H_2$, but not because we necessarily agree with the palaeontological age range, but because our model has no prior weight for the palaeontological age range.
 
-Inspection of our prior identifies two problems: (i) If we draw a large   $T$ and large $d$, we obtain very large trees with arbitrary many species close to the present, thus we have most of the sampling times close to the present. (ii) If we draw $r$ and $s$ close to 1, then we obtain a very large per-lineage  sampling rate $\psi=\frac{s}{1-s} \frac{rd}{1-r}$. Thus these parameter combinations govern the probability density curve and cause again most prior weight to be close to the present.
+Inspection of our prior identifies two problems: (i) If we draw a large   $T$ and large $d$, we obtain very large trees with arbitrarily many species close to the present, thus we have most of the sampling times close to the present. (ii) If we draw $r$ and $s$ close to 1, then we obtain a very large per-lineage  sampling rate $\psi=\frac{s}{1-s} \frac{rd}{1-r}$. Thus these parameter combinations govern the probability density curve and cause again most prior weight to be close to the present.
 
 We thus assumed new prior distributions. The net diversification rate $d: lognorm(-3.5,0.5)$ was chosen with a  smaller standard deviation which avoids  too much weight on very fast growing trees. The turnover $r: Unif(0,1)$ was set as before. 
 
@@ -226,7 +226,7 @@ This investigation of the prior distribution on trees and sampling times highlig
 We want to note that the stepping stone sampling approach \cite{Xie2011}
 %TS which paper to cite here?
  to calculate Bayes factors would not have been possible in our case:  In stepping stone sampling the $D_\mathcal{T}$ is treated as part of the model, not part of the data. However, using a birth-death model, the sampling times are part of the data. The approach was valid when choosing a  coalescent tree prior, as in that case sampling times are conditioned upon (and thus can be seen as part of the model) rather than being modelled (and thus are a realisation of the model which means they are data).
-In general, even if stepping stone approaches are appropriate, we recommend to investigate $P(H_1|M)$ to investigate the prior assumption on the hypothesis to be tested. Such an investigation reveals if the cause of a high (or low) Bayes factor is due to the prior or due to signal in the data.
+In general, even if stepping stone approaches are appropriate, we recommend inspection of $P(H_1|M)$ to ensure that the prior assumption on the hypothesis to be tested is sensible. Such an investigation reveals if the cause of a high (or low) Bayes factor is due to the prior or due to signal in the data.
 
 \section*{Results}
 
