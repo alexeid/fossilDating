@@ -226,7 +226,7 @@ This investigation of the prior distribution on trees and sampling times highlig
 We want to note that the stepping stone sampling approach \cite{Xie2011}
 %TS which paper to cite here?
  to calculate Bayes factors would not have been possible in our case:  In stepping stone sampling the $D_\mathcal{T}$ is treated as part of the model, not part of the data. However, using a birth-death model, the sampling times are part of the data. The approach was valid when choosing a  coalescent tree prior, as in that case sampling times are conditioned upon (and thus can be seen as part of the model) rather than being modelled (and thus are a realisation of the model which means they are data).
-In general, even if stepping stone approaches are appropriate, we recommend inspection of $P(H_1|M)$ to ensure that the prior assumption on the hypothesis to be tested is sensible. Such an investigation reveals if the cause of a high (or low) Bayes factor is due to the prior or due to signal in the data.
+In general, even if stepping stone approaches are appropriate, we recommend inspection of $P(H_1|M)$ to ensure that the prior on the hypothesis to be tested is sensible. Such an investigation reveals if the cause of a high (or low) Bayes factor is due to the prior or due to signal in the data.
 
 \section*{Results}
 
@@ -270,16 +270,16 @@ The three labelled fossils have posterior probability of less than 0.05 for thei
 
 \begin{figure}
 \includegraphics[width=5in]{Figure2.pdf}
-\caption{A plot of the number of non-ambiguous morphological sites for the taxon against the precision of the phylogenetic estimate of fossil age for (a) \Mstrict{} and (b) \Mrelaxed{} (i.e. the precision is 1/variance in the marginal posterior distribution of the age).}
+\caption{\label{fig:precisionVsnumberCharacters} A plot of the number of non-ambiguous morphological characters for the taxon against the precision of the phylogenetic estimate of fossil age for (a) \Mstrict{} and (b) \Mrelaxed{} (i.e. the precision is 1/variance in the marginal posterior distribution of the age).}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=6in]{8_penguins_eNprior/8_fossilDatingHist_younger.pdf}
+\includegraphics[width=12cm]{8_penguins_eNprior/8_fossilDatingHist_younger.pdf}
 \caption{\label{hist8_younger}Marginal posterior density plots for the phylogenetic estimate of fossil age of each of the 18 penguin fossils younger than 30 Myr using \Mrelaxed{}. Red boxes are the superimposed age ranges derived from geological data.}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=6in]{8_penguins_eNprior/8_fossilDatingHist_older.pdf}
+\includegraphics[width=12cm]{8_penguins_eNprior/8_fossilDatingHist_older.pdf}
 \caption{\label{hist8_older}Marginal posterior density plots for the phylogenetic estimate of fossil age of each of the 18 penguin fossils older than 30 Myr using \Mrelaxed{}. Red boxes are the superimposed age ranges derived from geological data.}
 \end{figure}
 
@@ -293,6 +293,7 @@ Figure \ref{fig:compareM1M8} shows four regressions between the two models: (a) 
 Under \Mrelaxed{} all fossils have positive evidence for their geological age range, whereas under \Mstrict{} there are a handful of fossils with negative evidence for the corresponding geological age range. Furthermore, assuming the median geological age is the truth, the variance in the phylogenetic estimation error of the fossil ages is larger under \Mstrict{} than under \Mrelaxed{}.
 %AJD added
 This evidence, along with the previous result that \Mrelaxed{} has a higher marginal likelihood than \Mstrict{} \cite{gavryushkina2015bayesian} suggests that the relaxed model is overall a better fit to the data. 
+Under both models, there is a positive correlation between the precision of the age estimate and the number of non-ambiguous characters coded for the fossil taxon (Figure \ref{fig:precisionVsnumberCharacters}).
 
 \begin{figure}
 \includegraphics{Figure_comparison.pdf}
@@ -309,8 +310,10 @@ Comparison of \Mstrict{} against \Mrelaxed{}. (a) Phylogenetic estimate of fossi
 The canid data set shows remarkably good consistency between stratigraphic age ranges and phylogenetic estimates of fossil ages, even with the simple strict morphological clock model (\Mstrict{}).
 The $R^2 = 0.897$ between the phylogenetic and stratigraphic ages ranges (see Figure \ref{fig:canidMorphVsGeo}). 
 Only 13 out of \ncanidfossils{} fossils (11\%) don't have the mean stratigraphic age in the 95\% credible interval of the phylogenetic estimate of fossil age and there are no extreme outliers. 
-The median error is $1.56$My, which is even more accurate than the penguin data set.
-This data set contains half as many morphological characters as does the penguin data set ($122$ versus $245$) but despite that the individual age estimates have about double the precision (median HPD range = 4.2 My for canids as opposed to 9.6My for penguins). This may well be because the average age of the penguin fossils is considerably.
+The median error is $1.56$My, which is more accurate than the age estimates for the penguin data set.
+This data set contains half as many morphological characters as does the penguin data set ($122$ versus $245$) but despite that the individual age estimates are much more precise (median HPD range = 4.2 My for canids as opposed to 9.6My for penguins). This may well be because the average age of the penguin fossils is considerably larger.
+
+Figure \ref{fig:canidTree} shows a sample from the posterior distribution of the analysis of the canid data set. The tree has three main clades, one clade with extant representatives and two extinct clades ({\it Hesperocyoninae} and {\it Borophaginae}). 
 
 \begin{figure}
 \includegraphics{canids/stratRanges/1c_phyloAgeVsGeoAge.pdf}
