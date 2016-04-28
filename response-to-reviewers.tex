@@ -81,11 +81,19 @@ $$p(tip\_ages) p(node\_ages) L(D|ages,tree)$$
 
 where $p(tip\_ages)$ is the prior density on fossil ages using uniform distributions, $p(node\_ages)$ is the prior on internal node ages given the BD process, and $L(D|ages,tree)$ is the likelihood of the morphological data D, given the ages and the topology calculated using Lewis (2001) formula. However, it seems from the text in p.5 that another likelihood term may be involved. For the stepwise deletion procedure, I am guessing the priors are something like $p(tip\_ages\hat{}) p(node\_ages, tip\_age*)$, where now $tip\_ages\hat{}$ includes all the fossil ages except the one under analysis, which has been moved into the other BD-based prior term $(tip\_age*)$. Please provide general forms for the posteriors and make the connection with equation (1).
 
+\response{We have now provided a general form of the posterior we are sampling under the section on ``Phylogenetic analyses'' and clarified details of the stepwise analysis of the fossils.}
+
 Give some more info on how the prior on the root age is set. Is Tmax the same as the root age? If it is, please state explicitly.
+
+\response{$T$ is not the age of the root, it is the upper limit on the age of the root.}
 
 Please give the prior on the morphological substitution rate, and for relaxed-clock models, the prior on the rate variation parameter (I am assuming you are using log-normal clock, so prior on log-variance).
 
+\response{We have added the prior information for the morphological substitution rate and log standard deviation of the relaxed clock.}
+
 p.8 paragraph starting on line 43. Do you mean that with the particular implementation of marginal likelihood calculation in BEAST you cannot calculate the BF? Or is this a general problem with any implementation of stepping-stones and this model? I am also confused, do sampling times refer to the ages of fossil tips? Aren't these unknown parameters being estimated in the MCMC? Then they would appear as terms in the prior and the likelihood. (?)
+
+\response{The ages of the fossil tips are indeed unknown parameters estimated by the MCMC. Their prior distribution emerges from the marginal distribution of the fossilized birth death prior of tip-timed trees, which can be sampled using MCMC, but which we don't have an analytical solution for.}
 
 p.9 Results section. For both data sets the authors state that the relaxed clock model fits the data better, but I can't find the BF for this. Also, for both data sets, the authors have sections titled "Penguins conform well to a strict morphological clcok" and "Canids conform well to a morphological clock", but these headings seem to contradict the statement in lines 48-49 p.12 of discussion. I am also puzzled as the authors have not quantified here departure from the clock. 
 

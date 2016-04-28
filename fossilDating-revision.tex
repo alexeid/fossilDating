@@ -157,9 +157,9 @@ As with the penguin data set we also performed an analysis for each of the \ncan
 \subsection*{Phylogenetic analyses}
 
 %TSrev
-Given the morphological data $D$ and a stratographic age range for each fossil $a = ((l_1,u_1),(l_2, u_2),\ldots,(l_n,u_n))$ (with $l_i$ being the lower age bound for fossil $i$, and $u_i$ being the upper age bound for fossil $i$), we sample phylogenetic trees connecting the fossils, with each fossil having a specified age within its stratographic age range. The parameters of the fossilized birth-death model are summarized in $\eta$, and the parameters  of the morpholocical evolution model are summarized in $\theta$. More formally, we sample from,
+Given the morphological data $D$ and a stratigraphic age range for each fossil $a = ((l_1,u_1),(l_2, u_2),\ldots,(l_n,u_n))$ (with $l_i$ being the lower age bound for fossil $i$, and $u_i$ being the upper age bound for fossil $i$), we sample phylogenetic trees connecting the fossils, with each fossil having a specified age within its stratigraphic age range. The parameters of the fossilized birth-death model are summarized in $\eta$, and the parameters  of the model for morphological character evolution are summarized in $\theta$. More formally, we sample from,
 $$P[\mathcal{T},\eta, \theta | D, a] = P[D|\mathcal{T},\theta] P[\mathcal{T},a|\eta] P[\eta] P[\theta]/P[D,a],$$
-where $ P[\mathcal{T},a|\eta] =  P[\mathcal{T}|\eta] $ if each fossil age is within its stratographic age range specified in $a$, and $ P[\mathcal{T},a|\eta] =0$ else.
+where $ P[\mathcal{T},a|\eta] =  P[\mathcal{T}|\eta] $ if each fossil age is within its stratigraphic age range specified in $a$, and $ P[\mathcal{T},a|\eta] =0$ else.
 When we replaced the focal  palaeontological age constraints of fossil $i$  by 
 the fossilized birth-death process prior, we simply set $l_i=0$ and $u_i=T$.
 
@@ -169,7 +169,7 @@ The fossilized birth-death model is defined by the following parameters $\eta=(T
 Following \cite{gavryushkina2015bayesian}, we apply the Lewis Mk model 
 \cite{Lewis2001} for discrete morphological character evolution, which assumes a character can take $k$ states and the transition rates from one state to another are equal for all states. As did \cite{gavryushkina2015bayesian}, we treat 34 characters that were ordered in \cite{ksepka2012} as unordered. 
 
-We applied two phylogenetic models to the penguin data set: \Mstrict{} and \Mrelaxed{}. \Mstrict{} assumed a strict morphological clock and no gamma-distributed rate heterogeneity among sites. Model \Mrelaxed{} partitioned the alignment into six partitions, with the $i$'th partition containing all characters that had $k=i+1$ character states across the sampled taxa.
+We applied two phylogenetic models to the penguin data set: \Mstrict{} and \Mrelaxed{}. \Mstrict{} assumed a strict morphological clock ($\mu$) and no gamma-distributed rate heterogeneity among sites. Model \Mrelaxed{} partitioned the alignment into six partitions, with the $i$'th partition containing all characters that had $k=i+1$ character states across the sampled taxa. Model \Mrelaxed{} also uses a uncorrelated lognormally-distributed relaxed molecular clock \cite{drummond2006} with parameters $\mu$ and $S$ for the mean rate and log standard deviation of the rates. We followed \cite{gavryushkina2015bayesian} in having a broad LogNormal(-5.5, 2) prior on $\mu$ for all analyses and a Gamma($\alpha=0.5396$, $\beta=0.3819$) prior on $S$ for the relaxed clock analyses.
 
 \subsection*{Computing the phylogenetic evidence for an age range}
 
