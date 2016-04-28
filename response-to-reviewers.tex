@@ -75,17 +75,33 @@ Here you can describe the analysis steps that are common to both datasets. Pleas
 \respquote{Following \cite{gavryushkina2015bayesian}, we apply the Lewis Mk model \cite{Lewis2001} for discrete morphological character evolution, which assumes a character can take $k$ states and the transition rates from one state to another are equal for all states. As did \cite{gavryushkina2015bayesian}, we treat 34 characters that were ordered in \cite{ksepka2012} as unordered. 
 We applied two phylogenetic models to the penguin data set: Mk-1 and Mk-8. Mk-1 assumed a strict morphological clock and no gamma-distributed rate heterogeneity among sites. Model Mk-8 partitioned the alignment into six partitions, with the $i$'th partition containing all characters that had $k=i+1$ character states across the sampled taxa.}
 
-Provide a better description of the stepwise analysis of fossil ages. My impression (but I am not totally sure) is that in one analysis, fossil ages are unknown parameters and have uniform prior distributions set according to the stratigraphic bounds. Then, in stepwise analysis, each fossil age is in turn represented not by the stratigraphic uniform distribution, but by a prior density derived from the fossilised birth-death process. Give some details please. I was trying to work out the general form of the posterior distribution, I was guessing something like:
+Provide a better description of the stepwise analysis of fossil ages. 
+
+\response{We have clarified details of the stepwise analysis of the fossils in the new ``Phylogenetic analyses'' section.}
+
+My impression (but I am not totally sure) is that in one analysis, fossil ages are unknown parameters and have uniform prior distributions set according to the stratigraphic bounds. 
+
+\response{No, they have prior distributions set according to the fossilized birth-death prior, conditioned on the stratigraphic bounds. This is detailed in the new ``Phylogenetic analyses'' section. }
+
+Then, in stepwise analysis, each fossil age is in turn represented not by the stratigraphic uniform distribution, but by a prior density derived from the fossilised birth-death process.
+
+\response{No, each fossil is in turn analyzed using the prior density derived from the fossilised birth-death process without conditioning on its stratigraphic bounds, while the remaining fossils are conditioned on their stratigraphic bounds. This is detailed in the new ``Phylogenetic analyses'' section. }
+
+ Give some details please.
+ 
+ \response{We have added the opening three paragraphs in the new ``Phylogenetic analyses'' section that give the details.}
+ 
+  I was trying to work out the general form of the posterior distribution, I was guessing something like:
 
 $$p(tip\_ages) p(node\_ages) L(D|ages,tree)$$
 
 where $p(tip\_ages)$ is the prior density on fossil ages using uniform distributions, $p(node\_ages)$ is the prior on internal node ages given the BD process, and $L(D|ages,tree)$ is the likelihood of the morphological data D, given the ages and the topology calculated using Lewis (2001) formula. However, it seems from the text in p.5 that another likelihood term may be involved. For the stepwise deletion procedure, I am guessing the priors are something like $p(tip\_ages\hat{}) p(node\_ages, tip\_age*)$, where now $tip\_ages\hat{}$ includes all the fossil ages except the one under analysis, which has been moved into the other BD-based prior term $(tip\_age*)$. Please provide general forms for the posteriors and make the connection with equation (1).
 
-\response{We have now provided a general form of the posterior we are sampling under the section on ``Phylogenetic analyses'' and clarified details of the stepwise analysis of the fossils.}
+\response{We have now provided a general form of the posterior we are sampling under the new section on ``Phylogenetic analyses''. }
 
 Give some more info on how the prior on the root age is set. Is Tmax the same as the root age? If it is, please state explicitly.
 
-\response{$T$ is not the age of the root, it is the upper limit on the age of the root.}
+\response{$T$ is not the age of the root, it is the origin of the fossilized birth-death process, and is older than the root.}
 
 Please give the prior on the morphological substitution rate, and for relaxed-clock models, the prior on the rate variation parameter (I am assuming you are using log-normal clock, so prior on log-variance).
 
@@ -95,9 +111,33 @@ p.8 paragraph starting on line 43. Do you mean that with the particular implemen
 
 \response{The ages of the fossil tips are indeed unknown parameters estimated by the MCMC. Their prior distribution emerges from the marginal distribution of the fossilized birth death prior of tip-timed trees, which can be sampled using MCMC, but which we don't have an analytical solution for.}
 
-p.9 Results section. For both data sets the authors state that the relaxed clock model fits the data better, but I can't find the BF for this. Also, for both data sets, the authors have sections titled "Penguins conform well to a strict morphological clcok" and "Canids conform well to a morphological clock", but these headings seem to contradict the statement in lines 48-49 p.12 of discussion. I am also puzzled as the authors have not quantified here departure from the clock. 
+p.9 Results section. For both data sets the authors state that the relaxed clock model fits the data better, but I can't find the BF for this. 
+
+\response{We didn't provide BF. For the penguin data set the BF was provided in \cite{gavryushkina2015bayesian}.}
+
+Also, for both data sets, the authors have sections titled "Penguins conform well to a strict morphological clcok" and "Canids conform well to a morphological clock", but these headings seem to contradict the statement in lines 48-49 p.12 of discussion. I am also puzzled as the authors have not quantified here departure from the clock. 
+
+\response{We mean that the data sets conform to a relaxed morphological clock, not a strict morphological clock. A relaxed morphological clock is still a morphological clock, just with greater variance.}
 
 Please provide a table with prior and posterior mean estimates of the age of the root for both data sets under all models used, and 95\% CI. Similarly, in the same table provide prior and posterior estimates of mean morphological substitution rate for all data sets and models (relaxed and strict clock). For the relaxed-clocks, provide prior and posterior estimates of rate-variation parameter. Then, when the authors discuss whether the data fit or not the strict clock, they should refer to the estimates in the table.
+
+\response{
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+  \hline
+Parameter & Penguins Mk-1 & Penguins Mk-8 & Canids Mk-1 \\ 
+  \hline
+$t_{MRCA}$ & & & \\
+morph. clock rate & & & \\
+log std. dev. rate & & & \\
+\hline
+  \end{tabular}
+\caption{Summary of key parameters for the three main analyses.} 
+\label{fossilTable1}
+\end{table}
+}
+
 
 Provide axis labels and axis titles in Figures 2, 6 and 7.
 
