@@ -169,7 +169,7 @@ As with the penguin data set we also performed an analysis for each of the \ncan
 \subsection*{Phylogenetic analyses}
 
 %TSrev
-Given the morphological data $D$ and a stratigraphic age range for each fossil $a = ((l_1,u_1),(l_2, u_2),\ldots,(l_n,u_n))$ (with $l_i$ being the lower age bound for fossil $i$, and $u_i$ being the upper age bound for fossil $i$), we sample phylogenetic trees connecting the fossils, with each fossil having a specified age within its stratigraphic age range. The parameters of the fossilized birth-death model are summarized in $\eta$, and the parameters  of the model for morphological character evolution are summarized in $\theta$. More formally, we sample from,
+Given the morphological data $D$ and a stratigraphic age range for each fossil $a = ((l_1,u_1),(l_2, u_2),\ldots,(l_n,u_n))$ (with $l_i$ being the lower age bound for fossil $i$, and $u_i$ being the upper age bound for fossil $i$), we sample phylogenetic trees connecting the fossils, with each fossil having a specified age within its stratigraphic age range (i.e. the phylogenetic estimate of fossil age). The parameters of the fossilized birth-death model are summarized in $\eta$, and the parameters  of the model for morphological character evolution are summarized in $\theta$. More formally, we sample from,
 $$P[\mathcal{T},\eta, \theta | D, a] = P[D|\mathcal{T},\theta] P[\mathcal{T},a|\eta] P[\eta] P[\theta]/P[D,a],$$
 where $ P[\mathcal{T},a|\eta] =  P[\mathcal{T}|\eta] $ if each fossil age is within its stratigraphic age range specified in $a$, and $ P[\mathcal{T},a|\eta] =0$ else.
 When we replaced the focal  palaeontological age constraints of fossil $i$  by 
