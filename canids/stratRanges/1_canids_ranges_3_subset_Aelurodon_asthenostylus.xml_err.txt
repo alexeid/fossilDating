@@ -1,0 +1,6 @@
+File: 1_canids_ranges_3_subset_Aelurodon_asthenostylus.xml seed: 1460502858275 threads: 1
+Element taxon found with idref='Aelurodon_asthenostylus'. All other attributes are ignored.
+
+Failed to load BEAGLE library: no hmsbeagle-jni in java.library.path
+Only 115 out of 116 taxa found in ESS file. The remainder will be set to the mean weight and ESS.
+End likelihood: -3912.4312338322316
