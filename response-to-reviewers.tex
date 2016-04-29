@@ -122,44 +122,53 @@ Also, for both data sets, the authors have sections titled "Penguins conform wel
 Please provide a table with prior and posterior mean estimates of the age of the root for both data sets under all models used, and 95\% CI. Similarly, in the same table provide prior and posterior estimates of mean morphological substitution rate for all data sets and models (relaxed and strict clock). For the relaxed-clocks, provide prior and posterior estimates of rate-variation parameter. Then, when the authors discuss whether the data fit or not the strict clock, they should refer to the estimates in the table.
 
 \response{
-\begin{table}[ht]
-\centering
-\begin{tabular}{rrrr}
-  \hline
-Parameter & Penguins Mk-1 & Penguins Mk-8 & Canids Mk-1 \\ 
-  \hline
-$t_{MRCA}$ & & & \\
-morph. clock rate & & & \\
-log std. dev. rate & & & \\
-\hline
-  \end{tabular}
-\caption{Summary of key parameters for the three main analyses.} 
-\label{fossilTable1}
-\end{table}
+We have added a table with the posterior estimates for root age and evolutionary rates and variation.
 }
 
 
 Provide axis labels and axis titles in Figures 2, 6 and 7.
 
+\response{Corrected.}
+
 I think Figures 4 and 5 should be merged into one figure.
+
+\response{We have left these as two separate figures.}
 
 Figure 3 and 6: Mention the dataset in the legend (canids? penguins?).
 
+\response{Corrected. Both figures refer to the penguin analyses.}
+
 Figure 6, panels (b), (c) and (d) seem empty.
+
+\response{We believe this was a problem created by the manuscript submission process. The panels are not empty in the original PDF that was submitted.}
 
 Figure 7: Add dots indicating posterior means.
 
+\response{This figure was completely re-generated as we added stratigraphic ranges to the canid analysis.}
+
 Figure 8: Please replace this with the consensus tree and provide 95\% CIs of internal node ages.
+
+\response{We are happy with a representative tree from the posterior distribution. It is not trivial to produce a consensus tree from a sampled-ancestor analysis, because the posterior has random dimension, due to a variable number of sampled ancestors. This is an open problem that must be addressed in a later publication.} 
 
 I could not find references to Figures 3 and 8 in the text.
 
+\response{Corrected.}
+
 In the results section, please provide some quantification of the uncertainty in time estimates. For example,  the authors could provide estimates of the precision as (95\% CI width)/(posterior mean of fossil age) and express this as a percentage. Roughly, looking at figure 7, it seems that for some nodes the 95\% CI limits would range from anywhere between 50\% to 150\% of the point stratigraphic estimate. Clearly, uncertainty here is very, very large. 
+
+\response{We feel that figures 2, 3, 4, 5 and 7, which together plot precision graphically in a number of ways, are more than adequate to clearly show the level of precision in the estimates.}
 
 Considering the point above (and the large CIs observed in figures 2 and 7), it is clear that estimates are not precise (note, I refer to accuracy as bias of estimates and precision as 1/variance of estimates). So, please remove any references in the ms about having obtained precise estimates. Estimates do seem to be accurate, as the posterior means are close to stratigraphic mid-points, but the authors must stress, in the abstract, results and discussion, that uncertainties are large.
 
+\response{There are no statements in the revised manuscript that the estimates are precise. We state in the abstract that precision is low, and elsewhere we plot the precision and discuss that fact that estimates are more precise in the canid analysis than the penguin analysis.}
+
 As I pointed out at the beginning of this review, many papers report ancient estimates of node ages using morphological data. How do the posterior age of the root for canids and penguins obtained in this paper compare with estimates from traditional methods? Please mention briefly in discussion. For example, some of the previous estimates could be added to the table I suggested.
 
+\response{The age of extant penguins in the subject of \cite{gavryushkina2015bayesian}, so we don't discuss it here, however, the estimate obtained is much younger than previous published estimates using node-dating, contrary to the reviewer's suggestion that morphological data tends to produce ancient estimates.}
+
 I think the insistence by the authors to use the term "morhpological clock" will cause controversy. Please provide some evidence that departure of the clock is small (for example, posterior estimates of the rate variation parameter are, say, close to zero). Otherwise I suggest removing the term.
+
+\response{The estimated log sd of the evolutionary rate is 0.69 in the penguin Mk-8 analysis, which is not much different to estimate of the same parameter for relaxed molecular clocks in, for example, influenza.}
 
 As a side note I would like to point out that there is an extensive literature on morphological rates of evolution, indeed, before molecular data became available in the sixties, most work on evolution was effectively work on phenotypic (morphological) evolution. One of the reasons the molecular clock was so controversial when it was initially proposed, was precisely because early workers were skeptical that molecular rates should be constant when morphological rates were so variable. For example, in his 1985 book on the neutral theory, Kimura has a whole chapter contrasting morphological vs. molecular rates (I strongly encourage the authors to read this), and he provides lots of citation to early works (for example, Haldane's) on morphological rates. Michael Lynch has some theoretical work where he shows that under neutral mutation and random drift, morphological clocks can be achieved (can't remember the reference) and he gives examples in humans. It may be worth looking this up if the authors want to add a balance discussion of this in their ms. There are also lots of papers throughout the 80s and 90s on morphological rates. One thing that surprises me with the new morphological papers is that a lot of this literature has been completely ignored. I encourage the authors to read and cite some of these works.
 
@@ -168,7 +177,11 @@ As a side note I would like to point out that there is an extensive literature o
 \respquote{In order to use discrete morphological comparative data to estimate fossil ages, it is necessary to assume a (relaxed) morphological clock. There is a long history of the study of the evolutionary rates of phenotypic characters \cite{Simpson1944,Haldane1949,Simpson1953,Gingerich1983,Gingerich1993}, going at least back to Darwin's Origin of Species \cite{Darwin1859}. Darwin noted that {\it ``Species of different genera and classes have not changed at the same rate''} and illustrated this point with examples of ``living fossils'' such as the Silurian mollusc {\it Lingula} \cite{Darwin1859}. However in the same chapter Darwin goes on to say {\it ``In members of the same class the average amount of change, during long and equal periods of time, may, perhaps, be nearly the same''}. Nevertheless, phenotypic evolution has more typically been characterized as not evolving in a clock-like manner, especially when compared to molecular evolution \cite{Kimura1983}. While there are many examples of extremely slow and fast rates of phenotypic evolution in the literature, we would argue that this is also true for molecular rates. We are not aware of a comprehensive and systematic comparison of variation in evolutionary rates at the phenotypic and molecular levels. Regardless, for the data sets that we analyze, we adopt the point of view that variation in the rate of phenotypic evolution across the phylogeny can be accommodated with a relaxed morphological clock.
 }
 
-I am troubled about the sensitivity of the BF to the prior in this case. Can the authors give some clear, easy to follow, recommendations for biologists that may wish to use the method in their own works? Another issue is that when the model is changed, the BF change. The authors should point out to the reader that rejecting the stratigraphic estimate of a fossil with BF does not prove that the stratigraphic age is wrong. If the morphological or clock model are misspecified (i.e. they are  bad description of the data), then I would expect the BF to fail. For example, if a lineage has shown explosively fast rates of evolution, then I would expect the Bayesian phylogenetic estimates of the fossil age to contradict the stratigraphic range if a strict clock is imposed.
+I am troubled about the sensitivity of the BF to the prior in this case. Can the authors give some clear, easy to follow, recommendations for biologists that may wish to use the method in their own works? 
+
+\response{Unfortunately we can't. This issue will need further attention in future work.}
+
+Another issue is that when the model is changed, the BF change. The authors should point out to the reader that rejecting the stratigraphic estimate of a fossil with BF does not prove that the stratigraphic age is wrong. If the morphological or clock model are misspecified (i.e. they are  bad description of the data), then I would expect the BF to fail. For example, if a lineage has shown explosively fast rates of evolution, then I would expect the Bayesian phylogenetic estimates of the fossil age to contradict the stratigraphic range if a strict clock is imposed.
 
 Best wishes,
 Mario dos Reis.

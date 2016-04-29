@@ -295,7 +295,7 @@ The three labelled fossils have posterior probability of less than 0.05 for thei
 
 \begin{figure}
 \includegraphics[width=5in]{Figure2.pdf}
-\caption{\label{fig:precisionVsnumberCharacters} A plot of the number of non-ambiguous morphological characters for the taxon against the precision of the phylogenetic estimate of fossil age for (a) \Mstrict{} and (b) \Mrelaxed{} (i.e. the precision is 1/variance in the marginal posterior distribution of the age).}
+\caption{\label{fig:precisionVsnumberCharacters} A plot of the number of non-ambiguous morphological characters for the penguin taxon against the precision of the phylogenetic estimate of corresponding fossil age for (a) \Mstrict{} and (b) \Mrelaxed{} (i.e. the precision is 1/variance in the marginal posterior distribution of the age).}
 \end{figure}
 
 \begin{figure}
@@ -307,8 +307,6 @@ The three labelled fossils have posterior probability of less than 0.05 for thei
 \includegraphics[width=12cm]{8_penguins_eNprior/8_fossilDatingHist_older.pdf}
 \caption{\label{hist8_older}Marginal posterior density plots for the phylogenetic estimate of fossil age of each of the 18 penguin fossils older than 30 Myr using \Mrelaxed{}. Red boxes are the superimposed age ranges derived from geological data.}
 \end{figure}
-
-
 
 \subsection*{Comparison of simple and complex model results}
 
@@ -323,7 +321,7 @@ Under both models, there is a positive correlation between the precision of the 
 \begin{figure}
 \includegraphics{Figure_comparison.pdf}
 \caption{\label{fig:compareM1M8}
-Comparison of \Mstrict{} against \Mrelaxed{}. (a) Phylogenetic estimate of fossil age of \Mstrict{} against \Mrelaxed{} with $x=y$ line (blue), (b) Regression of error in phylogenetic estimate of fossil age of \Mstrict{} against \Mrelaxed{}, (c) Regression of posterior probability of palaeontological range of \Mstrict{} against \Mrelaxed{}, (d) Regression of Bayes factor (BF) for palaeontological range of \Mstrict{} against \Mrelaxed{}.}
+Comparison of \Mstrict{} against \Mrelaxed{} analyses for the penguin data set. (a) Phylogenetic estimate of fossil age of \Mstrict{} against \Mrelaxed{} with $x=y$ line (blue), (b) Regression of error in phylogenetic estimate of fossil age of \Mstrict{} against \Mrelaxed{}, (c) Regression of posterior probability of palaeontological range of \Mstrict{} against \Mrelaxed{}, (d) Regression of Bayes factor (BF) for palaeontological range of \Mstrict{} against \Mrelaxed{}.}
 \end{figure}
 
 \input{1_penguins_eNprior/1_summaryTable.tex}
@@ -339,6 +337,8 @@ The median error is $1.56$My, which is more accurate than the age estimates for 
 This data set contains half as many morphological characters as does the penguin data set ($122$ versus $245$) but despite that the individual age estimates are much more precise (median HPD range = 4.2 My for canids as opposed to 9.6My for penguins). This may well be because the average age of the penguin fossils is considerably larger.
 
 Figure \ref{fig:canidTree} shows a sample from the posterior distribution of the analysis of the canid data set. The tree has three main clades, one clade with extant representatives and two extinct clades ({\it Hesperocyoninae} and {\it Borophaginae}). 
+
+Table \ref{estimatesTable} shows that the rate of morphological evolution in canids is faster than that estimated in the penguins, however this could be a simple reflection of the shorter geological time scale (and shorter average branch lengths) over which the rate has been estimated \cite{Gingerich1993}.
 
 \begin{figure}
 \includegraphics{canids/stratRanges/1c_phyloAgeVsGeoAge.pdf}
@@ -357,13 +357,30 @@ showing three main clades, one clade with extant representatives and two extinct
 %}%
 \end{figure}
 
+\begin{table}[ht]
+\centering
+\begin{tabular}{c|rrr}
+  \hline
+Analysis & $t_{MRCA}$ & morph. rate  & log sd rate (S) \\ 
+ & (Myr) & ($\times 10^{-2}$/Myr) & \\
+  \hline
+Penguins Mk-1 & 61.7 [60.5, 63.8] & 1.80 [1.55, 2.07] & -  \\
+Penguins Mk-8 & 61.4 [60.5, 63.1] & 1.29 [0.76, 1.86] & 0.69 [0.41, 0.99] \\
+  \hline
+Canids Mk-1 &  36.8 [35.4, 38.5] & 2.83 [2.47, 3.19] & - \\
+\hline
+  \end{tabular}
+\caption{Summary of key parameters for the three main analyses. Note: the $t_{MRCA}$ is the time of the most recent common ancestor of all taxa, including both extinct and extant species. The 95\% HPD interval for each estimate is in square brackets. The morphological clock rate is given in percent change per million years.} 
+\label{estimatesTable}
+\end{table}
+
 \section*{Discussion}
 
 In this paper we have demonstrated that even a small number of morphological characters (some of the fossils had as few as 7 morphological traits coded) can be used in the context of a rich fossil reference data set, to provide an accurate age of the fossil based on a phylogenetic model. 
 
 %AJD
 We found that although a strict morphological clock does a surprisingly good job of estimating fossil ages, there is evidence that phylogenetic estimation of penguin fossil ages is improved by a model that includes a variation in rates of morphological evolution among lineages. 
-However, in the penguin data set the variation in evolutionary rates was not extreme and the log standard deviation of the relaxed morphological clock was comparable to values obtained for molecular clocks.   
+However, in the penguin data set the variation in evolutionary rates was not too extreme and the estimated log standard deviation of the relaxed morphological clock ($S = 0.69$; refer to Table \ref{estimatesTable}) is comparable to values obtained for molecular clocks.   
 %%%
 
 We found that fossil estimates were both slightly more accurate and more precise on average in the canid data set. 
@@ -397,7 +414,7 @@ All BEAST2 xml input files and R analysis scripts required to reproduce the resu
 \section*{Acknowledgements}
 
 The authors would like to thank Daniel Ksepka and Graeme T. Lloyd for insightful comments and suggestions on early drafts of this manuscript. %\alexei{%
-We are also very grateful to Graham Slater for comments on the phylogenetic analysis of canids and for providing stratigraphic age ranges for the canid fossils. We thank Mario do Reis and one anonymous reviewer for helpful comments during revision.
+We are also very grateful to Graham Slater for comments on the phylogenetic analysis of canids and for providing stratigraphic age ranges for the canid fossils. We thank Mario do Reis and one anonymous reviewer for very helpful comments during revision.
 %}%
 AJD and TS were partially funded by Marsden grant UOA1324 from the Royal Society of New Zealand (\url{http://www.royalsociety.org.nz/programme?s/funds/marsden/awards/2013-awards/}). AJD was funded by a Rutherford Discovery Fellowship from the Royal Society of New Zealand (\url{http://www.royalsociety.org.nz}).  TS was supported in part by the European Research Council under the 7th Framework Programme of the European Commission (PhyPD; grant agreement 335529). AJD and TS also thank ETH Z\"{u}rich for funding.
 
