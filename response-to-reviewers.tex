@@ -109,7 +109,10 @@ Please give the prior on the morphological substitution rate, and for relaxed-cl
 
 p.8 paragraph starting on line 43. Do you mean that with the particular implementation of marginal likelihood calculation in BEAST you cannot calculate the BF? Or is this a general problem with any implementation of stepping-stones and this model? 
 
-\response{TODO - thinking about this: why can we not use stepping stone? We could have calulated the marginal likelihood given the focal fossil is in the paleontological range, and the marginal likelihood given the fossil is outside the range, no?}
+\response{One can calculate BF either in the way described here or via stepping stone approaches. Stepping stone approaches have been used for the coalescent, where the number of tips in a tree is fixed. Here, the number of trees is treated as part of the data, and while a stepping stone approach may be still appropriate, we did not test it for this scenario. This point is highlighted in ``We want to note that the stepping stone sampling approach \cite{Xie2011}
+ to calculate Bayes factors would not have been directly applicable in our case:  In stepping stone sampling the $D_\mathcal{T}$ is treated as part of the model, not part of the data. However, using a birth-death model, the sampling times are part of the data. The approach is valid when choosing a  coalescent tree prior, as in that case sampling times are conditioned upon (and thus can be seen as part of the model) rather than being modelled (and thus are a realisation of the model which means they are data). It is not clear if the stepping stone approach can be directly applied for models with number of tips being part of the data.
+In general, even if stepping stone approaches are appropriate, we recommend inspection of $P(H_1|M)$ to ensure that the prior on the hypothesis to be tested is sensible. Such an investigation reveals if the cause of a high (or low) Bayes factor is due to the prior or due to signal in the data.
+'' }
 
 I am also confused, do sampling times refer to the ages of fossil tips? Aren't these unknown parameters being estimated in the MCMC? Then they would appear as terms in the prior and the likelihood. (?)
 
@@ -176,9 +179,8 @@ I think the insistence by the authors to use the term "morhpological clock" will
 
 As a side note I would like to point out that there is an extensive literature on morphological rates of evolution, indeed, before molecular data became available in the sixties, most work on evolution was effectively work on phenotypic (morphological) evolution. One of the reasons the molecular clock was so controversial when it was initially proposed, was precisely because early workers were skeptical that molecular rates should be constant when morphological rates were so variable. For example, in his 1985 book on the neutral theory, Kimura has a whole chapter contrasting morphological vs. molecular rates (I strongly encourage the authors to read this), and he provides lots of citation to early works (for example, Haldane's) on morphological rates. Michael Lynch has some theoretical work where he shows that under neutral mutation and random drift, morphological clocks can be achieved (can't remember the reference) and he gives examples in humans. It may be worth looking this up if the authors want to add a balance discussion of this in their ms. There are also lots of papers throughout the 80s and 90s on morphological rates. One thing that surprises me with the new morphological papers is that a lot of this literature has been completely ignored. I encourage the authors to read and cite some of these works.
 
-\response{We have indeed read some of this early literature and we thank the reviewer's encouragement to reference this earlier work on rates of phenotypic evolution. We have added a section entitled ``Rates of evolution and relaxed morphological clocks'':}
+\response{We have indeed read some of this early literature and we thank the reviewer's encouragement to reference this earlier work on rates of phenotypic evolution. We have added a section in the introduction.}
 
-%TODO from here
 
 \respquote{In order to use discrete morphological comparative data to estimate fossil ages, it is necessary to assume a (relaxed) morphological clock. There is a long history of the study of the evolutionary rates of phenotypic characters \cite{Simpson1944,Haldane1949,Simpson1953,Gingerich1983,Gingerich1993}, going at least back to Darwin's Origin of Species \cite{Darwin1859}. Darwin noted that {\it ``Species of different genera and classes have not changed at the same rate''} and illustrated this point with examples of ``living fossils'' such as the Silurian mollusc {\it Lingula} \cite{Darwin1859}. However in the same chapter Darwin goes on to say {\it ``In members of the same class the average amount of change, during long and equal periods of time, may, perhaps, be nearly the same''}. Nevertheless, phenotypic evolution has more typically been characterized as not evolving in a clock-like manner, especially when compared to molecular evolution \cite{Kimura1983}. While there are many examples of extremely slow and fast rates of phenotypic evolution in the literature, we would argue that this is also true for molecular rates. We are not aware of a comprehensive and systematic comparison of variation in evolutionary rates at the phenotypic and molecular levels. Regardless, for the data sets that we analyze, we adopt the point of view that variation in the rate of phenotypic evolution across the phylogeny can be accommodated with a relaxed morphological clock.
 }
@@ -189,7 +191,7 @@ I am troubled about the sensitivity of the BF to the prior in this case. Can the
 
 Another issue is that when the model is changed, the BF change. The authors should point out to the reader that rejecting the stratigraphic estimate of a fossil with BF does not prove that the stratigraphic age is wrong. If the morphological or clock model are misspecified (i.e. they are  bad description of the data), then I would expect the BF to fail. For example, if a lineage has shown explosively fast rates of evolution, then I would expect the Bayesian phylogenetic estimates of the fossil age to contradict the stratigraphic range if a strict clock is imposed.
 
-\response{*** TANJA - can you try to address this one?}
+\response{We added: A BF $>>$ 1 indicates strong support for $H_1$, given the model $M$ is appropriate for the considered data.}
 
 Best wishes,
 Mario dos Reis.
@@ -209,6 +211,9 @@ Perhaps another reason for the discrepancy between phylogenetic and geological a
 One concern I have with this method, which perhaps doesn't apply to these datasets, is how it handles situations where there is rampant morphological convergence across species in the dataset. For example, previous analyses have shown that large morphological datasets group together mammals with convergent ecotypes (e.g., ant-eating, tree-dwelling, hoofed; Springer et a. 2013 Science) and squamates without legs (e.g., snakes, amphisbaenians, anniellids; Gauthier et al. 2012 Bulletin of the Peabody Museum of Natural History), respectively, in sharp contrast to both molecular data and, frequently, the fossil record. Presumably it should lead to highly inaccurate phylogenetic age estimates, though this might also be a potential application of the method (i.e., highly inaccurate dates may be suggestive of homoplasy appropriately grouping taxa together).
 
 This raises a further question of whether this method can be used in conjunction with molecular data to correct for morphological homoplasy. Beyond this, perhaps one could test how the molecular dataset can influence the phylogenetic age of these fossils, and could provide further insights regarding whether divergence times derived from molecular clocks are accurate. I'm not suggesting more analyses, but perhaps further discussion of these issues.
+
+\response{We added a paragraph on the appropriateness of a morphological clock: paragraph 1 in ``Rates of evolution and relaxed morphological clocks
+''}
 
 Specific comments:
 Inconsistent with British spelling of palaeontology (=paleontology) and palaentological in text/figures/legends

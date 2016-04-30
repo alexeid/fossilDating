@@ -93,27 +93,27 @@ It may be less widely appreciated by molecular evolutionary biologists that the 
 %This includes applying phylogenetic reasoning to questions of biogeography, character evolution, and the completeness of the fossil record.
 Here we extend this tradition of applying phylogenetic reasoning to the fossil record by focusing on the question of what phylogenetic inference techniques can tell us about the age of a fossil, based solely on its morphological characteristics and through them, its phylogenetic and temporal relationships with a set of reference fossils.
 
-%TS: I suggest to remove the following heading
-%\subsection*{Phylogenetic tip-dating}
+
 
 The phylogenetic estimation of the age of a taxon based on its molecular sequence has been previously described \cite{drummond2002computational,shapiro2011bayesian} and applied to both ancient subfossil remains and rapidly evolving viral taxa. 
 For example, this technique has been successfully employed to estimate the age of human subfossil remains based on an ancient mitochondrial genome sequence \cite{meyer2014mitochondrial}. 
 The same technique has also been used to estimate the age of viral samples based on molecular sequence data (e.g. \cite{gray2013evolutionary}).
 
 We extend this approach into the realm of discrete morphological evolution by presenting a statistical model of evolution that generates an expectation on the distribution of fossils, their morphological characters. 
-This model has been previously presented in the context of divergence time dating \cite{gavr2014,gavryushkina2015bayesian}. 
+This model has been previously presented in the context of divergence time dating \cite{gavr2014,gavryushkina2015bayesian} and \cite{zhang2016}. 
 
-It is distinct from alternative divergence time dating approaches in that it provides an explicit treatment of the temporal information contained in fossil remains, whether or not related molecular sequence data is available. 
+%TSrev I moved this section up
+%AJD revision
+%\subsection*{Rates of evolution and relaxed morphological clocks}
+In order to use discrete morphological comparative data to estimate fossil ages, it is necessary to assume a (relaxed) morphological clock. There is a long history of the study of the evolutionary rates of phenotypic characters \cite{Simpson1944,Haldane1949,Simpson1953,Gingerich1983,Gingerich1993}, going at least back to Darwin's Origin of Species \cite{Darwin1859}. Darwin noted that {\it ``Species of different genera and classes have not changed at the same rate''} and illustrated this point with examples of ``living fossils'' such as the Silurian mollusc {\it Lingula} \cite{Darwin1859}. However in the same chapter Darwin goes on to say {\it ``In members of the same class the average amount of change, during long and equal periods of time, may, perhaps, be nearly the same''}. Nevertheless, phenotypic evolution has more typically been characterized as not evolving in a clock-like manner, especially when compared to molecular evolution \cite{Kimura1983}. While there are many examples of extremely slow and fast rates of phenotypic evolution in the literature, we would argue that this is also true for molecular rates. We are not aware of a comprehensive and systematic comparison of variation in evolutionary rates at the phenotypic and molecular levels. Regardless, for the data sets that we analyze, we adopt the point of view that variation in the rate of phenotypic evolution across the phylogeny can be accommodated with a relaxed morphological clock.
+
+Our approach is distinct from alternative divergence time dating approaches in that it provides an explicit treatment of the temporal information contained in fossil remains, whether or not related molecular sequence data is available. 
 This leads to an estimate of the age of the most recent common ancestor of a group of fossil and extant taxa. A key difference between this approach and earlier approaches to tip-calibrated ``total-evidence'' dating \cite{Ronq2012} is the admission of a probability that each fossil taxon may represent a sampled ancestor of one or more taxa  in the tree \cite{gavr2014}.
 We exploit this framework to attempt the estimation of the age of individual fossils based solely on morphological data and their phylogenetic affinities to related taxa of known age. 
 The method is applied to two rich and well-characterized morphological data sets: (i) 
 %TS how many extant penguins?
 19 extant penguins and 36 fossil relatives \cite{ksepka2010,ksepka2012}, (ii) a sample of nine extant canids and \ncanidfossils{} fossil relatives \cite{Slater2015}.
 
-%AJD revision
-\subsection*{Rates of evolution and relaxed morphological clocks}
-
-In order to use discrete morphological comparative data to estimate fossil ages, it is necessary to assume a (relaxed) morphological clock. There is a long history of the study of the evolutionary rates of phenotypic characters \cite{Simpson1944,Haldane1949,Simpson1953,Gingerich1983,Gingerich1993}, going at least back to Darwin's Origin of Species \cite{Darwin1859}. Darwin noted that {\it ``Species of different genera and classes have not changed at the same rate''} and illustrated this point with examples of ``living fossils'' such as the Silurian mollusc {\it Lingula} \cite{Darwin1859}. However in the same chapter Darwin goes on to say {\it ``In members of the same class the average amount of change, during long and equal periods of time, may, perhaps, be nearly the same''}. Nevertheless, phenotypic evolution has more typically been characterized as not evolving in a clock-like manner, especially when compared to molecular evolution \cite{Kimura1983}. While there are many examples of extremely slow and fast rates of phenotypic evolution in the literature, we would argue that this is also true for molecular rates. We are not aware of a comprehensive and systematic comparison of variation in evolutionary rates at the phenotypic and molecular levels. Regardless, for the data sets that we analyze, we adopt the point of view that variation in the rate of phenotypic evolution across the phylogeny can be accommodated with a relaxed morphological clock.
 
 %http://earth.geology.yale.edu/~ajs/1993/11.1993.17Gingerich.pdf
 %https://books.google.co.nz/books?id=olIoSumPevYC&printsec=frontcover#v=onepage&q&f=false
@@ -122,13 +122,13 @@ In order to use discrete morphological comparative data to estimate fossil ages,
 
 
 \section*{Methods}
-
-Gavryushkina {\it et al} \cite{gavryushkina2015bayesian} described a ``total-evidence'' approach \cite[implemented in BEAST2;][]{Beast2} for phylogenetic estimation of time-trees that employs both fossil and molecular sequence data as equal partners under the rule of probability. 
-We extend their work further by investigating the consistency between the phylogenetic estimate of the age of a fossil and the corresponding fossil age range determined by geological and biostratigraphic evidence. 
+%TSrev
+Gavryushkina {\it et al} \cite{gavryushkina2015bayesian} described a ``total-evidence'' approach implemented in BEAST2 \citep{Beast2} for phylogenetic estimation of time-trees that employs both morphological data from fossils and extant data and molecular sequence data as equal partners under the rule of probability for estimating a time-tree.  An equivalent method \citep{zhang2016} is introduced within MrBayes \cite{ronquist2012mrbayes}. 
 The model of time-tree phylogeny employed is the so-called fossilized birth-death process \cite{Heath2014}, which forms a prior probability distribution on the space of sampled-ancestor trees \cite{Gavr2013}.
 
-A previous study described how a set of fossils with discrete morphological characters could be used to estimate a time-tree. 
-Here we additionally allow for one or more of the fossils to have broad uninformative priors on their age. 
+We extend the approach in \cite{gavryushkina2015bayesian}  further by investigating the consistency between the phylogenetic estimate of the age of a fossil and the corresponding fossil age range determined by geological and biostratigraphic evidence. 
+%Previous study described how a set of fossils with discrete morphological characters could be used to estimate a time-tree \cite{gavryushkina2015bayesian,zhang2016}. 
+%Here we additionally allow for one or more of the fossils to have broad uninformative priors on their age. 
 This allows for the age of some of the fossils to be estimated solely based on their morphological characters and the phylogenetic affinities of their morphology to other fossils with known ages in the time-tree. 
 We refer to this as the phylogenetic estimate of the fossil's age. 
 In phylogenetically estimating the age of each of the fossils in turn, two questions can be answered: (i) How much information about an individual fossil's age is available from phylogenetic analysis of morphological data alone, and (ii) What is the level of phylogenetic evidence in support of the palaeontological age range for a fossil.
@@ -142,15 +142,13 @@ species.
 We used the same subset of the morphological data as in \cite{gavryushkina2015bayesian} but we did not use the molecular sequence data from the living species. 
 The morphological data matrix we used contains 36 fossil species, 19 extant species and 202 characters (ranging from binary to k=7). 
 The majority of these characters (\textgreater 95\%) have fewer than four states and 48 of the binary characters were encoded as presence/absence. 
-The fossil ages ranged from 
+The fossil ages ranged from TODO.
+As did \cite{gavryushkina2015bayesian}, we treat 34 characters that were ordered in \cite{ksepka2012} as unordered. 
 See \cite{gavryushkina2015bayesian} for further details of data selection.
 %}%
 
 For each of the 36 penguin fossils in turn we performed a separate Bayesian phylogenetic analysis in which the focal fossil's palaeontological age constraints were replaced by 
-the fossilized birth-death process prior as described below.  
-For the choices of morphological substitution model and tree prior we followed \cite{gavryushkina2015bayesian} and considered two of her modelling combinations. 
-The first was \Mstrict{} in which a strict clock and the simplest model of morphological substitution was assumed \cite{Lewis2001}.
-We also employed \Mrelaxed{} from \cite{gavryushkina2015bayesian} which involved a more complex model assuming a relaxed clock model \cite{Drummond2006}, partitioning of the sites into groups of equal state count and an additional parameter for gamma-distributed rate variation across sites \cite{yang:1994ma}.
+the fossilized birth-death process prior, and thus we obtained a phylogenetic estimate of the fossil's age.  
 
 \subsection*{Phylogenetic estimates of the ages of Canids fossils}
 
@@ -162,26 +160,33 @@ The 9 extant species represent about 25\% of the extant canid species and includ
 We had stratigraphic ranges based on palaeontological data for all \ncanidfossils{} fossils (Graham Slater, pers. comms). 
 %}%
 
-We applied the \Mstrict{} model to this data and assumed a uniform prior on each fossil's age within their respective stratigraphic ranges. Unlike the original study \cite{Slater2015} we did not apply any other constraints or priors on ancestral divergence times beyond the ages of the fossils. 
-As with the penguin data set we also performed an analysis for each of the \ncanidfossils{} canid fossils in turn. We used the same priors on macroevolutionary parameters as employed by \cite{gavryushkina2015bayesian} in their \Mstrict{} model except with an upper limit on the origin of $T_\text{max} = 80$. To phylogenetically estimate the age of the focal fossil we sampled its age under the fossilized birth-death prior in the range $(0,T_\text{max})$ Mya.
-%TS: which priors on d, r, s, T did we use now? 
+As with the penguin data set we  performed an analysis for each of the \ncanidfossils{} canid fossils in turn. 
+ Unlike the original study \cite{Slater2015} we did not apply any other constraints or priors on ancestral divergence times beyond the ages of the fossils. 
 
 \subsection*{Phylogenetic analyses}
 
 %TSrev
-Given the morphological data $D$ and a stratigraphic age range for each fossil $a = ((l_1,u_1),(l_2, u_2),\ldots,(l_n,u_n))$ (with $l_i$ being the lower age bound for fossil $i$, and $u_i$ being the upper age bound for fossil $i$), we sample phylogenetic trees connecting the fossils, with each fossil having a specified age within its stratigraphic age range (i.e. the phylogenetic estimate of fossil age). The parameters of the fossilized birth-death model are summarized in $\eta$, and the parameters  of the model for morphological character evolution are summarized in $\theta$. More formally, we sample from,
+Given the morphological data $D$ and a stratigraphic age range for each fossil $a = ((l_1,u_1),(l_2, u_2),\ldots,(l_n,u_n))$ (with $l_i$ being the lower age bound for fossil $i$, and $u_i$ being the upper age bound for fossil $i$), we sample phylogenetic trees with the fossils being tips or sampled ancestors, and each fossil having a specified age  in the phylogenetic tree within its stratigraphic age range. The parameters of the fossilized birth-death model are summarized in $\eta$, and the parameters  of the model for morphological character evolution are summarized in $\theta$. More formally, we sample from,
 $$P[\mathcal{T},\eta, \theta | D, a] = P[D|\mathcal{T},\theta] P[\mathcal{T},a|\eta] P[\eta] P[\theta]/P[D,a],$$
 where $ P[\mathcal{T},a|\eta] =  P[\mathcal{T}|\eta] $ if each fossil age is within its stratigraphic age range specified in $a$, and $ P[\mathcal{T},a|\eta] =0$ else.
 When we replaced the focal  palaeontological age constraints of fossil $i$  by 
-the fossilized birth-death process prior, we simply set $l_i=0$ and $u_i=T$.
+the fossilized birth-death process prior, we simply set $l_i=0$ and $u_i=T$ (where 0 is present time and $T$ is the total height of the tree) to estimate the phylogenetic age of the focal fossil.
 
-The fossilized birth-death model is defined by the following parameters $\eta=(T,d,r,s)$:  the time of the start of the process $T$, the net diversification rate $d$ (= speciation rate - extinction rate), the turnover $r$ (= extinction rate / speciation rate) and the sampling probability with which a fossil is observed $s$ (=sampling rate / (extinction rate + sampling rate)).
+The fossilized birth-death model is defined by the following parameters $\eta=(T,d,r,s)$:  the time of the start of the process $T$ prior to present time 0, the net diversification rate $d$ (= speciation rate - extinction rate), the turnover $r$ (= extinction rate / speciation rate) and the sampling probability with which a fossil is observed $s$ (=sampling rate / (extinction rate + sampling rate)).
   %%%
   
 Following \cite{gavryushkina2015bayesian}, we apply the Lewis Mk model 
-\cite{Lewis2001} for discrete morphological character evolution, which assumes a character can take $k$ states and the transition rates from one state to another are equal for all states. As did \cite{gavryushkina2015bayesian}, we treat 34 characters that were ordered in \cite{ksepka2012} as unordered. 
+\cite{Lewis2001} for discrete morphological character evolution, which assumes a character can take $k$ states and the transition rates from one state to another are equal for all states. 
 
-We applied two phylogenetic models to the penguin data set: \Mstrict{} and \Mrelaxed{}. \Mstrict{} assumed a strict morphological clock ($\mu$) and no gamma-distributed rate heterogeneity among sites. Model \Mrelaxed{} partitioned the alignment into six partitions, with the $i$'th partition containing all characters that had $k=i+1$ character states across the sampled taxa. Model \Mrelaxed{} also uses a uncorrelated lognormally-distributed relaxed molecular clock \cite{Drummond2006} with parameters $\mu$ and $S$ for the mean rate and log standard deviation of the rates. We followed \cite{gavryushkina2015bayesian} in having a broad LogNormal(-5.5, 2) prior on $\mu$ for all analyses and a Gamma($\alpha=0.5396$, $\beta=0.3819$) prior on $S$ for the relaxed clock analyses.
+%TSrev
+We applied two phylogenetic models to the penguin data set, \Mstrict{} and \Mrelaxed{}, and we applied \Mstrict{} to the canid dataset. \Mstrict{} assumed a strict morphological clock ($\mu$) and no gamma-distributed rate heterogeneity among sites  \cite{Lewis2001}. Model \Mrelaxed{} \citep{gavryushkina2015bayesian} partitioned the alignment into  partitions (six for the penguins), with the $i$'th partition containing all characters that had $k=i+1$ character states across the sampled taxa. Model \Mrelaxed{} also uses a uncorrelated lognormally-distributed relaxed molecular clock \cite{Drummond2006} with parameters $\mu$ and $S$ for the mean rate and log standard deviation of the rates, and an additional parameter for gamma-distributed rate variation across sites \cite{yang:1994ma}. 
+%TODO how was this additional parameter set?
+We followed \cite{gavryushkina2015bayesian} in having a broad LogNormal(-5.5, 2) prior on $\mu$ for all analyses and a Gamma($\alpha=0.5396$, $\beta=0.3819$) prior on $S$ for the relaxed clock analyses.
+%TSref TODO Alexei please check if the following sentence is correct.
+For the parameters of the fossilized birth-death model tree prior, 
+we specify the prior below in the section ``Computing the phylogenetic evidence for an age range''.
+%we  also followed \cite{gavryushkina2015bayesian}, except with an upper limit on the origin of $T= 80$ for the canids. 
+
 
 \subsection*{Computing the phylogenetic evidence for an age range}
 
@@ -191,10 +196,11 @@ The Bayes factor ($BF$) computes the evidence for one hypothesis ($H_1$) over an
 BF = \frac{p(D|H_1,M)}{p(D|H_2,M)} = \frac{p(H_1|D,M)}{p(H_2|D,M)}\frac{p(H_2|M)}{p(H_1|M)}.
 \end{equation}
 
-We are interested in computing the Bayes factor that quantifies the amount of phylogenetic evidence in support of the palaeontological age range for each fossil. In this case $H_1$ is the hypothesis that the true fossil age is within the given palaeontological age range, and $H_2$ is the alternative hypothesis that the true fossil age is outside the palaeontological range. 
+We are interested in computing the Bayes factor that quantifies the amount of phylogenetic evidence in support of the palaeontological age range for each fossil. In this case $H_1$ is the hypothesis that the true fossil age is within the given palaeontological age range, and $H_2$ is the alternative hypothesis that the true fossil age is outside the palaeontological range. A BF $>>$ 1 indicates strong support for $H_1$, given the model $M$ is appropriate for the considered data.
+
+
 %, but within the broader interval of $(0,T_\text{max})$ Mya. 
 The model $M$ consists of two parts, $M=(M_\mathcal{T},M_m)$. The model $M_\mathcal{T}$ specifies the tree generation process  giving rise to the number of observed samples and sampling times. The model $M_m$ specifies the morphological evolution along the tree giving rise to the morphological characters for the samples. The data $D=(D_\mathcal{T},D_m)$ is the number of samples together with the sampling times ($D_\mathcal{T}$) and  the morphological characters for each sample ($D_m$). 
-
 
 For caclulating the Bayes factor, the probabilities $p(H_1|D,M)$ and $p(H_2|D,M)$ are obtained directly from the MCMC output.
 It remains to calculate the probabilities $p(H_1|M)$ and $p(H_2|M)$.
@@ -203,7 +209,8 @@ Since $H_1$ and $H_2$ are independent of $M_m$, we have $$\frac{p(H_2|M)}{p(H_1|
 One way to determine $p(H_1|M_\mathcal{T})$ would be to simulate trees under the model $M_\mathcal{T}$ and record the fraction of sampling times  within a given palaeontological age range. However, such a simulation approach turns out to be very time-consuming, and the procedure below provided a much faster evaluation of $p(H_1|M_\mathcal{T})$.
 
 %TSrev
-We  will now derive some analytic results for evaluating $p(H_1|M_\mathcal{T})$. In our case, the model $M_\mathcal{T}$ is the fossilized birth-death process with priors on its parameters $\eta=(T,d,r,s)$. 
+We   derive some analytic results for evaluating $p(H_1|M_\mathcal{T})$. 
+The model $M_\mathcal{T}$ is the fossilized birth-death process with priors on its parameters $\eta=(T,d,r,s)$. 
 %Using the parameterization in \cite{gavryushkina2015bayesian}, the parameters are the time of the start of the process $T$, the net diversification rate $d$ (= speciation rate - extinction rate), the turnover $r$ (= extinction rate / speciation rate) and the sampling probability $s$ (=sampling rate / (extinction rate + sampling rate)).
 We derive the probability density of sampling a fossil at time $t$ in the past, given the model $M_\mathcal{T}$. This probability density will allow us to directly determine $p(H_1|M_\mathcal{T})$.
 %%
@@ -249,9 +256,9 @@ This investigation of the prior distribution on trees and sampling times highlig
 
 
 We want to note that the stepping stone sampling approach \cite{Xie2011}
-%TS which paper to cite here?
- to calculate Bayes factors would not have been possible in our case:  In stepping stone sampling the $D_\mathcal{T}$ is treated as part of the model, not part of the data. However, using a birth-death model, the sampling times are part of the data. The approach was valid when choosing a  coalescent tree prior, as in that case sampling times are conditioned upon (and thus can be seen as part of the model) rather than being modelled (and thus are a realisation of the model which means they are data).
+ to calculate Bayes factors would not have been directly applicable in our case:  In stepping stone, sampling the $D_\mathcal{T}$ is treated as part of the model, not part of the data. However, using a birth-death model, the sampling times are part of the data. The approach is valid when choosing a  coalescent tree prior, as in that case sampling times are conditioned upon (and thus can be seen as part of the model) rather than being modelled (and thus are a realisation of the model which means they are data). It is not clear if the stepping stone approach can be directly applied for models with number of tips being part of the data.
 In general, even if stepping stone approaches are appropriate, we recommend inspection of $P(H_1|M)$ to ensure that the prior on the hypothesis to be tested is sensible. Such an investigation reveals if the cause of a high (or low) Bayes factor is due to the prior or due to signal in the data.
+
 
 \section*{Results}
 
@@ -334,7 +341,7 @@ The canid data set shows remarkably good consistency between stratigraphic age r
 The $R^2 = 0.897$ between the phylogenetic and stratigraphic ages ranges (see Figure \ref{fig:canidMorphVsGeo}). 
 Only 13 out of \ncanidfossils{} fossils (11\%) don't have the mean stratigraphic age in the 95\% credible interval of the phylogenetic estimate of fossil age and there are no extreme outliers. 
 The median error is $1.56$My, which is more accurate than the age estimates for the penguin data set.
-This data set contains half as many morphological characters as does the penguin data set ($122$ versus $245$) but despite that the individual age estimates are much more precise (median HPD range = 4.2 My for canids as opposed to 9.6My for penguins). This may well be because the average age of the penguin fossils is considerably larger.
+This data set contains half as many morphological characters as does the penguin data set ($122$ versus $245$), nevertheless the individual age estimates are much more precise (median HPD range = 4.2 My for canids as opposed to 9.6My for penguins). This may well be because the average age of the penguin fossils is considerably larger.
 
 Figure \ref{fig:canidTree} shows a sample from the posterior distribution of the analysis of the canid data set. The tree has three main clades, one clade with extant representatives and two extinct clades ({\it Hesperocyoninae} and {\it Borophaginae}). 
 
@@ -344,7 +351,9 @@ Table \ref{estimatesTable} shows that the rate of morphological evolution in can
 \includegraphics{canids/stratRanges/1c_phyloAgeVsGeoAge.pdf}
 \caption{\label{fig:canidMorphVsGeo}
 The Bayesian phylogenetic estimate of fossil age (median and 95\% credible interval of marginal posterior) for each of the \ncanidfossils{} canid fossils plotted against their stratigraphic age ranges, under a strict morphological clock model \Mstrict{}. 
-The Bayesian estimates are represented by the median of the marginal posterior distribution and the upper and lower limits of the 95\% HPD interval. Blue line shows the $x=y$. 
+%The Bayesian estimates are represented by the median of the marginal posterior distribution and the upper and lower limits of the 95\% HPD interval. 
+The palaeontological age estimates are represented by the mid-point of the range and the upper and lower limits. The Bayesian esti- mates are represented by the median of the marginal posterior distribution and the upper and lower limits of the 95\% HPD interval.
+Blue line shows the $x=y$. 
 If the vertical line doesn't cross $x=y$, then the mean of the stratigraphic age range is not in the credible interval of the phylogenetic estimate of fossil age. The 13 fossils for which this is the case are labelled.}
 %TS I find this plot very hard to read as many fossils are overlaying...can we do something there for better visualization?
 \end{figure}
@@ -377,14 +386,27 @@ Canids Mk-1 &  36.8 [35.4, 38.5] & 2.83 [2.47, 3.19] & - \\
 \section*{Discussion}
 
 In this paper we have demonstrated that even a small number of morphological characters (some of the fossils had as few as 7 morphological traits coded) can be used in the context of a rich fossil reference data set, to provide an accurate age of the fossil based on a phylogenetic model. 
+In all cases we used the new fossilized birth-death tree prior, which is a crucial ingredient in allowing for the estimating of fossil ages under a birth-death tree prior. 
 
 %AJD
 We found that although a strict morphological clock does a surprisingly good job of estimating fossil ages, there is evidence that phylogenetic estimation of penguin fossil ages is improved by a model that includes a variation in rates of morphological evolution among lineages. 
 However, in the penguin data set the variation in evolutionary rates was not too extreme and the estimated log standard deviation of the relaxed morphological clock ($S = 0.69$; refer to Table \ref{estimatesTable}) is comparable to values obtained for molecular clocks.   
+The median error in age estimates for the two data sets investigated were 2 My and 1.6 My respectively, using either a very simple or more complex models of discrete morphological change. 
 %%%
 
 We found that fossil estimates were both slightly more accurate and more precise on average in the canid data set. 
 This may suggest that the larger reference set of fossils in the canid data set (115 versus 35) more than makes up for the smaller number of characters (122 versus 245) with regards to accuracy and precision of fossil age estimates. However since the average age of the canid fossils is considerably less than that for the penguin fossils, it could simply be that the absolute errors are smaller because the true values are smaller.
+%TODO: well, we could simply calculate the relative error and compare!?
+
+
+%\gslater{%
+One difference between the two data sets analyzed here is that the penguin fossils were largely single specimens, or at least single localities, so that the age range specified for the fossil represents uncertainty in the geological age of the horizon the fossil was associated with (for example, uncertainty in radiometric dates from the volcanic layers above or below the fossil-carrying horizon and uncertainty about the age difference between the volcanic layers and the horizon the fossil is in). 
+On the other hand, most of the canid species were assigned stratigraphic age ranges based on multiple specimens from multiple localities spanning a substantial time range. 
+For example, there are thousands of specimens of {\it Hesperocyon gregarious} from multiple sites in North America spanning $>5\text{myr}$ (pers. comm. Graham Slater). 
+In this context it is interesting to note the canids that fall off the x=y line in Figure 7 are mostly (but not exclusively) taxa represented by singletons and therefore those with relatively short stratigraphic ranges. 
+This raises the question of whether multiple specimens of a single species that span a significant time frame and/or different localities should be coded as separate taxa as input for the fossilized birth-death method. Even if not coded as separate taxa it may be possible to extend the method used here to explicitly account for multiple specimens and associated ages when a fossil species is represented by more than one fossil. We leave these considerations for future work. 
+%}%
+Future work may also investigate in a more systematic fashion how the amount of morphological data available for a new fossil and the number of related reference fossils of known age affect the accuracy of the phylogenetic estimate of a fossil's age.
 
 There are a diverse array of potential applications for this methodology. 
 The most obvious is the estimation of dates for fossils that are temporally unconstrained, either due to poor knowledge of the age of the sediments in which it was found, 
@@ -393,19 +415,7 @@ or because the fossil was not associated with a horizon of known age e.g. \cite{
 %}%
 or because of a complete lack of provenance data (e.g. a recent fossil described as a `four-legged snake' has excited controversy for a lack of provenance\footnote{See \url{http://news.sciencemag.org/paleontology/2015/07/four-legged-snake-fossil-stuns-scientists-and-ignites-controversy}}). 
 It can also be used a way of testing the ``morphological clock'' and to discover potential problems in the data by identifying outlier fossils with respect to model fit. 
-The median error in age estimates for the two data sets investigated were 2 My and 1.6 My respectively, using either a very simple or more complex models of discrete morphological change. 
-In all cases we used the new fossilized birth-death tree prior, which is a crucial ingredient in allowing for the estimating of fossil ages under a birth-death tree prior. 
-
-%\gslater{%
-One difference between the two data sets analyzed here is that the penguin fossils were largely single specimens, or at least single localities, so that the age range specified for the fossil represents uncertainty in the geological age of the horizon the fossil was associated with (for example, uncertainty in radiometric dates from the volcanic layers above or below the fossil-carrying horizon and uncertainty about the age difference between the volcanic layers and the horizon the fossil is in). 
-On the other hand, most of the canid species were assigned stratigraphic age ranges based on multiple specimens from multiple localities spanning a substantial time range. 
-For example, there are thousands of specimens of {\it Hesperocyon gregarious} from multiple sites in North America spanning $>5\text{myr}$ (pers. comm. Graham Slater). 
-In this context it is interesting to note the canids that fall off the x=y line in Figure 7 are mostly (but not exclusively) taxa represented by singletons and therefore those with relatively short stratigraphic ranges. 
-This raises the question of whether multiple specimens of a single species that span a significant time frame and/or different localities should be coded as separate taxa. Even if not coded as separate taxa it may be possible to extend the method used here to explicitly account for multiple specimens and associated ages when a fossil species is represented by more than one fossil. We leave these considerations for future work. 
-%}%
-Future work may also investigate in a more systematic fashion how the amount of morphological data available for a new fossil and the number of related reference fossils of known age affect the accuracy of the phylogenetic estimate of a fossil's age.
-
-In the mean time we anticipate that this approach will help to promote the application of a consistent probabilistic framework to consider both molecular and fossil evidence. Our results are encouraging in suggesting that the statistical models presented are adequate for inference of phylogenetic time-trees from morphological fossil data.
+Overall, we anticipate that this approach will help to promote the application of a consistent probabilistic framework to consider both molecular and fossil evidence. Our results are encouraging in suggesting that the statistical models presented are adequate for inference of phylogenetic time-trees from morphological fossil data.
 
 \section*{Availability}
 
