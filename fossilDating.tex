@@ -1,11 +1,10 @@
-% !BIB TS-program = biber
 \documentclass[11pt]{article}
 
 \usepackage{graphicx}
-\usepackage{hyperref}
+%\usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{xcolor}
-\usepackage[style=authoryear,backend=biber,mincitenames=1,maxcitenames=2, uniquelist=false]{biblatex}
+\usepackage[style=authoryear,backend=bibtex,mincitenames=1,maxcitenames=2, uniquelist=false]{biblatex}
 \bibliography{fossilDating.bib}
 
 
@@ -238,12 +237,12 @@ The three labelled fossils have posterior probability of less than 0.05 for thei
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=6in]{8_penguins_eNprior/8_fossilDatingHist_younger.pdf}
+\includegraphics[width=6in]{8_fossilDatingHist_younger.pdf}
 \caption{\label{hist8_younger}Marginal posterior density plots for the phylogenetic age estimate of each of the 18 penguin fossils younger than 30 Myr using \Mrelaxed{}. Red boxes are the superimposed age ranges derived from geological data.}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=6in]{8_penguins_eNprior/8_fossilDatingHist_older.pdf}
+\includegraphics[width=6in]{8_fossilDatingHist_older.pdf}
 \caption{\label{hist8_older}Marginal posterior density plots for the phylogenetic age estimate of each of the 18 penguin fossils older than 30 Myr using \Mrelaxed{}. Red boxes are the superimposed age ranges derived from geological data.}
 \end{figure}
 
@@ -264,9 +263,9 @@ This evidence, along with the previous result that \Mrelaxed{} has a higher marg
 Comparison of \Mstrict{} against \Mrelaxed{}. (a) Estimated phylogenetic age of \Mstrict{} against \Mrelaxed{} with $x=y$ line (blue), (b) Regression of error in estimated phylogenetic age of \Mstrict{} against \Mrelaxed{}, (c) Regression of posterior probability of palaeontological range of \Mstrict{} against \Mrelaxed{}, (d) Regression of Bayes factor (BF) for palaeontological range of \Mstrict{} against \Mrelaxed{}.}
 \end{figure}
 
-\input{1_penguins_eNprior/1_summaryTable.tex}
+\input{1_summaryTable.tex}
 
-\input{8_penguins_eNprior/8_summaryTable.tex}
+\input{8_summaryTable.tex}
 
 \subsection*{Canids conform well to a morphological clock}
 
@@ -280,7 +279,7 @@ This data set contains half as many morphological characters as does the penguin
 (median HPD range = 6.5 My for canids as opposed to 9.6My for penguins).
 
 \begin{figure}
-\includegraphics{canids/1c_phyloAgeVsGeoAge.pdf}
+\includegraphics{1c_phyloAgeVsGeoAge.pdf}
 \caption{\label{fig:canidMorphVsGeo}
 The Bayesian phylogenetic age estimate (median and credible interval of marginal posterior) for each of the 123 canid fossils plotted against their palaeontological age point estimates, under a strict morphological clock model \Mstrict{}. 
 The Bayesian estimates are represented by the median of the marginal posterior distribution and the upper and lower limits of the 99\% HPD interval. Blue line shows the $x=y$. 
@@ -289,7 +288,7 @@ If the vertical line doesn't cross $x=y$, then the geological age is not in the 
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=15cm]{canids/1_canids-1440516016976-tree5001.pdf}
+\includegraphics[width=15cm]{1_canids-1440516016976-tree5001.pdf}
 \caption{\label{fig:canidTree} A sample from the posterior distribution of an analysis of the canid data set, showing two main clades, one containing the extant taxa and another constituted entirely of extinct fossil species.}
 \end{figure}
 
