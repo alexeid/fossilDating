@@ -56,9 +56,9 @@ Auckland, 38 Princes Street, Auckland, 1010, New Zealand; E-mail: alexei@cs.auck
 % 250 words
 \abstract{
 Recent advances have allowed for both morphological fossil evidence and molecular sequences to be integrated into a single combined inference of divergence dates under the rule of Bayesian probability. 
-In particular the fossilized birth-death tree prior and the Lewis-MK model of evolution of discrete morphological change allow for the estimation of both divergence times and phylogenetic relationships between fossil and extant taxa. 
+In particular the fossilized birth-death tree prior and the Lewis-Mk model of discrete morphological evolution allow for the estimation of both divergence times and phylogenetic relationships between fossil and extant taxa. 
 We exploit this statistical framework to investigate the internal consistency of these models by producing phylogenetic estimates of the age of each fossil in turn, within two rich and well-characterized data sets of fossil and extant species (penguins and canids).
-We find that the estimation accuracy of fossil ages is generally high with credible intervals seldom excluding the true age and a median relative error in the two data sets of 5.7\% and 13.2\% respectively. The median relative standard error (RSD) was 9.2\% and 7.2\% suggesting good precision, although with some outliers. 
+We find that the estimation accuracy of fossil ages is generally high with credible intervals seldom excluding the true age and median relative error in the two data sets of 5.7\% and 13.2\% respectively. The median relative standard error (RSD) was 9.2\% and 7.2\% respectively, suggesting good precision, although with some outliers. 
 In fact in the two data sets we analyze the phylogenetic estimates of fossil age is on average  $< 2$ My from the midpoint age of the geological strata from which it was excavated. 
 The high level of internal consistency found in our analyses suggests that the Bayesian statistical model employed is an adequate fit for both the geological and morphological data, and provides evidence from real data that the framework used can accurately model the evolution of discrete morphological traits coded from fossil and extant taxa. 
 We anticipate that this approach will have diverse applications beyond divergence time dating, including dating fossils that are temporally unconstrained, further testing of the ``morphological clock'', 
@@ -186,7 +186,7 @@ The prior distribution for $\alpha$ was uniform in the interval $(0,10)$.
 
 We followed \cite{gavryushkina2015bayesian} in having a broad LogNormal($M=-5.5, S=2$) prior on $\mu$ for all analyses and a Gamma($\alpha=0.5396, \beta=0.3819$) prior on $S$ for the relaxed clock analyses.
 For the penguin analyses, the parameters of the fossilized birth-death model tree prior  were specified as described in the section ``Computing the phylogenetic evidence for an age range''. 
-For the canid analysis we used the standard parametrisation $\eta=(T,d,r,s)$, with the following priors: uniform prior from in the interval $(0, 120)$ million years for origin $T$, LogNormal($M=-3.5, S=1.5$) prior for diversification rate $d$, unit uniform prior $(0,1)$ for turnover $r$ and sampling proportion $s$.
+Since we did not perform Bayes factor (BF) analyses for the canid dataset, we used the standard parametrisation $\eta=(T,d,r,s)$, with the following priors: uniform prior from in the interval $(0, 120)$ million years for origin $T$, LogNormal($M=-3.5, S=1.5$) prior for diversification rate $d$, unit uniform prior $(0,1)$ for turnover $r$ and sampling proportion $s$.
 
 \subsection*{Computing the phylogenetic evidence for an age range}
 
@@ -266,7 +266,7 @@ In general, even if stepping stone approaches are appropriate, we recommend insp
 \subsection*{Penguins conform well to a morphological clock}
 Although \Mstrict{} is a very simple model, the phylogenetic estimates of the ages of the penguin fossils were remarkably consistent with their palaeontological age ranges. 
 Figure \ref{fig:phyloAgeVsGeoAge}a plots the geological age and range against the phylogenetic estimates of fossil age. The points in this plot have $R^2 = 0.903$. 
-The median error (where the {\it error} is the difference between the phylogenetic median and the geological median) is 1.96 Myr. The median relative error (where the {\it relative error} is the {\it error} divided by the geological median) was 5.7\% and the median relative standard deviation (RSD; defined as the standard deviation of the marginal posterior divided by the posterior estimate) was of 9.2\%.
+The median error (where the {\it error} is the difference between the phylogenetic median and the geological median) is 1.96 Myr. The median relative error (where the {\it relative error} is the {\it error} divided by the geological median) was 5.7\% and the median relative standard deviation (RSD; defined as the standard deviation of the marginal posterior divided by the posterior median estimate) was 9.2\%.
 A summary of the individual estimates are tabulated in Table \ref{fossilTable1}.
 
 As judged by Bayes factors, only one fossil exhibited strong evidence (i.e. $\text{log BF} < -3.0$) that the phylogenetic estimate of fossil age was inconsistent with the geological age range. The log BF for {\em Paraptenodytes antarcticus} was -3.4. In fact the majority of the fossils (23/36 = 64\%) had strong positive evidence for the geological age range (i.e. $\text{log BF} > 3.0$).
