@@ -17,7 +17,10 @@ df1 <- createSummaryTable(result1$names, height1, fossilTable1, seq)
 caption <- "Summary of results for 36 fossil penguins under Model 1. {\\em post} is the posterior probability that the phylogenetic age is within the palaeontological age range. {\\em BF} is the bayes factor in support of the palaeontological age. {\\em phylo age} is the phylogenetic estimate of the age, along with the upper and lower of the corresponding 95\\% HPD credible interval. {\\em error} is the difference in millions of years between the phylogenetic point estimate of the fossil's age and the mean of it's palaeontological age range. {\\em ESS} is the estimated effective sample size for the phylogenetic age estimate."
 label <- "fossilTable1"
 
-writeSummaryTable("1_summaryTable.tex",caption, label, df1)
+# if uncommenting line below then add line "\scriptsize" before \begin{tabular} 
+# in the resulting tex file
+#writeSummaryTable("../1_summaryTable.tex",caption, label, df1)
+
 
 ind <- 1:nrow(df1)
 ind <- ind[df1$post < 0.05]
@@ -29,6 +32,6 @@ createPrecisionVsKnownCharactersFigure("1_precisionVsKnownCharacters.pdf", df1, 
 
 # Need to split younger and older ones
 
-createHistPlotFigures("1_fossilDatingHist_younger", result1$names[df1$geo < 32], height1[df1$geo < 32], fossilTable1[df1$geo < 32,], combinedPlots=TRUE, xmin=0, xmax=45)
+createHistPlotFigures("../1_fossilDatingHist_younger", result1$names[df1$geo < 32], height1[df1$geo < 32], fossilTable1[df1$geo < 32,], combinedPlots=TRUE, xmin=0, xmax=45)
 
-createHistPlotFigures("1_fossilDatingHist_older", result1$names[df1$geo > 32], height1[df1$geo > 32], fossilTable1[df1$geo > 32,], combinedPlots=TRUE, xmin=10, xmax=70)
+createHistPlotFigures("../1_fossilDatingHist_older", result1$names[df1$geo > 32], height1[df1$geo > 32], fossilTable1[df1$geo > 32,], combinedPlots=TRUE, xmin=10, xmax=70)
