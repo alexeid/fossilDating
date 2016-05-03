@@ -1,7 +1,7 @@
 require(coda)
 source("~/Git/fossilDating/fossilDatingFunctions.r")
 
-setwd("~/Git/fossilDating/canids/stratRanges")
+setwd("~/Git/fossilDating")
 fossilTable_c <- read.table("~/Git/fossilDating/canids/stratRanges/canidFossilTable_stratRanges.txt", sep="\t", header=T)
 regexp = "\\-[0-9]+\\.log"
 seq <- read.table("~/Git/fossilDating/canids/stratRanges/canids-sorted-sequences.txt", header=T, sep="\t")
