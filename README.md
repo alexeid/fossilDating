@@ -19,6 +19,7 @@ The files needed to compile the LaTeX to the final PDF are:
 * Figure2.pdf
 * 8_fossilDatingHist_younger.pdf
 * 8_fossilDatingHist_older.pdf
+* Figure_comparison.pdf
 * 1c_phyloAgeVsGeoAge.pdf
 * 1_canids_ranges_3_subset-1460502871266-tree10001.pdf
 * vancouver.bst
